@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "5978883644",
+    "firebase_url": "https://frozenjoghurtbuilder.firebaseio.com",
+    "project_id": "frozenjoghurtbuilder",
+    "storage_bucket": "frozenjoghurtbuilder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5978883644:android:861c23dad33a7007",
+        "android_client_info": {
+          "package_name": "mocogruppe1.frozenjoghurtbuilder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5978883644-25172lguir6g9rcu8oh9mfp6v64put0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsuaPpUlg_yMpZB4g_aWzd1PqrWxSqREo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
