@@ -20,16 +20,16 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference testref = testbase.getReference();
 
     //Buttons
-    private Button btn_goTo_reGa;
-    private Button btn_goTo_orPr;
+    private Button btn_recipeGallery;
+    private Button btn_orderProcess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn_goTo_reGa = findViewById(R.id.btn_goTo_reGa) ;
-        btn_goTo_reGa.setOnClickListener(new View.OnClickListener() {
+        btn_recipeGallery = findViewById(R.id.btn_goTo_recipeGallery) ;
+        btn_recipeGallery.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        btn_goTo_orPr = findViewById(R.id.btn_goTo_orPr) ;
-        btn_goTo_orPr.setOnClickListener(new View.OnClickListener() {
+        btn_orderProcess = findViewById(R.id.btn_goTo_orderProcess) ;
+        btn_orderProcess.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
