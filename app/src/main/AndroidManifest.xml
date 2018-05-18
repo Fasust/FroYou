@@ -12,10 +12,21 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".RecipeGallery"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".OrderFinal"
+            android:parentActivityName=".OrderProcess" />
+        <activity
+            android:name=".OrderProcess"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".RecipeDetail"
+            android:parentActivityName=".RecipeGallery" />
     </application>
 
 </manifest>

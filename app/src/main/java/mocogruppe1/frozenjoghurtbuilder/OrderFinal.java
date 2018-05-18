@@ -10,5 +10,8 @@ public class OrderFinal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orderfinal);
 
+        //Action Bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Finale Bestellung");
     }
 }
