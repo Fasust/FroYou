@@ -12,7 +12,7 @@ public class OrderChoosePricing extends AppCompatActivity {
     private Button btn_goTo_orPr;
 
     //Intent
-    public static String SIZE_KEY = "size";
+    public final static String SIZE_KEY = "size";
     private int size;
     private Intent intent;
 

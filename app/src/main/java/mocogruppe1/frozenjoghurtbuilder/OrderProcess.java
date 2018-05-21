@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import mocogruppe1.frozenjoghurtbuilder.classes.Ingredient;
+import mocogruppe1.frozenjoghurtbuilder.classes.Order;
 import mocogruppe1.frozenjoghurtbuilder.classes.RecourceLoader;
 
 public class OrderProcess extends AppCompatActivity {
@@ -30,7 +31,8 @@ public class OrderProcess extends AppCompatActivity {
     private ArrayList<Ingredient> sauce;
     private int size = 0;
 
-    //Asset Manager
+    //Order
+    private Order shoppingCar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class OrderProcess extends AppCompatActivity {
         buildLayout();
         loadIngredients();
         loadSize();
+
+        shoppingCar = new Order(size);
 
         writeToDebugText();
 
@@ -86,13 +90,13 @@ public class OrderProcess extends AppCompatActivity {
 
         for(Ingredient ing : ingredientsArray){
             switch (ing.getType()){
-                case 'm':
+                case Ingredient.INGREDIENT_MAIN:
                     mainingredients.add(ing);
                     break;
-                case 't':
+                case Ingredient.INGREDIENT_TOPPING:
                     topings.add(ing);
                     break;
-                case 's':
+                case Ingredient.INGREDIENT_SAUCE:
                     sauce.add(ing);
                     break;
                 default:

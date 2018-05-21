@@ -4,6 +4,11 @@ public class Ingredient {
     String name;
     char type;
 
+    //Types
+    public final static char INGREDIENT_MAIN = 'm';
+    public final static char INGREDIENT_TOPPING = 't';
+    public final static char INGREDIENT_SAUCE = 's';
+
     public Ingredient(String name, char type) {
         this.name = name;
         this.type = type;
