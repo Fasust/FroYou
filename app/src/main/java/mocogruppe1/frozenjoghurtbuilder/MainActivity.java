@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn_recipeGallery = findViewById(R.id.btn_goTo_recipeGallery) ;
+        btn_recipeGallery = findViewById(R.id.btn_recipeGallery) ;
         btn_recipeGallery.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        btn_orderProcess = findViewById(R.id.btn_goTo_orderProcess) ;
+        btn_orderProcess = findViewById(R.id.btn_orderProcess) ;
         btn_orderProcess.setOnClickListener(new View.OnClickListener() {
 
             @Override
