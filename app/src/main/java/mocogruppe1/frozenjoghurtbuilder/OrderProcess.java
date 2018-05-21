@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import mocogruppe1.frozenjoghurtbuilder.classes.Ingredient;
+import mocogruppe1.frozenjoghurtbuilder.classes.RecourceLoader;
 
 public class OrderProcess extends AppCompatActivity {
 
@@ -28,6 +29,8 @@ public class OrderProcess extends AppCompatActivity {
     private ArrayList<Ingredient> topings;
     private ArrayList<Ingredient> sauce;
     private int size = 0;
+
+    //Asset Manager
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +71,7 @@ public class OrderProcess extends AppCompatActivity {
         Gson gson = new Gson();
 
         //Load JSON String from Assets "ingredientsList.json"
-        String ingredients_String = loadJSONFromAsset("ingredientsList");
+        String ingredients_String = RecourceLoader.loadJSONFromAsset(getAssets(),"ingredientsList");
 
         //Turn JSON String to Ingredients (obj) Array
         ingredientsArray = gson.fromJson(ingredients_String, Ingredient[].class);
@@ -125,26 +128,5 @@ public class OrderProcess extends AppCompatActivity {
             debugtxt.append(" | Name:   " + ing.getName());
 
         }
-    }
-
-    /**
-     * Load a Json String from Assets
-     * @param filename name of the JSON file in Assets (end with .json)
-     * @return Json String
-     */
-    public String loadJSONFromAsset(String filename) {
-        String json = null;
-        try {
-            InputStream is = getAssets().open(filename);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
     }
 }
