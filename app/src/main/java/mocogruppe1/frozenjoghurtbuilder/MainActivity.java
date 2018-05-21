@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Buttons
     private Button btn_goTo_reGa;
-    private Button btn_goTo_orPr;
+    private Button btn_goTo_orChPr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        btn_goTo_orPr = findViewById(R.id.btn_goTo_orPr) ;
-        btn_goTo_orPr.setOnClickListener(new View.OnClickListener() {
+        btn_goTo_orChPr = findViewById(R.id.btn_goTo_orChPr) ;
+        btn_goTo_orChPr.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, OrderProcess.class));
+                startActivity(new Intent(MainActivity.this, OrderChoosePricing.class));
             }
 
         });
