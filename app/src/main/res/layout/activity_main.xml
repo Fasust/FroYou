@@ -8,21 +8,29 @@
     tools:context=".MainActivity">
 
     <include
-        layout="@layout/app_header"
-        android:id="@+id/app_header">
-
-    </include>
+        android:id="@+id/app_header_home"
+        layout="@layout/app_header_home"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></include>
 
     <Button
         android:id="@+id/btn_goTo_reGa"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Gallery"
-        android:textAlignment="center"
+        android:background="@drawable/button_big"
+        android:fontFamily="@font/pacifico"
+        android:text="Rezepte ansehen"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +39,7 @@
 
     <Button
         android:id="@+id/btn_goTo_orChPr"
-        android:layout_width="match_constraint"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -58,7 +66,7 @@
         android:cropToPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_header"
+        app:layout_constraintTop_toBottomOf="@+id/app_header_home"
         app:srcCompat="@drawable/builder_image" />
 
     <ImageView

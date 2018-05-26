@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".OrderChoosePricing">
 
+    <include
+        android:id="@+id/app_header"
+        layout="@layout/app_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </include>
+
     <Button
         android:id="@+id/btn_small"
         android:layout_width="wrap_content"

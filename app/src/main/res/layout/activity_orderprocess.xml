@@ -6,6 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/app_header"
+        layout="@layout/app_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </include>
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_goTo_orFi"
         android:layout_width="71dp"
