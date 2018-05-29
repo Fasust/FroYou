@@ -19,8 +19,8 @@ public class RecipeGallery extends AppCompatActivity {
         setContentView(R.layout.activity_recipegallery);
 
         //Action Bar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Rezept Galerie");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle("Rezept Galerie");
 
         btn_goTo_reDe = findViewById(R.id.btn_goTo_reDe) ;
         btn_goTo_reDe.setOnClickListener(new View.OnClickListener() {

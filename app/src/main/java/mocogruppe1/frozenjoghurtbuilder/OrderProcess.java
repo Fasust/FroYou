@@ -52,8 +52,8 @@ public class OrderProcess extends AppCompatActivity {
         setContentView(R.layout.activity_orderprocess);
 
         //Action Bar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Bestellung Prozess");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle("Bestellung Prozess");
 
 
         //Buttons

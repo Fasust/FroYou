@@ -12,7 +12,7 @@ public class RecipeDetail extends AppCompatActivity {
 
 
         //Action Bar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Jannis Jungle Joggi");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle("Jannis Jungle Joggi");
     }
 }
