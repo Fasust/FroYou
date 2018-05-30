@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".OrderChoosePricing">
 
     <include
@@ -17,44 +18,89 @@
 
     <Button
         android:id="@+id/btn_small"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Klein"
-        app:layout_constraintBottom_toTopOf="@+id/btn_medium"
+        android:background="@drawable/button_big"
+        android:fontFamily="@font/pacifico"
+        android:text="Kleinen Yogurt erstellen"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.564" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_smallYogurt" />
 
     <Button
         android:id="@+id/btn_medium"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Medium"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/button_big"
+        android:fontFamily="@font/pacifico"
+        android:text="Mittleren Yogurt erstellen"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_middleYogurt" />
 
     <Button
         android:id="@+id/btn_large"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Gross"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/button_big"
+        android:fontFamily="@font/pacifico"
+        android:text="Großen Yogurt erstellen"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_medium" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_bigYogurt" />
+
+    <TextView
+        android:id="@+id/txt_smallYogurt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/pacifico"
+        android:text="Kleiner Yogurt \n 1x Yogurt oder Eis \n Unbegrenzt Sauce \n Unbegrenzt Topping"
+        android:textColor="@color/colorBase"
+        app:layout_constraintTop_toBottomOf="@+id/app_header"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/txt_middleYogurt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/pacifico"
+        android:text="Mittlerer Yogurt \n 2x Yogurt oder Eis \n Unbegrenzt Sauce \n Unbegrenzt Topping"
+        android:textColor="@color/colorBase"
+        app:layout_constraintTop_toBottomOf="@+id/btn_small"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/txt_bigYogurt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/pacifico"
+        android:text="Großer Yogurt \n 3x Yogurt oder Eis \n Unbegrenzt Sauce \n Unbegrenzt Topping"
+        android:textColor="@color/colorBase"
+        app:layout_constraintTop_toBottomOf="@+id/btn_medium"
+        tools:layout_editor_absoluteX="16dp" />
+
 </android.support.constraint.ConstraintLayout>
