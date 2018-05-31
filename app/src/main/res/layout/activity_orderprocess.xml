@@ -37,4 +37,12 @@
         android:textSize="18sp"
         tools:layout_editor_absoluteX="163dp"
         tools:layout_editor_absoluteY="93dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:text="TextView wo die Dateien reingeladen werden"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="95dp" />
 </android.support.constraint.ConstraintLayout>
