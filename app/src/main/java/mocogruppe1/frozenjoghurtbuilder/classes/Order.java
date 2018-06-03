@@ -24,7 +24,6 @@ public class Order {
         }
         ingredientList.add(ingredient);
     }
-
     public void remove(Ingredient ingridient){
         if(ingridient.getType() == Ingredient.INGREDIENT_MAIN){
             mainIngridientCount--;

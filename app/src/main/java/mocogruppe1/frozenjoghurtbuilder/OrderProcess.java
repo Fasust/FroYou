@@ -1,9 +1,11 @@
 package mocogruppe1.frozenjoghurtbuilder;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import mocogruppe1.frozenjoghurtbuilder.Exceptions.OrderIsFullException;
+import mocogruppe1.frozenjoghurtbuilder.classes.AlertSelectBox;
 import mocogruppe1.frozenjoghurtbuilder.classes.Ingredient;
 import mocogruppe1.frozenjoghurtbuilder.classes.IngredientAdapter;
 import mocogruppe1.frozenjoghurtbuilder.classes.Order;
@@ -45,14 +48,19 @@ public class OrderProcess extends AppCompatActivity {
     //Order
     private Order shoppingList;
 
+    //Tools
+    private AlertSelectBox<Ingredient> selectBox;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_orderprocess);
 
-        buildLayout();
         loadIngredients();
         loadSize();
         buildShoppingList();
+        buildLayout();
 
         try {
             shoppingList.add(new Ingredient("Iulia",'s'));
@@ -67,10 +75,23 @@ public class OrderProcess extends AppCompatActivity {
     }
 
     private void buildLayout(){
-        setContentView(R.layout.activity_orderprocess);
 
-        //view
-        displayList = findViewById(R.id.orderprocess_listview);
+        //selectbox
+        selectBox = new AlertSelectBox<Ingredient>(
+                displayList.getContext(),
+                "Wählen sie eine Zutat",
+                R.drawable.logo_icon) {
+
+            @Override
+            public void afterSelect() {
+                try {
+                    shoppingList.add(selectBox.getSelectedItem());
+                } catch (OrderIsFullException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        selectBox.add(sauce);
 
         //Buttons
         btn_goTo_orFi = findViewById(R.id.btn_goTo_orFi) ;
@@ -78,11 +99,7 @@ public class OrderProcess extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                try {
-                    shoppingList.add(new Ingredient("Hack",'t'));
-                } catch (OrderIsFullException e) {
-                    e.printStackTrace();
-                }
+                selectBox.show();
             }
 
         });
@@ -131,6 +148,7 @@ public class OrderProcess extends AppCompatActivity {
     }
     private void buildShoppingList(){
         final IngredientAdapter ingredientAdapter = new IngredientAdapter(this);
+        displayList = findViewById(R.id.orderprocess_listview);
         displayList.setAdapter(ingredientAdapter);
 
         shoppingList = new Order(size,ingredientAdapter);

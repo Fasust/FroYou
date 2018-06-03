@@ -14,6 +14,10 @@ public class Ingredient {
         this.type = type;
     }
 
+    @Override
+    public String toString(){
+        return getName();
+    }
 
     /*
     Getters And Setters Below--------------------------
