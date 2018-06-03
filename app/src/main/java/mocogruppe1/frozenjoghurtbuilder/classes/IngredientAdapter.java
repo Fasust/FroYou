@@ -1,6 +1,7 @@
 package mocogruppe1.frozenjoghurtbuilder.classes;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,13 @@ import java.util.ArrayList;
 import mocogruppe1.frozenjoghurtbuilder.R;
 
 public class IngredientAdapter extends ArrayAdapter<Ingredient> {
+
+    private IngredientSelectBox selectBox_main;
+    private IngredientSelectBox selectBox_topping;
+    private IngredientSelectBox selectBox_souce;
+
+    private Order order;
+
     public IngredientAdapter(Context context) {
         super(context, 0, new ArrayList<Ingredient>());
     }
@@ -40,14 +48,36 @@ public class IngredientAdapter extends ArrayAdapter<Ingredient> {
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int position = (Integer) view.getTag();
-                Ingredient ingredient = getItem(position);
 
+                int position = (Integer) view.getTag();
+                Log.d("Pos",""+ position);
+                Ingredient ingredient = getItem(position);
+                switch (ingredient.getType()){
+                    case Ingredient.INGREDIENT_MAIN:
+                            selectBox_main.setInsertPointer(position);
+                            selectBox_main.show();
+                        break;
+                    case Ingredient.INGREDIENT_SAUCE:
+                            selectBox_souce.setInsertPointer(position);
+                            selectBox_souce.show();
+                        break;
+                    case Ingredient.INGREDIENT_TOPPING:
+                            selectBox_topping.setInsertPointer(position);
+                            selectBox_topping.show();
+                        break;
+                }
+                order.remove(position);
             }
         });
 
-
         return convertView;
+    }
+    public void init(IngredientSelectBox selectBox_main, IngredientSelectBox selectBox_souce, IngredientSelectBox selectBox_topping,Order order){
+        this.selectBox_main = selectBox_main;
+        this.selectBox_topping = selectBox_topping;
+        this.selectBox_souce = selectBox_souce;
+
+        this.order = order;
     }
 
 }

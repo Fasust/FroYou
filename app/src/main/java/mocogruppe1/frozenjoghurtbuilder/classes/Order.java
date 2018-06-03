@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import mocogruppe1.frozenjoghurtbuilder.Exceptions.OrderIsFullException;
 
 public class Order {
-    private final int ORDER_SIZE;
+    public final int ORDER_SIZE;
     private int mainIngridientCount = 0;
     private IngredientAdapter ingredientList;
 
@@ -23,6 +23,16 @@ public class Order {
             }
         }
         ingredientList.add(ingredient);
+    }
+    public void intertAt(Ingredient ingredient,int i) throws OrderIsFullException{
+        if(ingredient.getType() == Ingredient.INGREDIENT_MAIN){
+            if(mainIngridientCount < ORDER_SIZE){
+                mainIngridientCount++;
+            }else {
+                throw new OrderIsFullException();
+            }
+        }
+        ingredientList.insert(ingredient,i);
     }
     public void remove(Ingredient ingridient){
         if(ingridient.getType() == Ingredient.INGREDIENT_MAIN){
