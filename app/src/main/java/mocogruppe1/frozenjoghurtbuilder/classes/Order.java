@@ -7,11 +7,11 @@ import mocogruppe1.frozenjoghurtbuilder.Exceptions.OrderIsFullException;
 public class Order {
     private final int ORDER_SIZE;
     private int mainIngridientCount = 0;
-    private ArrayList<Ingredient> ingredientList;
+    private IngredientAdapter ingredientList;
 
-    public Order(int size) {
+    public Order(int size,IngredientAdapter ingredientList) {
         this.ORDER_SIZE = size;
-        ingredientList = new ArrayList<>();
+        this.ingredientList = ingredientList;
     }
 
     public void add(Ingredient ingredient) throws OrderIsFullException {
@@ -23,5 +23,9 @@ public class Order {
             }
         }
         ingredientList.add(ingredient);
+    }
+
+    public IngredientAdapter getIngredientsAdapter() {
+        return ingredientList;
     }
 }

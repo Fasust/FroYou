@@ -32,17 +32,16 @@
         android:id="@+id/txt_order_debug"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text=" "
+        android:text=""
         android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="163dp"
         tools:layout_editor_absoluteY="93dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:text="TextView wo die Dateien reingeladen werden"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="95dp" />
+    <ListView
+        android:id="@+id/orderprocess_listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/app_header"
+        tools:layout_editor_absoluteX="8dp" />
 </android.support.constraint.ConstraintLayout>

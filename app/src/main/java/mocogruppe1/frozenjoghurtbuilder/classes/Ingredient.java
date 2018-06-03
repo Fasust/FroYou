@@ -1,8 +1,8 @@
 package mocogruppe1.frozenjoghurtbuilder.classes;
 
 public class Ingredient {
-    String name;
-    char type;
+    private String name;
+    private char type;
 
     //Types
     public final static char INGREDIENT_MAIN = 'm';

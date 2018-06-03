@@ -15,7 +15,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/pacifico"
         android:text="Test Zutat"
-        android:textColor="@color/colorBase"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,14 +25,16 @@
         android:id="@+id/imageBtn_ingredient_edit"
         android:layout_width="44dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginStart="260dp"
         android:layout_marginTop="8dp"
         android:background="@null"
         android:scaleType="fitCenter"
         android:src="@drawable/icon_edit"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="263dp" />
+        app:layout_constraintVertical_bias="0.222" />
 
     <ImageButton
         android:id="@+id/imageBtn_ingredient_remove"
@@ -47,7 +49,6 @@
         android:src="@drawable/icon_remove"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.862"
         app:layout_constraintStart_toEndOf="@+id/imageBtn_ingredient_edit"
         app:layout_constraintTop_toTopOf="parent" />
 

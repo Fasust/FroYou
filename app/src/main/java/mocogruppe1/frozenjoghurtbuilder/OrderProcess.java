@@ -1,11 +1,16 @@
 package mocogruppe1.frozenjoghurtbuilder;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -15,7 +20,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import mocogruppe1.frozenjoghurtbuilder.Exceptions.OrderIsFullException;
 import mocogruppe1.frozenjoghurtbuilder.classes.Ingredient;
+import mocogruppe1.frozenjoghurtbuilder.classes.IngredientAdapter;
 import mocogruppe1.frozenjoghurtbuilder.classes.Order;
 import mocogruppe1.frozenjoghurtbuilder.classes.RecourceLoader;
 
@@ -31,8 +38,11 @@ public class OrderProcess extends AppCompatActivity {
     private ArrayList<Ingredient> sauce;
     private int size = 0;
 
+    //View
+    private ListView displayList;
+
     //Order
-    private Order shoppingCar;
+    private Order shoppingList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +51,28 @@ public class OrderProcess extends AppCompatActivity {
         buildLayout();
         loadIngredients();
         loadSize();
+        buildShoppingList();
 
-        shoppingCar = new Order(size);
+        try {
+            shoppingList.add(new Ingredient("Iulia",'s'));
+            shoppingList.add(new Ingredient("Brot",'t'));
+            shoppingList.add(new Ingredient("Butter",'s'));
+            shoppingList.add(new Ingredient("Mett",'t'));
+        } catch (OrderIsFullException e) {
+            e.printStackTrace();
+        }
 
-        writeToDebugText();
+
+
+        //writeToDebugText();
 
     }
 
     private void buildLayout(){
         setContentView(R.layout.activity_orderprocess);
 
-        //Action Bar
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setTitle("Bestellung Prozess");
-
+        //view
+        displayList = findViewById(R.id.orderprocess_listview);
 
         //Buttons
         btn_goTo_orFi = findViewById(R.id.btn_goTo_orFi) ;
@@ -62,7 +80,11 @@ public class OrderProcess extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(OrderProcess.this, OrderFinal.class));
+                try {
+                    shoppingList.add(new Ingredient("Hack",'t'));
+                } catch (OrderIsFullException e) {
+                    e.printStackTrace();
+                }
             }
 
         });
@@ -109,6 +131,12 @@ public class OrderProcess extends AppCompatActivity {
         size = getIntent().getExtras().getInt(OrderChoosePricing.SIZE_KEY);
         Log.d("Size",size+"");
     }
+    private void buildShoppingList(){
+        IngredientAdapter ingredientAdapter = new IngredientAdapter(this);
+        displayList.setAdapter(ingredientAdapter);
+        shoppingList = new Order(size,ingredientAdapter);
+    }
+
     private void writeToDebugText(){
         TextView debugtxt = findViewById(R.id.txt_order_debug);
         debugtxt.setText("\nSize:   " +size);
