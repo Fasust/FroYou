@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -48,8 +49,12 @@ public class OrderProcess extends AppCompatActivity {
     //Order
     private Order shoppingList;
 
-    //Tools
-    private AlertSelectBox<Ingredient> selectBox;
+    //SelectBoxes
+    private AlertSelectBox<Ingredient> selectBox_souce;
+    private AlertSelectBox<Ingredient> selectBox_topping;
+    private AlertSelectBox<Ingredient> selectBox_main;
+
+    AlertDialog.Builder exceptionAlert;
 
 
     @Override
@@ -57,49 +62,82 @@ public class OrderProcess extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orderprocess);
 
+
         loadIngredients();
         loadSize();
+        buildExceptionAlertBox();
         buildShoppingList();
-        buildLayout();
+        buildSelectBoxes();
+        buildButtons();
 
-        try {
-            shoppingList.add(new Ingredient("Iulia",'s'));
-            shoppingList.add(new Ingredient("Brot",'t'));
-            shoppingList.add(new Ingredient("Butter",'s'));
-            shoppingList.add(new Ingredient("Mett",'t'));
-        } catch (OrderIsFullException e) {
-            e.printStackTrace();
-        }
         //writeToDebugText();
 
     }
 
-    private void buildLayout(){
+    private void buildSelectBoxes(){
 
-        //selectbox
-        selectBox = new AlertSelectBox<Ingredient>(
+        //souce
+        selectBox_souce = new AlertSelectBox<Ingredient>(
                 displayList.getContext(),
-                "Wählen sie eine Zutat",
+                "Wählen sie eine Soße",
                 R.drawable.logo_icon) {
 
             @Override
             public void afterSelect() {
                 try {
-                    shoppingList.add(selectBox.getSelectedItem());
+                    shoppingList.add(selectBox_souce.getSelectedItem());
                 } catch (OrderIsFullException e) {
                     e.printStackTrace();
                 }
             }
         };
-        selectBox.add(sauce);
+        selectBox_souce.add(sauce);
 
-        //Buttons
+        //topping
+        selectBox_topping = new AlertSelectBox<Ingredient>(
+                displayList.getContext(),
+                "Wählen sie ein Topping",
+                R.drawable.logo_icon) {
+
+            @Override
+            public void afterSelect() {
+                try {
+                    shoppingList.add(selectBox_topping.getSelectedItem());
+                } catch (OrderIsFullException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        selectBox_topping.add(topings);
+
+
+        //main
+        selectBox_main = new AlertSelectBox<Ingredient>(
+                displayList.getContext(),
+                "Wählen sie eine Hauptzutat",
+                R.drawable.logo_icon) {
+
+            @Override
+            public void afterSelect() {
+                try {
+                    shoppingList.add(selectBox_main.getSelectedItem());
+                } catch (OrderIsFullException e) {
+                    //Alert (To many main ingridtients)
+                    exceptionAlert.show();
+                }
+            }
+        };
+        selectBox_main.add(mainingredients);
+
+    }
+    private void buildButtons(){
+
         btn_goTo_orFi = findViewById(R.id.btn_goTo_orFi) ;
         btn_goTo_orFi.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                selectBox.show();
+                selectBox_main.show();
             }
 
         });
@@ -174,6 +212,17 @@ public class OrderProcess extends AppCompatActivity {
                         });
         displayList.setOnTouchListener(touchListener);
     }
+    private void buildExceptionAlertBox(){
+        exceptionAlert = new AlertDialog.Builder(new ContextThemeWrapper(OrderProcess.this, R.style.Theme_AppCompat));
+        exceptionAlert.setTitle("Tut uns Leid")
+                .setMessage("Leider hast du das Limet an Hauptzutaten erreicht ( "+ size +" )\n\nFalls du mehr Hauptzutaten haben möchteste wähle bitte eine andere Größe aus.")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert);
+    }
 
     private void writeToDebugText(){
         TextView debugtxt = findViewById(R.id.txt_order_debug);
@@ -199,4 +248,5 @@ public class OrderProcess extends AppCompatActivity {
 
         }
     }
+
 }

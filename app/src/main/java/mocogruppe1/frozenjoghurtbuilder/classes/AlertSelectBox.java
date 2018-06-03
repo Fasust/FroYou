@@ -39,6 +39,7 @@ public abstract class AlertSelectBox<T> {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 selectedItem = arrayAdapter.getItem(which);
+                dialog.dismiss();
                 afterSelect();
             }
         });
