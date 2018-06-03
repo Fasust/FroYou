@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
@@ -85,7 +88,6 @@ public class OrderProcess extends AppCompatActivity {
         selectBox_topping = new IngredientSelectBox(OrderProcess.this,shoppingList);
         selectBox_topping.add(topings);
 
-
         //main
         selectBox_main = new IngredientSelectBox(OrderProcess.this,shoppingList);
         selectBox_main.add(mainingredients);
@@ -146,12 +148,15 @@ public class OrderProcess extends AppCompatActivity {
         Log.d("Size",size+"");
     }
     private void buildShoppingList(){
+        //Adapter and List---------------------------------------------------
+
         final IngredientAdapter ingredientAdapter = new IngredientAdapter(this);
         displayList = findViewById(R.id.orderprocess_listview);
         displayList.setAdapter(ingredientAdapter);
 
         shoppingList = new Order(size,ingredientAdapter);
 
+        //Swipe Dissmiss------------------------------------------------------
         SwipeDismissListViewTouchListener touchListener =
                 new SwipeDismissListViewTouchListener(
                         displayList,
@@ -172,6 +177,7 @@ public class OrderProcess extends AppCompatActivity {
                             }
                         });
         displayList.setOnTouchListener(touchListener);
+
     }
 
     private void writeToDebugText(){

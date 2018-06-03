@@ -24,7 +24,9 @@ public class Order {
         }
         ingredientList.add(ingredient);
     }
-    public void intertAt(Ingredient ingredient,int i) throws OrderIsFullException{
+    public void set(int i,Ingredient ingredient) throws OrderIsFullException{
+        remove(i);
+
         if(ingredient.getType() == Ingredient.INGREDIENT_MAIN){
             if(mainIngridientCount < ORDER_SIZE){
                 mainIngridientCount++;

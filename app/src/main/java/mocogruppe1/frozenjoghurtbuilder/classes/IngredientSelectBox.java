@@ -30,7 +30,7 @@ public class IngredientSelectBox extends AlertSelectBox {
             if(insertPointer == -1){
                 shoppingList.add((Ingredient) super.getSelectedItem());
             }else {
-                shoppingList.intertAt((Ingredient) super.getSelectedItem(),insertPointer);
+                shoppingList.set(insertPointer,(Ingredient) super.getSelectedItem());
                 insertPointer = -1;
             }
 

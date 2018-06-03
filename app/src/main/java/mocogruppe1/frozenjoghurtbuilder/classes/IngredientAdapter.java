@@ -38,19 +38,21 @@ public class IngredientAdapter extends ArrayAdapter<Ingredient> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_ingredient, parent, false);
         }
 
-        //Get Eleemnt of View and Populate
+        //Build Text------------------------------------------------------------------------------
+
         TextView txt_name = convertView.findViewById(R.id.txt_ingredient);
         txt_name.setText(ingredient.getName());
 
+        //Build Buttons------------------------------------------------------------------------------
+
         ImageButton btn_edit =  convertView.findViewById(R.id.imageBtn_ingredient_edit);
-        btn_edit.setTag(position);
+        btn_edit.setTag(R.string.KEY_POSITION,position);
 
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                int position = (Integer) view.getTag();
-                Log.d("Pos",""+ position);
+                int position = (Integer) view.getTag(R.string.KEY_POSITION);
                 Ingredient ingredient = getItem(position);
                 switch (ingredient.getType()){
                     case Ingredient.INGREDIENT_MAIN:
@@ -66,12 +68,22 @@ public class IngredientAdapter extends ArrayAdapter<Ingredient> {
                             selectBox_topping.show();
                         break;
                 }
-                order.remove(position);
+
             }
         });
 
+        //Animation------------------------------------------------------------------------------
+
+        if(convertView.getTag(R.string.KEY_ANIM) == null) {
+            convertView.setTag(R.string.KEY_ANIM,1);
+
+            Animation animation = AnimationUtils
+                    .loadAnimation(getContext(), android.R.anim.slide_in_left);
+            convertView.startAnimation(animation);
+        }
         return convertView;
     }
+
     public void init(IngredientSelectBox selectBox_main, IngredientSelectBox selectBox_souce, IngredientSelectBox selectBox_topping,Order order){
         this.selectBox_main = selectBox_main;
         this.selectBox_topping = selectBox_topping;
