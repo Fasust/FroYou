@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -42,6 +43,21 @@ public class IngredientAdapter extends ArrayAdapter<Ingredient> {
 
         TextView txt_name = convertView.findViewById(R.id.txt_ingredient);
         txt_name.setText(ingredient.getName());
+
+        //Build Icon------------------------------------------------------------------------------
+
+        ImageView icon = convertView.findViewById(R.id.ingridient_imageView);
+        switch (ingredient.getType()){
+            case Ingredient.INGREDIENT_MAIN:
+                icon.setImageResource(R.drawable.cupcake);
+                break;
+            case Ingredient.INGREDIENT_SAUCE:
+                icon.setImageResource(R.drawable.ketchup);
+                break;
+            case Ingredient.INGREDIENT_TOPPING:
+                icon.setImageResource(R.drawable.nuts);
+                break;
+        }
 
         //Build Buttons------------------------------------------------------------------------------
 

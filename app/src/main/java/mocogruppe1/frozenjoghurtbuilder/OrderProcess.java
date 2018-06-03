@@ -74,7 +74,16 @@ public class OrderProcess extends AppCompatActivity {
         //Have to init selectboxes and order after the fact because the Selectboxes need the shoppinglist for there init
         shoppingList.getIngredientsAdapter().init(selectBox_main,selectBox_souce,selectBox_topping,shoppingList);
 
-        //writeToDebugText();
+        try {
+            shoppingList.add(new Ingredient("Schockolade",'s'));
+            shoppingList.add(new Ingredient("Erdbeer",'s'));
+            shoppingList.add(new Ingredient("Nüsse",'t'));
+            shoppingList.add(new Ingredient("Mandeln",'t'));
+            shoppingList.add(new Ingredient("Bunter Streusel",'t'));
+
+        } catch (OrderIsFullException e) {
+            e.printStackTrace();
+        }
 
     }
 
