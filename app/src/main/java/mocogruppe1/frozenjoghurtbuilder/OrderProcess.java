@@ -25,6 +25,7 @@ import mocogruppe1.frozenjoghurtbuilder.classes.Ingredient;
 import mocogruppe1.frozenjoghurtbuilder.classes.IngredientAdapter;
 import mocogruppe1.frozenjoghurtbuilder.classes.Order;
 import mocogruppe1.frozenjoghurtbuilder.classes.RecourceLoader;
+import mocogruppe1.frozenjoghurtbuilder.classes.SwipeDismissListViewTouchListener;
 
 public class OrderProcess extends AppCompatActivity {
 
@@ -61,9 +62,6 @@ public class OrderProcess extends AppCompatActivity {
         } catch (OrderIsFullException e) {
             e.printStackTrace();
         }
-
-
-
         //writeToDebugText();
 
     }
@@ -132,9 +130,31 @@ public class OrderProcess extends AppCompatActivity {
         Log.d("Size",size+"");
     }
     private void buildShoppingList(){
-        IngredientAdapter ingredientAdapter = new IngredientAdapter(this);
+        final IngredientAdapter ingredientAdapter = new IngredientAdapter(this);
         displayList.setAdapter(ingredientAdapter);
+
         shoppingList = new Order(size,ingredientAdapter);
+
+        SwipeDismissListViewTouchListener touchListener =
+                new SwipeDismissListViewTouchListener(
+                        displayList,
+                        new SwipeDismissListViewTouchListener.DismissCallbacks() {
+                            @Override
+                            public boolean canDismiss(int position) {
+                                return true;
+                            }
+
+                            @Override
+                            public void onDismiss(ListView listView, int[] reverseSortedPositions) {
+                                for (int position : reverseSortedPositions) {
+
+                                    shoppingList.remove(position);
+                                    shoppingList.getIngredientsAdapter().notifyDataSetChanged();
+                                }
+
+                            }
+                        });
+        displayList.setOnTouchListener(touchListener);
     }
 
     private void writeToDebugText(){

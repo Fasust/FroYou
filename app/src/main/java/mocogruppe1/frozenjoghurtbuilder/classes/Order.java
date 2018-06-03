@@ -25,6 +25,17 @@ public class Order {
         ingredientList.add(ingredient);
     }
 
+    public void remove(Ingredient ingridient){
+        if(ingridient.getType() == Ingredient.INGREDIENT_MAIN){
+            mainIngridientCount--;
+        }
+        ingredientList.remove(ingridient);
+    }
+    public void remove(int position) {
+        remove(ingredientList.getItem(position));
+    }
+
+    //Getter and Setter
     public IngredientAdapter getIngredientsAdapter() {
         return ingredientList;
     }
