@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
     <include
         android:id="@+id/app_header"
@@ -40,8 +41,28 @@
 
     <ListView
         android:id="@+id/orderprocess_listview"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="471dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        android:divider="@null"
+        android:dividerHeight="20px"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
         app:layout_constraintTop_toBottomOf="@+id/app_header"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="0dp" />
+
+    <ImageButton
+        android:id="@+id/btn_goTo_orderFinal"
+        android:layout_width="48dp"
+        android:layout_height="38dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/app_header"
+        app:layout_constraintEnd_toEndOf="@+id/app_header"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_playlist_add_check_black_24dp" />
 </android.support.constraint.ConstraintLayout>
