@@ -16,19 +16,6 @@
 
     </include>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btn_goTo_orFi"
-        android:layout_width="71dp"
-        android:layout_height="71dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:baselineAlignBottom="false"
-        android:clickable="true"
-        android:focusable="true"
-        android:requiresFadingEdge="none"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <TextView
         android:id="@+id/txt_order_debug"
         android:layout_width="match_parent"
@@ -42,7 +29,7 @@
     <ListView
         android:id="@+id/orderprocess_listview"
         android:layout_width="0dp"
-        android:layout_height="402dp"
+        android:layout_height="407dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
         android:divider="@null"
@@ -66,19 +53,45 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_playlist_add_check_black_24dp" />
 
-    <Button
-        android:id="@+id/btn_main"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:id="@+id/btn_addMain"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="24dp"
         android:background="@drawable/buttonshape"
+        android:padding="40px"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/cupcake" />
 
+    <ImageButton
+        android:id="@+id/btn_addSauce"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/buttonshape"
+        android:padding="40px"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ketchup" />
 
-        android:fontFamily="@font/pacifico"
-        android:text="Eis"
+    <ImageButton
+        android:id="@+id/btn_addTopping"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/buttonshape"
+        android:padding="40px"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_order_debug"
+        app:layout_constraintEnd_toStartOf="@+id/btn_addSauce"
+        app:layout_constraintStart_toEndOf="@+id/btn_addMain"
+        app:srcCompat="@drawable/nuts" />
 
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="492dp" />
 </android.support.constraint.ConstraintLayout>

@@ -16,6 +16,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -38,7 +39,7 @@ import mocogruppe1.frozenjoghurtbuilder.classes.SwipeDismissListViewTouchListene
 public class OrderProcess extends AppCompatActivity {
 
     //Buttons
-    private FloatingActionButton btn_goTo_orFi;
+    private ImageButton btn_goTo_orFi;
 
     //Ingredient
     private Ingredient[] ingredientsArray;
@@ -104,7 +105,7 @@ public class OrderProcess extends AppCompatActivity {
     }
     private void buildButtons(){
 
-        btn_goTo_orFi = findViewById(R.id.btn_goTo_orFi) ;
+        btn_goTo_orFi = findViewById(R.id.btn_goTo_orderFinal) ;
         btn_goTo_orFi.setOnClickListener(new View.OnClickListener() {
 
             @Override
