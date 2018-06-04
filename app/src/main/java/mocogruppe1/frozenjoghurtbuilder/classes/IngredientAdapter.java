@@ -61,7 +61,7 @@ public class IngredientAdapter extends ArrayAdapter<Ingredient> {
 
         //Build Buttons------------------------------------------------------------------------------
 
-        ImageButton btn_edit =  convertView.findViewById(R.id.imageBtn_ingredient_edit);
+        final ImageButton btn_edit =  convertView.findViewById(R.id.imageBtn_ingredient_edit);
         btn_edit.setTag(R.string.KEY_POSITION,position);
 
         btn_edit.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +84,7 @@ public class IngredientAdapter extends ArrayAdapter<Ingredient> {
                             selectBox_topping.show();
                         break;
                 }
+                btn_edit.setTag(R.string.KEY_ANIM,null);
 
             }
         });
@@ -91,7 +92,7 @@ public class IngredientAdapter extends ArrayAdapter<Ingredient> {
         //Animation------------------------------------------------------------------------------
 
         if(convertView.getTag(R.string.KEY_ANIM) == null) {
-            convertView.setTag(R.string.KEY_ANIM,1);
+            convertView.setTag(R.string.KEY_ANIM,true);
 
             Animation animation = AnimationUtils
                     .loadAnimation(getContext(), android.R.anim.slide_in_left);

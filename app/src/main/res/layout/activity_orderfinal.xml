@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimaryDark">
 
     <include
         android:id="@+id/app_header"
@@ -66,7 +66,6 @@
         android:fontFamily="@font/pacifico"
         android:text="Code zum Scannen generieren"
         android:textAllCaps="false"
-        android:textColor="@color/colorBase"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +83,6 @@
         android:text="Foto aufnehmen"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@color/colorBase"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

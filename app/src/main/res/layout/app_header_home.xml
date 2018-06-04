@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="55dp"
+    android:elevation = "3dp"
     android:background="@color/colorPrimary">
 
 

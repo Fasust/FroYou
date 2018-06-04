@@ -40,6 +40,9 @@ public class OrderProcess extends AppCompatActivity {
 
     //Buttons
     private ImageButton btn_goTo_orFi;
+    private ImageButton btn_addMain;
+    private ImageButton btn_addTopping;
+    private ImageButton btn_addSouce;
 
     //Ingredient
     private Ingredient[] ingredientsArray;
@@ -110,7 +113,36 @@ public class OrderProcess extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(OrderProcess.this, OrderFinal.class));
+            }
+
+        });
+
+        //Add
+        btn_addMain = findViewById(R.id.btn_addMain) ;
+        btn_addMain.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
                 selectBox_main.show();
+            }
+
+        });
+        btn_addSouce = findViewById(R.id.btn_addSauce) ;
+        btn_addSouce.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                selectBox_souce.show();
+            }
+
+        });
+        btn_addTopping = findViewById(R.id.btn_addTopping) ;
+        btn_addTopping.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                selectBox_topping.show();
             }
 
         });

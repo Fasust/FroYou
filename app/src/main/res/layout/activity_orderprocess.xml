@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimaryDark">
 
     <include
         android:id="@+id/app_header"
@@ -29,17 +29,21 @@
     <ListView
         android:id="@+id/orderprocess_listview"
         android:layout_width="0dp"
-        android:layout_height="407dp"
+        android:layout_height="393dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorPrimaryDark"
         android:divider="@null"
         android:dividerHeight="20px"
         android:paddingEnd="10dp"
         android:paddingStart="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_header"
+        app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp" />
 
     <ImageButton
+        android:elevation="3dp"
         android:id="@+id/btn_goTo_orderFinal"
         android:layout_width="48dp"
         android:layout_height="38dp"
@@ -62,6 +66,7 @@
         android:background="@drawable/buttonshape"
         android:padding="40px"
         android:scaleType="centerInside"
+        android:elevation = "2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/cupcake" />
@@ -75,6 +80,7 @@
         android:background="@drawable/buttonshape"
         android:padding="40px"
         android:scaleType="centerInside"
+        android:elevation = "2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ketchup" />
@@ -89,6 +95,7 @@
         android:background="@drawable/buttonshape"
         android:padding="40px"
         android:scaleType="centerInside"
+        android:elevation = "2dp"
         app:layout_constraintBottom_toBottomOf="@+id/txt_order_debug"
         app:layout_constraintEnd_toStartOf="@+id/btn_addSauce"
         app:layout_constraintStart_toEndOf="@+id/btn_addMain"
