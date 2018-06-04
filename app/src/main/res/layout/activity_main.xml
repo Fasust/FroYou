@@ -19,12 +19,12 @@
 
     <Button
         android:id="@+id/btn_goTo_reGa"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/button_big"
+        android:background="@drawable/buttonshape"
         android:fontFamily="@font/pacifico"
         android:text="Rezepte ansehen"
         android:textAllCaps="false"
@@ -36,12 +36,12 @@
 
     <Button
         android:id="@+id/btn_goTo_orChPr"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/button_big"
+        android:background="@drawable/buttonshape"
         android:fontFamily="@font/pacifico"
         android:text="Yogurt erstellen"
         android:textAllCaps="false"

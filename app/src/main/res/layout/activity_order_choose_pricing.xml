@@ -18,12 +18,12 @@
 
     <Button
         android:id="@+id/btn_small"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/button_big"
         android:fontFamily="@font/pacifico"
         android:text="Kleinen Yogurt erstellen"
         android:textAllCaps="false"
@@ -36,12 +36,12 @@
 
     <Button
         android:id="@+id/btn_medium"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/button_big"
         android:fontFamily="@font/pacifico"
         android:text="Mittleren Yogurt erstellen"
         android:textAllCaps="false"
@@ -54,12 +54,12 @@
 
     <Button
         android:id="@+id/btn_large"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/button_big"
         android:fontFamily="@font/pacifico"
         android:text="Großen Yogurt erstellen"
         android:textAllCaps="false"
@@ -75,11 +75,12 @@
         android:id="@+id/txt_smallYogurt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/opensans_regular"
         android:text="1x Yogurt oder Eis \nUnbegrenzt Sauce \nUnbegrenzt Topping"
+        android:textAlignment="center"
         android:textColor="@color/colorBase"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -95,6 +96,48 @@
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/txt_price1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/pacifico"
+        android:text="2,20€"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorBase"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/txt_price2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/pacifico"
+        android:text="2,90€"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorBase"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <TextView
+        android:id="@+id/txt_price3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/pacifico"
+        android:text="3,80€"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorBase"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
         android:id="@+id/txt_size2"
@@ -126,11 +169,12 @@
         android:id="@+id/txt_middleYogurt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/opensans_regular"
         android:text="2x Yogurt oder Eis \nUnbegrenzt Sauce \nUnbegrenzt Topping"
+        android:textAlignment="center"
         android:textColor="@color/colorBase"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
@@ -138,11 +182,12 @@
         android:id="@+id/txt_bigYogurt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/opensans_regular"
         android:text="3x Yogurt oder Eis \nUnbegrenzt Sauce \nUnbegrenzt Topping"
+        android:textAlignment="center"
         android:textColor="@color/colorBase"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 

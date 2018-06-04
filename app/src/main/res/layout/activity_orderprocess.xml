@@ -42,7 +42,7 @@
     <ListView
         android:id="@+id/orderprocess_listview"
         android:layout_width="0dp"
-        android:layout_height="471dp"
+        android:layout_height="402dp"
         android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
         android:divider="@null"
@@ -65,4 +65,20 @@
         app:layout_constraintEnd_toEndOf="@+id/app_header"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_playlist_add_check_black_24dp" />
+
+    <Button
+        android:id="@+id/btn_main"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape"
+
+
+        android:fontFamily="@font/pacifico"
+        android:text="Eis"
+
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="492dp" />
 </android.support.constraint.ConstraintLayout>
