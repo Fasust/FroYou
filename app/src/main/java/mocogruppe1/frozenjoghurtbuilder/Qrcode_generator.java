@@ -3,6 +3,7 @@ package mocogruppe1.frozenjoghurtbuilder;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class Qrcode_generator extends AppCompatActivity {
@@ -17,5 +18,6 @@ public class Qrcode_generator extends AppCompatActivity {
         imageView_qrcode = (ImageView) findViewById(R.id.imageView_qrcode);
         Bitmap bitmap = getIntent().getParcelableExtra("qrcode");
         imageView_qrcode.setImageBitmap(bitmap);
+
     }
 }
