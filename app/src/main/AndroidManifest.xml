@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mocogruppe1.frozenjoghurtbuilder">
-    
-    <uses-permission android:name="android.permission.INTERNET"/>
-    
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -36,8 +35,8 @@
         <activity
             android:name=".OrderChoosePricing"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".Fragment_ingredient"/>
+        <activity android:name=".Fragment_ingredient" />
+        <activity android:name=".Qrcode_generator"></activity>
     </application>
 
 </manifest>
