@@ -9,7 +9,7 @@ import mocogruppe1.frozenjoghurtbuilder.Exceptions.OrderIsFullException;
 import mocogruppe1.frozenjoghurtbuilder.OrderProcess;
 import mocogruppe1.frozenjoghurtbuilder.R;
 
-public class IngredientSelectBox extends AlertSelectBox {
+public class IngredientSelectBox extends AlertSelectBox<Ingredient> {
 
     private AlertDialog.Builder exceptionAlert;
     private Order shoppingList;
