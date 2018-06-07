@@ -28,20 +28,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_header" />
 
-    <Button
-        android:id="@+id/btn_goTo_backToFinal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/buttonshape"
-        android:fontFamily="@font/pacifico"
-        android:text="Zurück zur Übersicht"
-        android:textAllCaps="false"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_qrcode" />
-
 </android.support.constraint.ConstraintLayout>

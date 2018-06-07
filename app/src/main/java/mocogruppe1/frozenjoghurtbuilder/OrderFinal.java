@@ -32,8 +32,9 @@ public class OrderFinal extends AppCompatActivity {
             public void onClick(View view) {
                 String orderList = "Geiler QR Code ist jetzt ready!";
                 MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+
                 try {
-                    BitMatrix bitMatrix = multiFormatWriter.encode(orderList, BarcodeFormat.QR_CODE, 200, 200);
+                    BitMatrix bitMatrix = multiFormatWriter.encode(orderList, BarcodeFormat.QR_CODE, 300, 300);
                     BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                     Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
                     Intent intent = new Intent(context, Qrcode_generator.class);

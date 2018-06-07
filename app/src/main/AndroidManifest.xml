@@ -36,7 +36,8 @@
             android:name=".OrderChoosePricing"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".Fragment_ingredient" />
-        <activity android:name=".Qrcode_generator"></activity>
+        <activity android:name=".Qrcode_generator" />
+        <activity android:name=".Share_order"></activity>
     </application>
 
 </manifest>
