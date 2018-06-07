@@ -16,31 +16,12 @@
 
     </include>
 
-    <TextView
-        android:id="@+id/txt_order_debug"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text=""
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="93dp" />
-
-    <ListView
+    <frozenyogurtbuilder.app.classes.external.CustomListView
         android:id="@+id/orderprocess_listview"
-        android:layout_width="0dp"
-        android:layout_height="393dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
         android:layout_marginTop="8dp"
-        android:background="@color/colorPrimaryDark"
-        android:divider="@null"
-        android:dividerHeight="20px"
-        android:paddingEnd="10dp"
-        android:paddingStart="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_header"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintTop_toBottomOf="@+id/app_header" />
 
     <ImageButton
         android:elevation="3dp"
@@ -93,10 +74,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/buttonshape"
+        android:elevation="2dp"
         android:padding="40px"
         android:scaleType="centerInside"
-        android:elevation = "2dp"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_order_debug"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_addSauce"
         app:layout_constraintStart_toEndOf="@+id/btn_addMain"
         app:srcCompat="@drawable/nuts" />

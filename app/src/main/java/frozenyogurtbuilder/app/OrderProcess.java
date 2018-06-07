@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -25,7 +27,9 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 import frozenyogurtbuilder.app.Exceptions.OrderIsFullException;
 import frozenyogurtbuilder.app.classes.AlertSelectBox;
@@ -35,6 +39,8 @@ import frozenyogurtbuilder.app.classes.IngredientSelectBox;
 import frozenyogurtbuilder.app.classes.Order;
 import frozenyogurtbuilder.app.classes.RecourceLoader;
 import frozenyogurtbuilder.app.classes.SwipeDismissListViewTouchListener;
+import frozenyogurtbuilder.app.classes.external.Adapter;
+import frozenyogurtbuilder.app.classes.external.CustomListView;
 
 public class OrderProcess extends AppCompatActivity {
 
@@ -62,6 +68,12 @@ public class OrderProcess extends AppCompatActivity {
     private IngredientSelectBox selectBox_topping;
     private IngredientSelectBox selectBox_main;
 
+    List<Ingredient> list = Arrays.asList(
+            new Ingredient("Walking", 'm'),
+            new Ingredient("Meeting", 's'),
+            new Ingredient("Business trip", 't'),
+            new Ingredient("Vist dentist", 's')
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +81,25 @@ public class OrderProcess extends AppCompatActivity {
         setContentView(R.layout.activity_orderprocess);
 
 
+
+        final CustomListView listView = (CustomListView)findViewById(R.id.orderprocess_listview);
+        Adapter adapter = new Adapter(this, list, new Adapter.Listener() {
+            @Override
+            public void onGrab(int position, ConstraintLayout row) {
+                listView.onGrab(position, row);
+            }
+        });
+
+        listView.setAdapter(adapter);
+        listView.setListener(new CustomListView.Listener() {
+            @Override
+            public void swapElements(int indexOne, int indexTwo) {
+                Ingredient temp = list.get(indexOne);
+                list.set(indexOne, list.get(indexTwo));
+                list.set(indexTwo, temp);
+            }
+        });
+        /*
         loadIngredients();
         loadSize();
         buildShoppingList();
@@ -88,7 +119,7 @@ public class OrderProcess extends AppCompatActivity {
         } catch (OrderIsFullException e) {
             e.printStackTrace();
         }
-
+        */
     }
 
     private void buildSelectBoxes(){
@@ -220,31 +251,6 @@ public class OrderProcess extends AppCompatActivity {
                         });
         displayList.setOnTouchListener(touchListener);
 
-    }
-
-    private void writeToDebugText(){
-        TextView debugtxt = findViewById(R.id.txt_order_debug);
-        debugtxt.setText("\nSize:   " +size);
-
-        debugtxt.append("\n------------------------------\n");
-
-        for (Ingredient ing : mainingredients){
-            debugtxt.append("\nType:   " + ing.getType());
-            debugtxt.append(" | Name:   " + ing.getName());
-
-        }
-        debugtxt.append("\n------------------------------\n");
-        for (Ingredient ing : sauce){
-            debugtxt.append("\nType:   " + ing.getType());
-            debugtxt.append(" | Name:   " + ing.getName());
-
-        }
-        debugtxt.append("\n------------------------------\n");
-        for (Ingredient ing : topings){
-            debugtxt.append("\nType:   " + ing.getType());
-            debugtxt.append(" | Name:   " + ing.getName());
-
-        }
     }
 
 }
