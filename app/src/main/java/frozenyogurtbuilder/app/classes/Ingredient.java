@@ -1,4 +1,4 @@
-package mocogruppe1.frozenjoghurtbuilder.classes;
+package frozenyogurtbuilder.app.classes;
 
 public class Ingredient {
     private String name;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="mocogruppe1.frozenjoghurtbuilder">
+    package="frozenyogurtbuilder.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -37,7 +37,7 @@
             android:parentActivityName=".MainActivity" />
         <activity android:name=".Fragment_ingredient" />
         <activity android:name=".Qrcode_generator" />
-        <activity android:name=".Share_order"></activity>
+        <activity android:name=".Share_order" />
     </application>
 
 </manifest>

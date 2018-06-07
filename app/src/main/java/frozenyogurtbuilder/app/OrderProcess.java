@@ -1,4 +1,4 @@
-package mocogruppe1.frozenjoghurtbuilder;
+package frozenyogurtbuilder.app;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,14 +27,14 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import mocogruppe1.frozenjoghurtbuilder.Exceptions.OrderIsFullException;
-import mocogruppe1.frozenjoghurtbuilder.classes.AlertSelectBox;
-import mocogruppe1.frozenjoghurtbuilder.classes.Ingredient;
-import mocogruppe1.frozenjoghurtbuilder.classes.IngredientAdapter;
-import mocogruppe1.frozenjoghurtbuilder.classes.IngredientSelectBox;
-import mocogruppe1.frozenjoghurtbuilder.classes.Order;
-import mocogruppe1.frozenjoghurtbuilder.classes.RecourceLoader;
-import mocogruppe1.frozenjoghurtbuilder.classes.SwipeDismissListViewTouchListener;
+import frozenyogurtbuilder.app.Exceptions.OrderIsFullException;
+import frozenyogurtbuilder.app.classes.AlertSelectBox;
+import frozenyogurtbuilder.app.classes.Ingredient;
+import frozenyogurtbuilder.app.classes.IngredientAdapter;
+import frozenyogurtbuilder.app.classes.IngredientSelectBox;
+import frozenyogurtbuilder.app.classes.Order;
+import frozenyogurtbuilder.app.classes.RecourceLoader;
+import frozenyogurtbuilder.app.classes.SwipeDismissListViewTouchListener;
 
 public class OrderProcess extends AppCompatActivity {
 

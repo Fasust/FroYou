@@ -1,8 +1,8 @@
-package mocogruppe1.frozenjoghurtbuilder.classes;
+package frozenyogurtbuilder.app.classes;
 
 import java.util.ArrayList;
 
-import mocogruppe1.frozenjoghurtbuilder.Exceptions.OrderIsFullException;
+import frozenyogurtbuilder.app.Exceptions.OrderIsFullException;
 
 public class Order {
     public final int ORDER_SIZE;

@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "mocogruppe1.frozenjoghurtbuilder"
+        applicationId "frozenyogurtbuilder.app"
         minSdkVersion 21
         targetSdkVersion 21
         versionCode 1

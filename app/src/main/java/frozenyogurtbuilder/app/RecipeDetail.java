@@ -1,4 +1,4 @@
-package mocogruppe1.frozenjoghurtbuilder;
+package frozenyogurtbuilder.app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

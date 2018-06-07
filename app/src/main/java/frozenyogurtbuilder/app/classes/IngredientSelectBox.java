@@ -1,13 +1,13 @@
-package mocogruppe1.frozenjoghurtbuilder.classes;
+package frozenyogurtbuilder.app.classes;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.view.ContextThemeWrapper;
 
-import mocogruppe1.frozenjoghurtbuilder.Exceptions.OrderIsFullException;
-import mocogruppe1.frozenjoghurtbuilder.OrderProcess;
-import mocogruppe1.frozenjoghurtbuilder.R;
+import frozenyogurtbuilder.app.Exceptions.OrderIsFullException;
+import frozenyogurtbuilder.app.OrderProcess;
+import frozenyogurtbuilder.app.R;
 
 public class IngredientSelectBox extends AlertSelectBox<Ingredient> {
 

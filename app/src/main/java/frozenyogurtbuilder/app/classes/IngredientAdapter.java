@@ -1,4 +1,4 @@
-package mocogruppe1.frozenjoghurtbuilder.classes;
+package frozenyogurtbuilder.app.classes;
 
 import android.content.Context;
 import android.util.Log;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import mocogruppe1.frozenjoghurtbuilder.R;
+import frozenyogurtbuilder.app.R;
 
 public class IngredientAdapter extends ArrayAdapter<Ingredient> {
 

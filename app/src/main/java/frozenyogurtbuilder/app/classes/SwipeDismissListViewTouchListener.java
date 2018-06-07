@@ -1,4 +1,4 @@
-package mocogruppe1.frozenjoghurtbuilder.classes;
+package frozenyogurtbuilder.app.classes;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

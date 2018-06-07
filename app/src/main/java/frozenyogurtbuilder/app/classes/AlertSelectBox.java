@@ -1,4 +1,4 @@
-package mocogruppe1.frozenjoghurtbuilder.classes;
+package frozenyogurtbuilder.app.classes;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
-import mocogruppe1.frozenjoghurtbuilder.OrderProcess;
-import mocogruppe1.frozenjoghurtbuilder.R;
+import frozenyogurtbuilder.app.OrderProcess;
+import frozenyogurtbuilder.app.R;
 
 public abstract class AlertSelectBox<T> {
 

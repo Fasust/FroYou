@@ -1,4 +1,4 @@
-package mocogruppe1.frozenjoghurtbuilder.Exceptions;
+package frozenyogurtbuilder.app.Exceptions;
 
 public class OrderIsFullException extends Exception {
 }
