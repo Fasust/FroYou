@@ -17,6 +17,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 public class OrderFinal extends AppCompatActivity {
 
     private Button btn_goTo_qrCode;
+    private Button btn_goTo_makePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,17 @@ public class OrderFinal extends AppCompatActivity {
                 }
             }
 
+        });
+
+
+        btn_goTo_makePicture = findViewById(R.id.btn_goTo_makePicture);
+        btn_goTo_makePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentPicture = new Intent(OrderFinal.this, Share_order.class);
+                //intentPicture.putExtra();
+                startActivity(intentPicture);
+            }
         });
     }
 }

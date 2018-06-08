@@ -81,7 +81,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/buttonshape"
         android:fontFamily="@font/pacifico"
-        android:text="Foto aufnehmen"
+        android:text="Kreation veröffentlichen"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="18sp"

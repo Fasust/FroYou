@@ -17,20 +17,22 @@
     </include>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView_picture"
         android:layout_width="368dp"
         android:layout_height="204dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_header"
-        app:srcCompat="@color/colorBase" />
+        app:srcCompat="@drawable/ic_camera" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="222dp"
+        android:layout_width="292dp"
         android:layout_height="31dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -42,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_picture" />
 
     <ListView
         android:id="@+id/ordershare_listview"
@@ -71,5 +73,26 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ordershare_listview" />
+
+    <ImageButton
+        android:id="@+id/btn_useCamera"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_shape"
+        android:cropToPadding="true"
+        android:elevation="2dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_picture"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_picture"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="@+id/imageView_picture"
+        app:layout_constraintTop_toTopOf="@+id/imageView_picture"
+        app:layout_constraintVertical_bias="0.934"
+        app:srcCompat="@drawable/ic_camera" />
+
 
 </android.support.constraint.ConstraintLayout>
