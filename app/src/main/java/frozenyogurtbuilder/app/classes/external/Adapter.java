@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,19 +24,20 @@ import frozenyogurtbuilder.app.classes.Ingredient;
  */
 public class Adapter extends ArrayAdapter<Ingredient> {
 
-    final int INVALID_ID = -1;
+    private final int INVALID_ID = -1;
     public interface Listener {
         void onGrab(int position, ConstraintLayout row);
     }
 
-    final Listener listener;
-    final Map<Ingredient, Integer> mIdMap = new HashMap<>();
+    private final Listener listener;
+    private Map<Ingredient, Integer> mIdMap = new HashMap<>();
+    private int midMapCounter = 0;
 
-    public Adapter(Context context, List<Ingredient> list, Listener listener) {
+    public Adapter(Context context, ArrayList<Ingredient> list, Listener listener) {
         super(context, 0, list);
         this.listener = listener;
-        for (int i = 0; i < list.size(); ++i) {
-            mIdMap.put(list.get(i), i);
+        for (; midMapCounter< list.size(); midMapCounter++){
+            mIdMap.put(list.get(midMapCounter),midMapCounter);
         }
     }
 
@@ -51,11 +53,11 @@ public class Adapter extends ArrayAdapter<Ingredient> {
         final ConstraintLayout row = view.findViewById(R.id.fragment_ingridient);
 
 
-        TextView textView = (TextView)view.findViewById(R.id.txt_ingredient);
+        TextView textView = view.findViewById(R.id.txt_ingredient);
         textView.setText(ingredient.getName());
 
 
-        view.findViewById(R.id.ingridient_imageView)
+        view.findViewById(R.id.ingridient_move_imageView)
             .setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -79,5 +81,12 @@ public class Adapter extends ArrayAdapter<Ingredient> {
     @Override
     public boolean hasStableIds() {
         return Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP;
+    }
+
+    @Override
+    public void add(Ingredient ingredient){
+        super.add(ingredient);
+        mIdMap.put(ingredient, midMapCounter);
+        midMapCounter++;
     }
 }

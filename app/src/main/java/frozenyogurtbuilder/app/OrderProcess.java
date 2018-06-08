@@ -68,19 +68,18 @@ public class OrderProcess extends AppCompatActivity {
     private IngredientSelectBox selectBox_topping;
     private IngredientSelectBox selectBox_main;
 
-    List<Ingredient> list = Arrays.asList(
-            new Ingredient("Walking", 'm'),
-            new Ingredient("Meeting", 's'),
-            new Ingredient("Business trip", 't'),
-            new Ingredient("Vist dentist", 's')
-    );
+    ArrayList<Ingredient> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orderprocess);
 
-
+        list = new ArrayList<>();
+        list.add(new Ingredient("Bana",'s'));
+        list.add(new Ingredient("lana",'t'));
+        list.add(new Ingredient("hana",'m'));
+        list.add(new Ingredient("mana",'s'));
 
         final CustomListView listView = (CustomListView)findViewById(R.id.orderprocess_listview);
         Adapter adapter = new Adapter(this, list, new Adapter.Listener() {
@@ -99,6 +98,8 @@ public class OrderProcess extends AppCompatActivity {
                 list.set(indexTwo, temp);
             }
         });
+        adapter.add(new Ingredient("banarama",'s'));
+
         /*
         loadIngredients();
         loadSize();
