@@ -24,7 +24,6 @@
         app:layout_constraintTop_toBottomOf="@+id/app_header" />
 
     <ImageButton
-        android:elevation="3dp"
         android:id="@+id/btn_goTo_orderFinal"
         android:layout_width="48dp"
         android:layout_height="38dp"
@@ -32,6 +31,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:background="@null"
+        android:elevation="3dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/app_header"
         app:layout_constraintEnd_toEndOf="@+id/app_header"
@@ -45,9 +45,9 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="24dp"
         android:background="@drawable/buttonshape"
+        android:elevation="2dp"
         android:padding="40px"
         android:scaleType="centerInside"
-        android:elevation = "2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/cupcake" />
@@ -59,9 +59,9 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/buttonshape"
+        android:elevation="2dp"
         android:padding="40px"
         android:scaleType="centerInside"
-        android:elevation = "2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ketchup" />
@@ -81,5 +81,23 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_addSauce"
         app:layout_constraintStart_toEndOf="@+id/btn_addMain"
         app:srcCompat="@drawable/nuts" />
+
+    <TextView
+        android:id="@+id/textView_mainCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/rounded_shape"
+        android:elevation="2dp"
+        android:fontFamily="@font/opensans_regular"
+        android:text="0/3"
+        android:textColor="@color/colorBase"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_addMain"
+        app:layout_constraintEnd_toEndOf="@+id/btn_addMain"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_addMain"
+        app:layout_constraintTop_toTopOf="@+id/btn_addMain"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
