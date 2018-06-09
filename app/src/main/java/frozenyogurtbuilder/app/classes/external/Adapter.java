@@ -70,7 +70,7 @@ public class Adapter extends ArrayAdapter<Ingredient> {
 
     @Override
     public long getItemId(int position) {
-        if (position < 0 || position >= this.getCount()) {
+        if (position < 0 || position >= mIdMap.size()) {
             return INVALID_ID;
         }
         Ingredient item = getItem(position);
@@ -86,17 +86,25 @@ public class Adapter extends ArrayAdapter<Ingredient> {
     @Override
     public void add(Ingredient ingredient){
         super.add(ingredient);
+
         mIdMap.put(ingredient, midMapCounter);
         midMapCounter++;
     }
     @Override
     public void remove(Ingredient ingredient){
         mIdMap.remove(ingredient);
+
         super.remove(ingredient);
     }
     @Override
     public void insert(Ingredient ingredient, int index){
-       mIdMap.remove(getItem(index));
+        if (index > 0 || index < mIdMap.size()) {
+            mIdMap.remove(super.getItem(index));
+        }
+
+       mIdMap.put(ingredient, midMapCounter);
+       midMapCounter++;
+
        super.insert(ingredient,index);
     }
 }

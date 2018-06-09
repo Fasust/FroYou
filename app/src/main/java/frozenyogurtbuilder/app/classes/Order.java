@@ -20,14 +20,15 @@ public class Order {
     public final int ORDER_SIZE;
     private int mainIngridientCount = 0;
     private Adapter ingredientsAdapter;
-    private ArrayList<Ingredient> ingredientList;
     private AlertDialog.Builder exceptionAlert;
     private Context context;
+    private ArrayList<Ingredient> ingredientList;
 
     public Order(int size, final CustomListView listView, Context context) {
         this.ORDER_SIZE = size;
-        this.ingredientList = new ArrayList<>();
+        ingredientList = new ArrayList<>();
         this.context = context;
+        buildExceptionAlertBox();
         this.ingredientsAdapter = new Adapter(context, ingredientList, new Adapter.Listener() {
 
             @Override
@@ -40,13 +41,14 @@ public class Order {
 
             @Override
             public void swapElements(int indexOne, int indexTwo) {
-                Ingredient temp = ingredientList.get(indexOne);
-                ingredientList.set(indexOne, ingredientList.get(indexTwo));
+                Ingredient temp = get(indexOne);
+                ingredientList.set(indexOne, get(indexTwo));
                 ingredientList.set(indexTwo, temp);
             }
         });
 
         //Swipe Dissmiss------------------------------------------------------
+        /*
         SwipeDismissListViewTouchListener touchListener =
                 new SwipeDismissListViewTouchListener(
                         listView,
@@ -61,36 +63,13 @@ public class Order {
                                 for (int position : reverseSortedPositions) {
 
                                     remove(position);
-                                    //shoppingList.getIngredientsAdapter().notifyDataSetChanged();
+                                    notifyDataSetChanged();
                                 }
 
                             }
                         });
         listView.setOnTouchListener(touchListener);
-
-    }
-
-    public void add(Ingredient ingredient) throws OrderIsFullException {
-        if(ingredient.getType() == Ingredient.INGREDIENT_MAIN){
-            if(mainIngridientCount < ORDER_SIZE){
-                mainIngridientCount++;
-            }else {
-                throw new OrderIsFullException();
-            }
-        }
-        ingredientsAdapter.add(ingredient);
-    }
-    public void set(int i, Ingredient ingredient){
-        ingredientsAdapter.insert(ingredient,i);
-    }
-    public void remove(Ingredient ingridient){
-        if(ingridient.getType() == Ingredient.INGREDIENT_MAIN){
-            mainIngridientCount--;
-        }
-        ingredientsAdapter.remove(ingridient);
-    }
-    public void remove(int position) {
-        remove(ingredientList.get(position));
+        */
     }
 
     public void addThroughBox(AlertSelectBox<Ingredient> box){
@@ -110,4 +89,33 @@ public class Order {
     public void showAlert(){
         exceptionAlert.show();
     }
+
+    //Add set Remove
+    public Ingredient get(int index){
+        return ingredientsAdapter.getItem(index);
+    }
+    public void add(Ingredient ingredient) {
+        if(ingredient.getType() == Ingredient.INGREDIENT_MAIN){
+            if(mainIngridientCount < ORDER_SIZE){
+                mainIngridientCount++;
+            }else {
+                showAlert();
+                return;
+            }
+        }
+        ingredientsAdapter.add(new Ingredient(ingredient.getName(),ingredient.getType()));
+    }
+    public void set(int i, Ingredient ingredient){
+        ingredientsAdapter.insert(new Ingredient(ingredient.getName(),ingredient.getType()),i);
+    }
+    public void remove(Ingredient ingridient){
+        if(ingridient.getType() == Ingredient.INGREDIENT_MAIN){
+            mainIngridientCount--;
+        }
+        ingredientsAdapter.remove(ingridient);
+    }
+    public void remove(int position) {
+        remove(ingredientsAdapter.getItem(position));
+    }
+
 }

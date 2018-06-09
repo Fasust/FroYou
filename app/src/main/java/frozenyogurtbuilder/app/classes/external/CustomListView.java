@@ -12,7 +12,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -390,7 +389,7 @@ public class CustomListView extends ListView {
             View switchView = isBelow ? belowView : aboveView;
 
             if(null != switchView) {
-                selectedView = (RelativeLayout) switchView.findViewById(
+                selectedView = switchView.findViewById(
                         R.id.fragment_ingridient);
             }
 

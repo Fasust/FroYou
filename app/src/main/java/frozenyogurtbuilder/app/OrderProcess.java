@@ -94,14 +94,16 @@ public class OrderProcess extends AppCompatActivity {
 
         shoppingList = new Order(ORDER_SIZE,(CustomListView) findViewById(R.id.orderprocess_listview),OrderProcess.this);
 
-        try {
-            shoppingList.add(new Ingredient("Iulia",'m'));
-            shoppingList.add(new Ingredient("Iulia",'s'));
-            shoppingList.add(new Ingredient("Iulia",'t'));
-            shoppingList.add(new Ingredient("Iulia",'t'));
-        } catch (OrderIsFullException e) {
-            e.printStackTrace();
-        }
+        Ingredient iulia = new Ingredient("Iulia",'s');
+        shoppingList.add(iulia);
+        shoppingList.add(iulia);
+        shoppingList.add(iulia);
+        shoppingList.add(iulia);
+        shoppingList.add(iulia);
+        shoppingList.add(iulia);
+        shoppingList.add(iulia);
+        shoppingList.add(iulia);
+
 
     }
     private void buildButtons(){
@@ -120,11 +122,7 @@ public class OrderProcess extends AppCompatActivity {
         IngredientSelectBox.AfterSelctListener<Ingredient> afterSelctListener = new IngredientSelectBox.AfterSelctListener<Ingredient>(){
             @Override
             public void afterSelect(Ingredient selectedItem){
-                try {
-                    shoppingList.add(selectedItem);
-                } catch (OrderIsFullException e) {
-                    shoppingList.showAlert();
-                }
+                shoppingList.add(selectedItem);
             }
         };
 

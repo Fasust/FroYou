@@ -28,7 +28,7 @@
 
     <LinearLayout
         android:id="@+id/icon_group"
-        android:layout_width="139dp"
+        android:layout_width="158dp"
         android:layout_height="54dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
@@ -38,15 +38,15 @@
 
         <ImageView
             android:id="@+id/ingridient_imageView"
-            android:layout_width="43dp"
-            android:layout_height="46dp"
+            android:layout_width="42dp"
+            android:layout_height="54dp"
             android:layout_gravity="center"
             android:src="@drawable/cupcake" />
 
         <ImageButton
             android:id="@+id/imageBtn_ingredient_edit"
-            android:layout_width="44dp"
-            android:layout_height="40dp"
+            android:layout_width="47dp"
+            android:layout_height="54dp"
             android:layout_gravity="center"
             android:background="@null"
             android:scaleType="fitCenter"
@@ -54,8 +54,8 @@
 
         <ImageView
             android:id="@+id/ingridient_move_imageView"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
+            android:layout_width="73dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_drag_handle_black_24dp" />
     </LinearLayout>
