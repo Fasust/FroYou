@@ -3,6 +3,7 @@
     package="frozenyogurtbuilder.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera" android:required="false"></uses-feature>
 
     <application
         android:allowBackup="true"
