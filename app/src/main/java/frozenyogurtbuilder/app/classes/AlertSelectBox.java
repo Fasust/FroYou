@@ -5,21 +5,26 @@ import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
 import frozenyogurtbuilder.app.OrderProcess;
 import frozenyogurtbuilder.app.R;
 
-public abstract class AlertSelectBox<T> {
+public class AlertSelectBox<T> {
 
     private final Context context;
     private final ArrayAdapter<T> arrayAdapter;
     private AlertDialog.Builder dialoge;
-    private T selectedItem;
+    public interface AfterSelctListener<T>{
+        void afterSelect(T selectedItem);
+    }
+    private AfterSelctListener afterSelctListener;
 
-    public AlertSelectBox(final Context context, String bannerTxt, int icon){
+    public AlertSelectBox(final Context context, String bannerTxt, int icon, AfterSelctListener listener){
         this.context = context;
+        this.afterSelctListener = listener;
         arrayAdapter = new ArrayAdapter(context, android.R.layout.select_dialog_singlechoice);
 
         dialoge = new AlertDialog.Builder(context);
@@ -38,9 +43,9 @@ public abstract class AlertSelectBox<T> {
         dialoge.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                selectedItem = arrayAdapter.getItem(which);
+                T selectedItem = arrayAdapter.getItem(which);
+                afterSelctListener.afterSelect(selectedItem);
                 dialog.dismiss();
-                afterSelect();
             }
         });
     }
@@ -55,8 +60,7 @@ public abstract class AlertSelectBox<T> {
     public void add(ArrayList<T> objs){
         arrayAdapter.addAll(objs);
     }
-    public T getSelectedItem(){
-        return selectedItem;
+    public void afterSelect(T selectedItem){
+        afterSelctListener.afterSelect(selectedItem);
     }
-    public abstract void afterSelect();
 }

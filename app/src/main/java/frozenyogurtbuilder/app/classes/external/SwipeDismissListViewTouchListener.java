@@ -1,4 +1,4 @@
-package frozenyogurtbuilder.app.classes;
+package frozenyogurtbuilder.app.classes.external;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
