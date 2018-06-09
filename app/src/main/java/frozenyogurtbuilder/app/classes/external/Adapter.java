@@ -2,7 +2,6 @@ package frozenyogurtbuilder.app.classes.external;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,7 +25,7 @@ public class Adapter extends ArrayAdapter<Ingredient> {
 
     private final int INVALID_ID = -1;
     public interface Listener {
-        void onGrab(int position, ConstraintLayout row);
+        void onGrab(int position, RelativeLayout row);
     }
 
     private final Listener listener;
@@ -50,7 +49,7 @@ public class Adapter extends ArrayAdapter<Ingredient> {
             view = LayoutInflater.from(context).inflate(R.layout.fragment_ingredient, null);
         }
 
-        final ConstraintLayout row = view.findViewById(R.id.fragment_ingridient);
+        final RelativeLayout row = view.findViewById(R.id.fragment_ingridient);
 
 
         TextView textView = view.findViewById(R.id.txt_ingredient);

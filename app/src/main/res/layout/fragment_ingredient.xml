@@ -1,73 +1,63 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_ingridient"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/colorBase"
-    tools:context=".Fragment_ingredient"
     android:elevation = "2dp">
 
-    <TextView
-        android:id="@+id/txt_ingredient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/pacifico"
-        android:text="Test Zutat"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533" />
+    <LinearLayout
+        android:id="@+id/textView"
+        android:layout_width="139dp"
+        android:layout_height="54dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
 
-    <ImageButton
-        android:id="@+id/imageBtn_ingredient_edit"
-        android:layout_width="44dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="260dp"
-        android:layout_marginTop="8dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_edit_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.352" />
+        <TextView
+            android:id="@+id/txt_ingredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:fontFamily="@font/pacifico"
+            android:text="Test Zutat"
+            android:layout_gravity="center"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="18sp" />
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/ingridient_imageView"
-        android:layout_width="43dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/cupcake"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.812"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/icon_group"
+        android:layout_width="139dp"
+        android:layout_height="54dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="end"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
 
-    <ImageView
-        android:id="@+id/ingridient_move_imageView"
-        android:layout_width="58dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_drag_handle_black_24dp" />
+        <ImageView
+            android:id="@+id/ingridient_imageView"
+            android:layout_width="43dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"
+            android:src="@drawable/cupcake" />
 
+        <ImageButton
+            android:id="@+id/imageBtn_ingredient_edit"
+            android:layout_width="44dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_edit_black_24dp" />
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/ingridient_move_imageView"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_drag_handle_black_24dp" />
+    </LinearLayout>
+
+</RelativeLayout>

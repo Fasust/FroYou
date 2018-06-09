@@ -70,7 +70,7 @@ public class CustomListView extends ListView {
     private int mScrollState = OnScrollListener.SCROLL_STATE_IDLE;
 
     Listener listener;
-    ConstraintLayout selectedView;
+    RelativeLayout selectedView;
 
     public CustomListView(Context context) {
         super(context);
@@ -97,7 +97,7 @@ public class CustomListView extends ListView {
         this.listener = listener;
     }
 
-    public void onGrab(int position, ConstraintLayout selectedView) {
+    public void onGrab(int position, RelativeLayout selectedView) {
         mTotalOffset = 0;
         mMobileItemId = getAdapter().getItemId(position);
         mHoverCell = getAndAddHoverView(selectedView);
@@ -390,7 +390,7 @@ public class CustomListView extends ListView {
             View switchView = isBelow ? belowView : aboveView;
 
             if(null != switchView) {
-                selectedView = (ConstraintLayout) switchView.findViewById(
+                selectedView = (RelativeLayout) switchView.findViewById(
                         R.id.fragment_ingridient);
             }
 

@@ -84,7 +84,7 @@ public class OrderProcess extends AppCompatActivity {
         final CustomListView listView = (CustomListView)findViewById(R.id.orderprocess_listview);
         Adapter adapter = new Adapter(this, list, new Adapter.Listener() {
             @Override
-            public void onGrab(int position, ConstraintLayout row) {
+            public void onGrab(int position, RelativeLayout row) {
                 listView.onGrab(position, row);
             }
         });
