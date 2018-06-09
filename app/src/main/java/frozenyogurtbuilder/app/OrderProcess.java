@@ -28,16 +28,13 @@ public class OrderProcess extends AppCompatActivity {
 
     //Ingredient
     private Ingredient[] ingredientsArray;
-    private ArrayList<Ingredient> mainingredients;
-    private ArrayList<Ingredient> topings;
-    private ArrayList<Ingredient> sauce;
+    public static ArrayList<Ingredient> mainingredients;
+    public static ArrayList<Ingredient> topings;
+    public static ArrayList<Ingredient> sauce;
 
     //Order
     private Order shoppingList;
     public static int ORDER_SIZE;
-    private String mainBanner = "Wählen sie eine Ihrer " + ORDER_SIZE + " Hauptzutaten.";
-    private String toppingBanner = "Bitte Wählen sie ein Topping";
-    private String souceBanner = "Bitte Wählen sie eine Soße";
 
 
     @Override
@@ -91,20 +88,7 @@ public class OrderProcess extends AppCompatActivity {
 
     }
     private void buildShoppingList(){
-
         shoppingList = new Order(ORDER_SIZE,(CustomListView) findViewById(R.id.orderprocess_listview),OrderProcess.this);
-
-        Ingredient iulia = new Ingredient("Iulia",'s');
-        shoppingList.add(iulia);
-        shoppingList.add(iulia);
-        shoppingList.add(iulia);
-        shoppingList.add(iulia);
-        shoppingList.add(iulia);
-        shoppingList.add(iulia);
-        shoppingList.add(iulia);
-        shoppingList.add(iulia);
-
-
     }
     private void buildButtons(){
 
@@ -119,27 +103,12 @@ public class OrderProcess extends AppCompatActivity {
         });
 
         //Add
-        IngredientSelectBox.AfterSelctListener<Ingredient> afterSelctListener = new IngredientSelectBox.AfterSelctListener<Ingredient>(){
-            @Override
-            public void afterSelect(Ingredient selectedItem){
-                shoppingList.add(selectedItem);
-            }
-        };
-
-        final IngredientSelectBox mainBox = new IngredientSelectBox(this,mainBanner,afterSelctListener);
-        final IngredientSelectBox souceBox = new IngredientSelectBox(this,souceBanner,afterSelctListener);
-        final IngredientSelectBox toppingBox = new IngredientSelectBox(this,toppingBanner,afterSelctListener);
-
-        mainBox.add(mainingredients);
-        souceBox.add(sauce);
-        toppingBox.add(topings);
-
         btn_addMain = findViewById(R.id.btn_addMain) ;
         btn_addMain.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                mainBox.show();
+                shoppingList.addThroghSelectBox('m');
             }
 
         });
@@ -148,7 +117,7 @@ public class OrderProcess extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                souceBox.show();
+                shoppingList.addThroghSelectBox('s');
             }
 
         });
@@ -157,7 +126,7 @@ public class OrderProcess extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                toppingBox.show();
+                shoppingList.addThroghSelectBox('t');
             }
 
         });

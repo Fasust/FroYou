@@ -7,6 +7,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,6 +19,7 @@ import java.util.Map;
 
 import frozenyogurtbuilder.app.R;
 import frozenyogurtbuilder.app.classes.Ingredient;
+import frozenyogurtbuilder.app.classes.Order;
 
 /**
  * Created by takaiwa.net on 2016/04/08.
@@ -32,6 +35,8 @@ public class Adapter extends ArrayAdapter<Ingredient> {
     private Map<Ingredient, Integer> mIdMap = new HashMap<>();
     private int midMapCounter = 0;
 
+    private Order order;
+
     public Adapter(Context context, ArrayList<Ingredient> list, Listener listener) {
         super(context, 0, list);
         this.listener = listener;
@@ -44,18 +49,16 @@ public class Adapter extends ArrayAdapter<Ingredient> {
     public View getView(final int position, View view, ViewGroup parent) {
         Context context = getContext();
         final Ingredient ingredient = getItem(position);
-
         if(null == view) {
             view = LayoutInflater.from(context).inflate(R.layout.fragment_ingredient, null);
         }
-
         final RelativeLayout row = view.findViewById(R.id.fragment_ingridient);
 
-
+        //Set Text--------------------------------------------------------------------------
         TextView textView = view.findViewById(R.id.txt_ingredient);
         textView.setText(ingredient.getName());
 
-
+        //Set Grab--------------------------------------------------------------------------
         view.findViewById(R.id.ingridient_move_imageView)
             .setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -64,6 +67,38 @@ public class Adapter extends ArrayAdapter<Ingredient> {
                     return false;
                 }
             });
+
+        //Set Icon--------------------------------------------------------------------------
+        ImageView typeIcon = view.findViewById(R.id.ingridient_imageView);
+        switch (ingredient.getType()){
+            case Ingredient.INGREDIENT_MAIN:
+                typeIcon.setImageResource(R.drawable.cupcake);
+                break;
+            case Ingredient.INGREDIENT_SAUCE:
+                typeIcon.setImageResource(R.drawable.ketchup);
+                break;
+            case Ingredient.INGREDIENT_TOPPING:
+                typeIcon.setImageResource(R.drawable.nuts);
+                break;
+        }
+        //Set Change Type--------------------------------------------------------------------
+        typeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        //Set Edit---------------------------------------------------------------------------
+        ImageButton editBtn = view.findViewById(R.id.imageBtn_ingredient_edit);
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                order.setThroghSelectBox(ingredient.getType(),position);
+            }
+        });
+
+
 
         return view;
     }
@@ -80,6 +115,10 @@ public class Adapter extends ArrayAdapter<Ingredient> {
     @Override
     public boolean hasStableIds() {
         return Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP;
+    }
+
+    public void initOrder(Order order){
+        this.order = order;
     }
 
     //add remove put Overrides-------------------------------------------------------------------------
@@ -102,9 +141,13 @@ public class Adapter extends ArrayAdapter<Ingredient> {
             mIdMap.remove(super.getItem(index));
         }
 
-       mIdMap.put(ingredient, midMapCounter);
-       midMapCounter++;
+        mIdMap.put(ingredient, midMapCounter);
+        midMapCounter++;
 
-       super.insert(ingredient,index);
+        Ingredient toBeRemoved = getItem(index);
+        remove(toBeRemoved);
+
+        if(index < getCount()) super.insert(ingredient,index);
+        else super.add(ingredient);
     }
 }

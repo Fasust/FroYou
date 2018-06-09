@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBase"
-    android:elevation = "2dp">
+    android:elevation = "3dp">
 
     <LinearLayout
         android:id="@+id/textView"
-        android:layout_width="139dp"
-        android:layout_height="54dp"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:paddingBottom="5dp"
@@ -18,7 +18,7 @@
             android:id="@+id/txt_ingredient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="33dp"
+            android:layout_marginStart="12dp"
             android:fontFamily="@font/pacifico"
             android:text="Test Zutat"
             android:layout_gravity="center"
@@ -28,8 +28,8 @@
 
     <LinearLayout
         android:id="@+id/icon_group"
-        android:layout_width="158dp"
-        android:layout_height="54dp"
+        android:layout_width="164dp"
+        android:layout_height="70dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_gravity="end"
@@ -41,6 +41,7 @@
             android:layout_width="42dp"
             android:layout_height="54dp"
             android:layout_gravity="center"
+            android:layout_marginRight="6dp"
             android:src="@drawable/cupcake" />
 
         <ImageButton
@@ -54,7 +55,7 @@
 
         <ImageView
             android:id="@+id/ingridient_move_imageView"
-            android:layout_width="73dp"
+            android:layout_width="71dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_drag_handle_black_24dp" />

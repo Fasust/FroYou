@@ -14,8 +14,9 @@
     <frozenyogurtbuilder.app.classes.external.CustomListView
         android:id="@+id/orderprocess_listview"
         android:layout_width="match_parent"
-        android:layout_height="405dp"
-        android:layout_marginTop="8dp" />
+        android:layout_height="381dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginVertical="56dp" />
 
     <ImageButton
         android:id="@+id/btn_goTo_orderFinal"
@@ -23,6 +24,8 @@
         android:layout_height="38dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:background="@null"
         android:elevation="3dp"
         android:scaleType="centerCrop"
@@ -34,12 +37,15 @@
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="49dp"
+        android:layout_marginBottom="17dp"
         android:layout_marginStart="23dp"
+        android:adjustViewBounds="false"
         android:background="@drawable/buttonshape"
-        android:elevation="2dp"
-        android:padding="40px"
-        android:scaleType="centerInside" />
+        android:cropToPadding="false"
+        android:elevation="5dp"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/cupcake" />
 
     <ImageButton
         android:id="@+id/btn_addSauce"
@@ -49,9 +55,10 @@
         android:layout_alignTop="@+id/btn_addMain"
         android:layout_marginEnd="14dp"
         android:background="@drawable/buttonshape"
-        android:elevation="2dp"
-        android:padding="40px"
-        android:scaleType="centerInside" />
+        android:elevation="5dp"
+        android:padding="12dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ketchup" />
 
     <ImageButton
         android:id="@+id/btn_addTopping"
@@ -60,8 +67,9 @@
         android:layout_alignTop="@+id/btn_addMain"
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttonshape"
-        android:elevation="2dp"
-        android:padding="40px"
-        android:scaleType="centerInside" />
+        android:elevation="5dp"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/nuts" />
 
 </RelativeLayout>
