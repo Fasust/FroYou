@@ -2,9 +2,11 @@ package frozenyogurtbuilder.app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -26,6 +28,10 @@ public class OrderProcess extends AppCompatActivity {
     private ImageButton btn_addTopping;
     private ImageButton btn_addSouce;
 
+    // globally
+    private TextView textView_mainCounterSize;
+    private TextView textView_mainCounter;
+
     //Ingredient
     private Ingredient[] ingredientsArray;
     public static ArrayList<Ingredient> mainingredients;
@@ -41,6 +47,8 @@ public class OrderProcess extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orderprocess);
+        textView_mainCounter = findViewById(R.id.textView_mainCounter);
+        textView_mainCounter.setText(String.valueOf(shoppingList.getMainIngridientCount()));
 
         ORDER_SIZE = getSize();
 
@@ -130,6 +138,9 @@ public class OrderProcess extends AppCompatActivity {
             }
 
         });
+
+        textView_mainCounterSize = findViewById(R.id.textView_mainCounterSize);
+        textView_mainCounterSize.setText(String.valueOf(ORDER_SIZE));
     }
 
     private int getSize(){

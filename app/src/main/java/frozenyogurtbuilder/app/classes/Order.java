@@ -6,7 +6,6 @@ import android.support.v7.app.AlertDialog;
 import android.view.ContextThemeWrapper;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-
 import java.util.ArrayList;
 
 import frozenyogurtbuilder.app.Exceptions.OrderIsFullException;
@@ -186,6 +185,9 @@ public class Order {
             }
         }
         ingredientsAdapter.add(new Ingredient(ingredient.getName(),ingredient.getType()));
+    }
+    public int getMainIngridientCount() {
+        return mainIngridientCount;
     }
     public void set(int i, Ingredient ingredient){
 
