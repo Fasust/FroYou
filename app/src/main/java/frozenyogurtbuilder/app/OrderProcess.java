@@ -47,12 +47,11 @@ public class OrderProcess extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orderprocess);
-        textView_mainCounter = findViewById(R.id.textView_mainCounter);
-        textView_mainCounter.setText(String.valueOf(shoppingList.getMainIngridientCount()));
 
         ORDER_SIZE = getSize();
 
         loadIngredients();
+        buildMainCounter();
         buildShoppingList();
         buildButtons();
 
@@ -139,8 +138,16 @@ public class OrderProcess extends AppCompatActivity {
 
         });
 
+
+    }
+
+    private void buildMainCounter(){
         textView_mainCounterSize = findViewById(R.id.textView_mainCounterSize);
         textView_mainCounterSize.setText(String.valueOf(ORDER_SIZE));
+
+
+        //textView_mainCounter = findViewById(R.id.textView_mainCounter);
+        //textView_mainCounter.setText(String.valueOf(shoppingList.getMainIngridientCount()));
     }
 
     private int getSize(){

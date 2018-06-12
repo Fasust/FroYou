@@ -186,9 +186,7 @@ public class Order {
         }
         ingredientsAdapter.add(new Ingredient(ingredient.getName(),ingredient.getType()));
     }
-    public int getMainIngridientCount() {
-        return mainIngridientCount;
-    }
+
     public void set(int i, Ingredient ingredient){
 
         ingredientsAdapter.insert(new Ingredient(ingredient.getName(),ingredient.getType()),i);
@@ -204,4 +202,7 @@ public class Order {
         remove(ingredientsAdapter.getItem(position));
     }
 
+    public int getMainIngridientCount() {
+        return mainIngridientCount;
+    }
 }
