@@ -2,4 +2,39 @@
     <string name="app_name">Frozen Yogurt Builder</string>
     <string name="KEY_POSITION">1</string>
     <string name="KEY_ANIM">2</string>
+
+    <!-- Main -->
+    <string name="view_recipes">Rezepte ansehen</string>
+    <string name="create_a_yogurt">Yogurt erstellen</string>
+
+    <!-- Order Choose Pricing -->
+    <string name="create_small_yogurt">Kleinen Yogurt erstellen</string>
+    <string name="small">Klein</string>
+    <string name="small_text" translatable="false">1x Yogurt oder Eis \nUnbegrenzt Sauce \nUnbegrenzt Topping</string>
+    <string name="small_price">2,60€</string>
+
+    <string name="create_middle_yogurt">Mittleren Yogurt erstellen</string>
+    <string name="middle">Mittel</string>
+    <string name="middle_text" translatable="false">2x Yogurt oder Eis \nUnbegrenzt Sauce \nUnbegrenzt Topping</string>
+    <string name="middle_price">3,80€</string>
+
+    <string name="create_big_yogurt">Großen Yogurt erstellen</string>
+    <string name="big" translatable="false">Groß</string>
+    <string name="big_text" translatable="false">3x Yogurt oder Eis \nUnbegrenzt Sauce \nUnbegrenzt Topping</string>
+    <string name="big_price">4,90€</string>
+
+    <!-- Order Process -->
+
+
+    <!-- Order Final -->
+    <string name="your_own_creation" translatable="false">Deine eigene Kreation</string>
+    <string name="order_final_text" translatable="false">Lies die Liste einfach beim Bestellen des Frozen Yogurts vor oder nutze den Button um einen Code zu generieren, den der  Verkäufer scannen kann.</string>
+    <string name="generate_code_for_scanning" translatable="false">Code zum Scannen generieren</string>
+    <string name="share_creation" translatable="false">Kreation veröffentlichen</string>
+    <string name="share_creation_text" translatable="false">Du möchtest anderen deine Kreation zeigen? Fotografiere den Yogurt und veröffentliche ihn  zusammen mit deinem Rezept!</string>
+
+    <!-- Order Share -->
+    <string name="ready_to_share" translatable="false">Deine Kreation ist bereit zum Teilen!</string>
+    <string name="share_now" translatable="false">Jetzt veröffentlichen</string>
+
 </resources>

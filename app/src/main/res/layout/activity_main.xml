@@ -10,12 +10,9 @@
     <include
         android:id="@+id/app_header_home"
         layout="@layout/app_header_home"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></include>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:elevation = "2dp"
@@ -27,7 +24,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/buttonshape"
         android:fontFamily="@font/pacifico"
-        android:text="Rezepte ansehen"
+        android:text="@string/view_recipes"
         android:textAllCaps="false"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +41,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/buttonshape"
         android:fontFamily="@font/pacifico"
-        android:text="Yogurt erstellen"
+        android:text="@string/create_a_yogurt"
         android:textAllCaps="false"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

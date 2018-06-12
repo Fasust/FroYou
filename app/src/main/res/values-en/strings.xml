@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Frozen Yogurt Builder</string>
+    <string name="KEY_POSITION">1</string>
+    <string name="KEY_ANIM">2</string>
+
+    <!-- Main -->
+    <string name="view_recipes">View recipes</string>
+    <string name="create_a_yogurt">Create a Yogurt</string>
+
+    <!-- Order Choose Pricing -->
+    <string name="create_small_yogurt">Create small Yogurt</string>
+    <string name="small">Small</string>
+    <string name="small_text">1x Yogurt or Ice \nunlimited Sauce \nunlimited Topping</string>
+    <string name="small_price">2,60€</string>
+
+    <string name="create_middle_yogurt">Create middle Yogurt</string>
+    <string name="middle">Middle</string>
+    <string name="middle_text">2x Yogurt or Ice \nunlimited Sauce \nunlimited Topping</string>
+    <string name="middle_price">3,80€</string>
+
+    <string name="create_big_yogurt">Create large Yogurt</string>
+    <string name="big">Large</string>
+    <string name="big_text">3x Yogurt or Ice \nunlimited Sauce \nunlimited Topping</string>
+    <string name="big_price">4,90€</string>
+
+    <!-- Order Process -->
+
+
+    <!-- Order Final -->
+    <string name="your_own_creation">Your own creation</string>
+    <string name="order_final_text">Just read the list when ordering the Frozen Yogurt or use the button to generate a code that the seller can scan.</string>
+    <string name="generate_code_for_scanning">Generate Code for scanning</string>
+    <string name="share_creation">Share your creation</string>
+    <string name="share_creation_text">You want to show others your creation? Photograph the yogurt and publish it along with your recipe!</string>
+
+    <!-- Order Share -->
+    <string name="ready_to_share">Your creation is ready to share!</string>
+    <string name="share_now">Share now</string>
+</resources>
