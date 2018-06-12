@@ -19,8 +19,9 @@ import frozenyogurtbuilder.app.classes.IngredientSelectBox;
 import frozenyogurtbuilder.app.classes.Order;
 import frozenyogurtbuilder.app.classes.RecourceLoader;
 import frozenyogurtbuilder.app.classes.external.CustomListView;
+import frozenyogurtbuilder.app.classes.maineventlistener;
 
-public class OrderProcess extends AppCompatActivity {
+public class OrderProcess extends AppCompatActivity implements maineventlistener {
 
     //Buttons
     private ImageButton btn_goTo_orFi;
@@ -43,18 +44,20 @@ public class OrderProcess extends AppCompatActivity {
     public static int ORDER_SIZE;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orderprocess);
-        textView_mainCounter = findViewById(R.id.textView_mainCounter);
-        textView_mainCounter.setText(String.valueOf(shoppingList.getMainIngridientCount()));
 
         ORDER_SIZE = getSize();
 
         loadIngredients();
         buildShoppingList();
+        buildMainCounter();
         buildButtons();
+
+
 
     }
     private void loadIngredients(){
@@ -96,7 +99,12 @@ public class OrderProcess extends AppCompatActivity {
 
     }
     private void buildShoppingList(){
-        shoppingList = new Order(ORDER_SIZE,(CustomListView) findViewById(R.id.orderprocess_listview),OrderProcess.this);
+        CustomListView listView = (CustomListView) findViewById(R.id.orderprocess_listview);
+
+        //textView_mainCounterSize.setText(String.valueOf(shoppingList.getMainIngridientCount()));
+
+
+        shoppingList = new Order(ORDER_SIZE,listView,OrderProcess.this);
     }
     private void buildButtons(){
 
@@ -139,12 +147,22 @@ public class OrderProcess extends AppCompatActivity {
 
         });
 
+    }
+
+    private void buildMainCounter() {
         textView_mainCounterSize = findViewById(R.id.textView_mainCounterSize);
         textView_mainCounterSize.setText(String.valueOf(ORDER_SIZE));
+
+        textView_mainCounter = findViewById(R.id.textView_mainCounter);
     }
 
     private int getSize(){
         return  getIntent().getExtras().getInt(OrderChoosePricing.SIZE_KEY);
+    }
+
+    @Override
+    public void mainIngredientChanged(int mainCounter) {
+        textView_mainCounterSize.setText(String.valueOf(mainCounter));
     }
 
 }

@@ -3,6 +3,7 @@ package frozenyogurtbuilder.app.classes;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -16,6 +17,8 @@ import frozenyogurtbuilder.app.classes.external.CustomListView;
 import frozenyogurtbuilder.app.classes.external.SwipeDismissListViewTouchListener;
 
 public class Order {
+    private maineventlistener maineventlistener;
+
     public final int ORDER_SIZE;
     private int mainIngridientCount = 0;
     private Adapter ingredientsAdapter;
@@ -88,7 +91,6 @@ public class Order {
         listView.setOnTouchListener(touchListener);
 
         //--------------------------------------------------------------------
-
         ingredientsAdapter.initOrder(this);
     }
 
@@ -184,11 +186,12 @@ public class Order {
                 return;
             }
         }
+        if (maineventlistener != null) {
+            maineventlistener.mainIngredientChanged(1);
+        }
         ingredientsAdapter.add(new Ingredient(ingredient.getName(),ingredient.getType()));
     }
-    public int getMainIngridientCount() {
-        return mainIngridientCount;
-    }
+
     public void set(int i, Ingredient ingredient){
 
         ingredientsAdapter.insert(new Ingredient(ingredient.getName(),ingredient.getType()),i);
@@ -204,4 +207,7 @@ public class Order {
         remove(ingredientsAdapter.getItem(position));
     }
 
+    public void setMainListener (maineventlistener maineventlistener) {
+        this.maineventlistener = maineventlistener;
+    }
 }
