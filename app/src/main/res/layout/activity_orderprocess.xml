@@ -14,9 +14,12 @@
     <frozenyogurtbuilder.app.classes.external.CustomListView
         android:id="@+id/orderprocess_listview"
         android:layout_width="match_parent"
-        android:layout_height="381dp"
-        android:layout_marginTop="7dp"
-        android:layout_below="@id/app_header"/>
+        android:layout_height="match_parent"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="62dp"
+        android:layout_marginBottom="110dp" />
 
     <ImageButton
         android:id="@+id/btn_goTo_orderFinal"
