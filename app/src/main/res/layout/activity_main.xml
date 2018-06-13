@@ -16,7 +16,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:elevation = "2dp"
         android:id="@+id/btn_goTo_reGa"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -24,6 +23,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/buttonshape"
+        android:elevation="2dp"
         android:fontFamily="@font/pacifico"
         android:text="@string/view_recipes"
         android:textAllCaps="false"
@@ -33,7 +33,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
-        android:elevation = "2dp"
         android:id="@+id/btn_goTo_orChPr"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -41,6 +40,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/buttonshape"
+        android:elevation="2dp"
         android:fontFamily="@font/pacifico"
         android:text="@string/create_a_yogurt"
         android:textAllCaps="false"
@@ -51,17 +51,20 @@
 
     <Button
         android:id="@+id/btn_goTo_imp"
-        android:layout_width="84dp"
-        android:layout_height="33dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/buttonshape"
+        android:elevation="2dp"
         android:fontFamily="@font/pacifico"
         android:text="@string/impressum"
         android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.974"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_goTo_reGa" />
 
@@ -91,7 +94,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_goTo_orChPr"
         app:srcCompat="@drawable/receipt_image" />
-
 
 
 </android.support.constraint.ConstraintLayout>
