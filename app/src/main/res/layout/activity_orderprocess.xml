@@ -15,8 +15,8 @@
         android:id="@+id/orderprocess_listview"
         android:layout_width="match_parent"
         android:layout_height="381dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginVertical="56dp" />
+        android:layout_marginTop="7dp"
+        android:layout_below="@id/app_header"/>
 
     <ImageButton
         android:id="@+id/btn_goTo_orderFinal"
