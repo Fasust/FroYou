@@ -53,6 +53,9 @@
         android:id="@+id/btn_goTo_imp"
         android:layout_width="84dp"
         android:layout_height="33dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/buttonshape"
         android:fontFamily="@font/pacifico"
         android:text="@string/impressum"
@@ -60,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.974"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="610dp" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_goTo_reGa" />
 
 
     <ImageView
