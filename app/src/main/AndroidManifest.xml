@@ -11,11 +11,11 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo_icon"
         android:supportsRtl="true"
-        android:screenOrientation="sensorPortrait"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/FrozenYogurtTheme">
+            android:theme="@style/FrozenYogurtTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,22 +24,29 @@
         </activity>
         <activity
             android:name=".RecipeGallery"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".OrderFinal"
-            android:parentActivityName=".OrderProcess" />
+            android:parentActivityName=".OrderProcess"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".OrderProcess"
-            android:parentActivityName=".OrderChoosePricing" />
+            android:parentActivityName=".OrderChoosePricing"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".RecipeDetail"
-            android:parentActivityName=".RecipeGallery" />
+            android:parentActivityName=".RecipeGallery"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".OrderChoosePricing"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Fragment_ingredient" />
-        <activity android:name=".Qrcode_generator" />
-        <activity android:name=".Share_order" />
+        <activity android:name=".Qrcode_generator"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Share_order"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
