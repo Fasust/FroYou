@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     //Buttons
     private Button btn_goTo_reGa;
     private Button btn_goTo_orChPr;
+    private Button btn_goTo_imp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,24 +49,17 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        /* START Fire Base Test-----------------------------------------------------------------
-        final TextView testdata = (TextView)findViewById(R.id.testdata);
-
-        //set a Listener on reference to recognize changes in our database
-        testref.addValueEventListener(new ValueEventListener() {
-            @Override
-            //at changes, we get out of our database the change value as a string and put it from newvalue into testdata
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String newvalue = dataSnapshot.getValue(String.class);
-                testdata.setText(newvalue);
-            }
+        btn_goTo_imp = findViewById(R.id.btn_goTo_imp) ;
+        btn_goTo_imp.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, Impressum.class));
             }
+
         });
-        END Fire Base Test-----------------------------------------------------------------*/
+
+
 
     }
 }

@@ -11,6 +11,7 @@
         android:id="@+id/app_header_home"
         layout="@layout/app_header_home"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,6 +49,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
+    <Button
+        android:id="@+id/btn_goTo_imp"
+        android:layout_width="84dp"
+        android:layout_height="33dp"
+        android:background="@drawable/buttonshape"
+        android:fontFamily="@font/pacifico"
+        android:text="@string/impressum"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.974"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="610dp" />
+
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
@@ -73,6 +88,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_goTo_orChPr"
         app:srcCompat="@drawable/receipt_image" />
+
 
 
 </android.support.constraint.ConstraintLayout>

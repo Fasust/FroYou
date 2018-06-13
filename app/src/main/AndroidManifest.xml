@@ -3,7 +3,10 @@
     package="frozenyogurtbuilder.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.hardware.camera" android:required="false"></uses-feature>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -14,8 +17,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/FrozenYogurtTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/FrozenYogurtTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,28 +28,32 @@
         <activity
             android:name=".RecipeGallery"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".OrderFinal"
             android:parentActivityName=".OrderProcess"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".OrderProcess"
             android:parentActivityName=".OrderChoosePricing"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".RecipeDetail"
             android:parentActivityName=".RecipeGallery"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".OrderChoosePricing"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity android:name=".Fragment_ingredient" />
-        <activity android:name=".Qrcode_generator"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Share_order"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Qrcode_generator"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Share_order"
+            android:screenOrientation="portrait" />
+        <activity android:name="mocogruppe1.frozenjoghurtbuilder.Impressum" />
+        <activity android:name=".Impressum"></activity>
     </application>
 
 </manifest>

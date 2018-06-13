@@ -6,6 +6,7 @@
     <!-- Main -->
     <string name="view_recipes">Rezepte ansehen</string>
     <string name="create_a_yogurt">Yogurt erstellen</string>
+    <string name="impressum">Impressum</string>
 
     <!-- Order Choose Pricing -->
     <string name="create_small_yogurt">Kleinen Yogurt erstellen</string>
