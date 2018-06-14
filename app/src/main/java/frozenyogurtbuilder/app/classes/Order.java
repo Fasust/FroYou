@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import java.util.ArrayList;
 
 import frozenyogurtbuilder.app.Exceptions.OrderIsFullException;
+import frozenyogurtbuilder.app.OrderChoosePricing;
 import frozenyogurtbuilder.app.OrderProcess;
 import frozenyogurtbuilder.app.R;
 import frozenyogurtbuilder.app.classes.external.Adapter;
@@ -210,23 +211,42 @@ public class Order {
     public String toString(){
         String string = "";
 
-        try {
-            for (int i = 0; i < ingredientsAdapter.getCount(); i++) {
-
-                Ingredient ingredient = ingredientsAdapter.getItem(i);
-                if (ingredient.getType() == Ingredient.INGREDIENT_MAIN) {
-                    string += "---------------\n";
-                }
-
-                string += ingredientsAdapter.getItem(i).toString() + "\n";
-
-                if (ingredient.getType() == Ingredient.INGREDIENT_MAIN) {
-                    string += "---------------\n";
-                }
-            }
-        }catch (Exception e){
-            string = "QR Code Konnte nicht Richtig Generiert werden\n Haben sie auch Zutanten Ausgewählt ?";
+        if(ingredientsAdapter.getCount() == 0){
+            return "Bestellung Leer";
         }
+
+        for (int i = 0; i < ingredientsAdapter.getCount(); i++) {
+
+            Ingredient ingredient = ingredientsAdapter.getItem(i);
+            if (ingredient.getType() == Ingredient.INGREDIENT_MAIN) {
+                string += "*";
+            }
+
+            string += ingredientsAdapter.getItem(i).toString();
+
+            if (ingredient.getType() == Ingredient.INGREDIENT_MAIN) {
+                string += "*\n";
+            }else {
+                string += "\n";
+            }
+        }
+
+        String price = "";
+        switch (mainIngridientCount){
+            case 0:
+                return "Kein Hauptzutat";
+            case 1:
+                price += OrderChoosePricing.PRICE_SMALL;
+                break;
+            case 2:
+                price += OrderChoosePricing.PRICE_MEDIUM;
+                break;
+            case 3:
+                price += OrderChoosePricing.PRICE_LARG;
+                break;
+        }
+        string += "\n---\n" + price +" Euro";
+
         return string;
     }
 }

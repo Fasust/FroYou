@@ -16,6 +16,10 @@ public class OrderChoosePricing extends AppCompatActivity {
     private int size;
     private Intent intent;
 
+    public static final double PRICE_SMALL = 2.60;
+    public static final double PRICE_MEDIUM = 3.80;
+    public static final double PRICE_LARG = 4.90;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
