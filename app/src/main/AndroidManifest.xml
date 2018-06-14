@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-feature
+    <uses-permission
         android:name="android.hardware.camera"
         android:required="false" />
 
@@ -51,9 +51,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Share_order"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation" />
+        <activity
+            android:name=".Impressum"
             android:screenOrientation="portrait" />
-        <activity android:name="mocogruppe1.frozenjoghurtbuilder.Impressum" />
-        <activity android:name=".Impressum"></activity>
     </application>
 
 </manifest>

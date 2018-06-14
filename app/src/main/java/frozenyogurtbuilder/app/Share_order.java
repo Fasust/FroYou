@@ -1,7 +1,9 @@
 package frozenyogurtbuilder.app;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.hardware.Camera;
 import android.media.Image;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +22,7 @@ public class Share_order extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_share_order);
 
         btn_useCamera = (ImageButton) findViewById(R.id.btn_useCamera);
@@ -29,6 +32,8 @@ public class Share_order extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                //cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION,ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
                 startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
 
             }
@@ -40,6 +45,8 @@ public class Share_order extends AppCompatActivity {
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (data != null) {
                 Bitmap photo = (Bitmap) data.getExtras().get("data");
+                data.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION,ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
                 imageView_picture.setImageBitmap(photo);
             }
         }
