@@ -45,6 +45,8 @@ public class Share_order extends AppCompatActivity {
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (data != null) {
                 Bitmap photo = (Bitmap) data.getExtras().get("data");
+                data.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION,ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
                 imageView_picture.setImageBitmap(photo);
             }
         }
