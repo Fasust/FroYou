@@ -31,7 +31,7 @@ public class OrderFinal extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                String orderList = "Geiler QR Code ist jetzt ready!";
+                String orderList = getIntent().getExtras().getString(OrderProcess.ORDER_KEY);
                 MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
 
                 try {

@@ -205,4 +205,28 @@ public class Order {
     public int getMainIngridientCount() {
         return mainIngridientCount;
     }
+
+    @Override
+    public String toString(){
+        String string = "";
+
+        try {
+            for (int i = 0; i < ingredientsAdapter.getCount(); i++) {
+
+                Ingredient ingredient = ingredientsAdapter.getItem(i);
+                if (ingredient.getType() == Ingredient.INGREDIENT_MAIN) {
+                    string += "---------------\n";
+                }
+
+                string += ingredientsAdapter.getItem(i).toString() + "\n";
+
+                if (ingredient.getType() == Ingredient.INGREDIENT_MAIN) {
+                    string += "---------------\n";
+                }
+            }
+        }catch (Exception e){
+            string = "QR Code Konnte nicht Richtig Generiert werden\n Haben sie auch Zutanten Ausgewählt ?";
+        }
+        return string;
+    }
 }

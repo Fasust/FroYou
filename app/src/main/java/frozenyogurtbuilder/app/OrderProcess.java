@@ -41,6 +41,7 @@ public class OrderProcess extends AppCompatActivity {
     //Order
     private Order shoppingList;
     public static int ORDER_SIZE;
+    public static final String  ORDER_KEY = "order";
 
 
     @Override
@@ -104,7 +105,9 @@ public class OrderProcess extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(OrderProcess.this, OrderFinal.class));
+                Intent intent = new Intent(OrderProcess.this, OrderFinal.class);
+                intent.putExtra(ORDER_KEY,shoppingList.toString());
+                startActivity(intent);
             }
 
         });
