@@ -68,7 +68,7 @@ public class OrderProcess extends AppCompatActivity {
         setContentView(R.layout.activity_orderprocess);
 
         ORDER_SIZE = getSize();
-        initFirebase();
+        //initFirebase();
         buildProgressbar();
 
         FirestoreLoader loader = new FirestoreLoader(ingredientsCollection,new FirestoreLoader.TaskListner() {

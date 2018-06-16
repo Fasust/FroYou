@@ -11,8 +11,6 @@ public class RecipeDetail extends AppCompatActivity {
         setContentView(R.layout.activity_recipedetail);
 
 
-        //Action Bar
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setTitle("Jannis Jungle Joggi");
+
     }
 }
