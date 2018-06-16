@@ -1,19 +1,34 @@
 package frozenyogurtbuilder.app;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import frozenyogurtbuilder.app.Exceptions.OrderIsFullException;
 import frozenyogurtbuilder.app.classes.AlertSelectBox;
+import frozenyogurtbuilder.app.classes.FirestoreLoader;
 import frozenyogurtbuilder.app.classes.Ingredient;
 import frozenyogurtbuilder.app.classes.IngredientSelectBox;
 import frozenyogurtbuilder.app.classes.Order;
@@ -28,12 +43,14 @@ public class OrderProcess extends AppCompatActivity {
     private ImageButton btn_addTopping;
     private ImageButton btn_addSouce;
 
-    // globally
+    private ProgressBar progressBar;
+
+    //Counter
     private TextView textView_mainCounterSize;
     private TextView textView_mainCounter;
 
     //Ingredient
-    private Ingredient[] ingredientsArray;
+    private ArrayList<Ingredient> allIngridients = new ArrayList<>();
     public static ArrayList<Ingredient> mainingredients;
     public static ArrayList<Ingredient> topings;
     public static ArrayList<Ingredient> sauce;
@@ -43,6 +60,9 @@ public class OrderProcess extends AppCompatActivity {
     public static int ORDER_SIZE;
     public static final String  ORDER_KEY = "order";
 
+    //Firestore
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference ingredientsCollection = db.collection("ingredients");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,35 +70,30 @@ public class OrderProcess extends AppCompatActivity {
         setContentView(R.layout.activity_orderprocess);
 
         ORDER_SIZE = getSize();
-
-        loadIngredients();
+        initFirebase();
         buildMainCounter();
-        buildShoppingList();
-        buildButtons();
+        buildProgressbar();
+
+        FirestoreLoader loader = new FirestoreLoader(new FirestoreLoader.TaskListner() {
+            @Override
+            public void onComplete(ArrayList<Ingredient> arrayList) {
+
+                sortIngridients(arrayList);
+                buildShoppingList();
+                buildButtons();
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        });
+        loader.execute(ingredientsCollection);
 
     }
-    private void loadIngredients(){
-        /*
-        LOAD All Ingredients---------------------
-         */
 
-        Gson gson = new Gson();
-
-        //Load JSON String from Assets "ingredientsList.json"
-        String ingredients_String = RecourceLoader.loadJSONFromAsset(getAssets(),"ingredientsList");
-
-        //Turn JSON String to Ingredients (obj) Array
-        ingredientsArray = gson.fromJson(ingredients_String, Ingredient[].class);
-
-        /*
-        SORT Ingredients---------------------
-         */
-
+    private void sortIngridients(ArrayList<Ingredient> ingredients){
         mainingredients = new ArrayList<>();
         sauce = new ArrayList<>();
         topings = new ArrayList<>();
 
-        for(Ingredient ing : ingredientsArray){
+        for(Ingredient ing : ingredients){
             switch (ing.getType()){
                 case Ingredient.INGREDIENT_MAIN:
                     mainingredients.add(ing);
@@ -93,7 +108,9 @@ public class OrderProcess extends AppCompatActivity {
                     break;
             }
         }
-
+    }
+    private void buildProgressbar(){
+        progressBar = findViewById(R.id.progressBar);
     }
     private void buildShoppingList(){
         shoppingList = new Order(ORDER_SIZE,(CustomListView) findViewById(R.id.orderprocess_listview),OrderProcess.this);
@@ -150,6 +167,12 @@ public class OrderProcess extends AppCompatActivity {
 
         //textView_mainCounter = findViewById(R.id.textView_mainCounter);
         //textView_mainCounter.setText(String.valueOf(shoppingList.getMainIngridientCount()));
+    }
+    private void initFirebase(){
+        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+                .setPersistenceEnabled(true)
+                .build();
+        db.setFirestoreSettings(settings);
     }
 
     private int getSize(){
