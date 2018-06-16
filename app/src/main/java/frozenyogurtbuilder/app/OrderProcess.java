@@ -143,7 +143,6 @@ public class OrderProcess extends AppCompatActivity {
 
 
     }
-
     private void buildMainCounter(){
         textView_mainCounterSize = findViewById(R.id.textView_mainCounterSize);
         textView_mainCounterSize.setText(String.valueOf(ORDER_SIZE));

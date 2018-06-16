@@ -15,10 +15,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    //connection to Database (testdata) + reference to testdata for using the database
-    private FirebaseDatabase testbase = FirebaseDatabase.getInstance();
-    private DatabaseReference testref = testbase.getReference();
-
     //Buttons
     private Button btn_goTo_reGa;
     private Button btn_goTo_orChPr;

@@ -8,12 +8,16 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:5978883644:android:861c23dad33a7007",
+        "mobilesdk_app_id": "1:5978883644:android:4c2a6f7f7da5e44f",
         "android_client_info": {
           "package_name": "frozenyogurtbuilder.app"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "5978883644-25172lguir6g9rcu8oh9mfp6v64put0g.apps.googleusercontent.com",
+          "client_type": 3
+        },
         {
           "client_id": "5978883644-25172lguir6g9rcu8oh9mfp6v64put0g.apps.googleusercontent.com",
           "client_type": 3
