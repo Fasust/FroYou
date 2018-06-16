@@ -47,10 +47,6 @@ public class OrderProcess extends AppCompatActivity {
 
     private ProgressBar progressBar;
 
-    //Counter
-    private TextView textView_mainCounterSize;
-    private TextView textView_mainCounter;
-
     //Ingredient
     private ArrayList<Ingredient> allIngridients = new ArrayList<>();
     public static ArrayList<Ingredient> mainingredients;
@@ -73,7 +69,6 @@ public class OrderProcess extends AppCompatActivity {
 
         ORDER_SIZE = getSize();
         initFirebase();
-        buildMainCounter();
         buildProgressbar();
 
         FirestoreLoader loader = new FirestoreLoader(ingredientsCollection,new FirestoreLoader.TaskListner() {
@@ -84,6 +79,7 @@ public class OrderProcess extends AppCompatActivity {
                 sortIngridients(arrayList);
                 buildShoppingList();
                 buildButtons();
+                buildMainCounter();
                 progressBar.setVisibility(View.INVISIBLE);
             }
 
@@ -169,12 +165,17 @@ public class OrderProcess extends AppCompatActivity {
 
     }
     private void buildMainCounter(){
-        textView_mainCounterSize = findViewById(R.id.textView_mainCounterSize);
+        TextView textView_mainCounterSize = findViewById(R.id.textView_mainCounterSize);
         textView_mainCounterSize.setText(String.valueOf(ORDER_SIZE));
 
+        final TextView textView_mainCounter = findViewById(R.id.textView_mainCounter);
 
-        //textView_mainCounter = findViewById(R.id.textView_mainCounter);
-        //textView_mainCounter.setText(String.valueOf(shoppingList.getMainIngridientCount()));
+        shoppingList.setOnListChangeEventListner(new Order.OnListChangeEventListner() {
+            @Override
+            public void listChange() {
+                textView_mainCounter.setText(String.valueOf(shoppingList.getMainIngridientCount()));
+            }
+        });
     }
     private void initFirebase(){
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()

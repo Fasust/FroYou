@@ -17,6 +17,11 @@ import frozenyogurtbuilder.app.classes.external.CustomListView;
 import frozenyogurtbuilder.app.classes.external.SwipeDismissListViewTouchListener;
 
 public class Order {
+    public interface OnListChangeEventListner{
+        void listChange();
+    }
+    private OnListChangeEventListner onListChangeEventListner;
+
     public final int ORDER_SIZE;
     private int mainIngridientCount = 0;
     private Adapter ingredientsAdapter;
@@ -172,6 +177,10 @@ public class Order {
         }
     }
 
+    public void setOnListChangeEventListner(OnListChangeEventListner listChangeEventListner){
+        this.onListChangeEventListner = listChangeEventListner;
+    }
+
     //Add set Remove
     public Ingredient get(int index){
         return ingredientsAdapter.getItem(index);
@@ -186,18 +195,23 @@ public class Order {
             }
         }
         ingredientsAdapter.add(new Ingredient(ingredient.getName(),ingredient.getType()));
+
+        if(onListChangeEventListner != null){onListChangeEventListner.listChange();}
     }
 
     public void set(int i, Ingredient ingredient){
-
         ingredientsAdapter.insert(new Ingredient(ingredient.getName(),ingredient.getType()),i);
 
+        if(onListChangeEventListner != null){onListChangeEventListner.listChange();}
     }
     public void remove(Ingredient ingridient){
         if(ingridient.getType() == Ingredient.INGREDIENT_MAIN){
             mainIngridientCount--;
         }
         ingredientsAdapter.remove(ingridient);
+
+        if(onListChangeEventListner != null){onListChangeEventListner.listChange();}
+
     }
     public void remove(int position) {
         remove(ingredientsAdapter.getItem(position));
