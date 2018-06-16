@@ -1,5 +1,6 @@
 package frozenyogurtbuilder.app;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.google.gson.Gson;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.concurrent.ExecutionException;
 
 import frozenyogurtbuilder.app.Exceptions.OrderIsFullException;
@@ -74,17 +76,23 @@ public class OrderProcess extends AppCompatActivity {
         buildMainCounter();
         buildProgressbar();
 
-        FirestoreLoader loader = new FirestoreLoader(new FirestoreLoader.TaskListner() {
+        FirestoreLoader loader = new FirestoreLoader(ingredientsCollection,new FirestoreLoader.TaskListner() {
             @Override
             public void onComplete(ArrayList<Ingredient> arrayList) {
 
+                //Functions that Require Successfull DB loading
                 sortIngridients(arrayList);
                 buildShoppingList();
                 buildButtons();
                 progressBar.setVisibility(View.INVISIBLE);
             }
+
+            @Override
+            public void onFail() {
+                showLoadingError();
+            }
         });
-        loader.execute(ingredientsCollection);
+        loader.execute();
 
     }
 
@@ -177,6 +185,20 @@ public class OrderProcess extends AppCompatActivity {
 
     private int getSize(){
         return  getIntent().getExtras().getInt(OrderChoosePricing.SIZE_KEY);
+    }
+    private void showLoadingError(){
+        final AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(OrderProcess.this);
+
+        builder.setTitle("Sorry")
+                .setMessage("Es ist ein Fehler beim Laden der Datenbank aufgetreten.\nBitte Überprüfen sie ihre Internett Verbindung")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
 }

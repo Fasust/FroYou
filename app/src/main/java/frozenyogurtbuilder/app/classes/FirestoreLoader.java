@@ -13,27 +13,29 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class FirestoreLoader extends AsyncTask<CollectionReference,Integer, ArrayList<Ingredient>> {
-    ArrayList<Ingredient> ingredients = new ArrayList<>();
+public class FirestoreLoader{
     public interface TaskListner {
         void onComplete(ArrayList<Ingredient> arrayList);
+        void onFail();
     }
     private FirestoreLoader.TaskListner listner;
 
-    public FirestoreLoader(FirestoreLoader.TaskListner listner){
-        super();
+    private ArrayList<Ingredient> ingredients = new ArrayList<>();
+    private CollectionReference collectionReference;
+
+
+    public FirestoreLoader(CollectionReference collectionReference, FirestoreLoader.TaskListner listner){
         this.listner = listner;
+        this.collectionReference = collectionReference;
     }
 
-    @Override
-    protected ArrayList<Ingredient> doInBackground(CollectionReference... collectionReferences) {
+    public void execute() {
 
-        collectionReferences[0].get()
+        collectionReference.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Ingredient ingredient =  new Ingredient(
@@ -45,13 +47,13 @@ public class FirestoreLoader extends AsyncTask<CollectionReference,Integer, Arra
                                 Log.d("Firebase: Loaded", ingredient.toString());
 
                             }
-
+                            listner.onComplete(ingredients);
                         } else {
                             Log.d("Firestore", "Error getting documents: ", task.getException());
+                            listner.onFail();
                         }
-                        listner.onComplete(ingredients);
+
                     }
                 });
-        return ingredients;
     }
 }
