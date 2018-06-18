@@ -20,16 +20,17 @@
 
         <TextView
             android:id="@+id/txt_ingredient"
-            android:layout_width="wrap_content"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/pacifico"
-            android:text="Test Zutat"
+            android:fontFamily="@font/opensans_bold"
+            android:maxWidth="210dp"
+            android:text="Zutat"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
