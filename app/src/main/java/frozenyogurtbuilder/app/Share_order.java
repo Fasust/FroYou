@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Share_order extends AppCompatActivity {
 
@@ -19,11 +20,19 @@ public class Share_order extends AppCompatActivity {
     private ImageView imageView_picture;
     static final int REQUEST_IMAGE_CAPTURE = 1111;
 
+    private TextView textView_creationText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_share_order);
+
+        final String shareList = getIntent().getExtras().getString(OrderFinal.ORDER_SHARE);
+        textView_creationText = findViewById(R.id.textView_creationText);
+        textView_creationText.setText(shareList);
+
+
 
         btn_useCamera = (ImageButton) findViewById(R.id.btn_useCamera);
         imageView_picture = (ImageView) findViewById(R.id.imageView_picture);
