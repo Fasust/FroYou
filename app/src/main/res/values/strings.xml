@@ -37,5 +37,6 @@
     <!-- Order Share -->
     <string name="ready_to_share" translatable="false">Deine Kreation ist bereit zum Teilen!</string>
     <string name="share_now" translatable="false">Jetzt veröffentlichen</string>
+    <string name="version_name">FroYouBETA</string>
 
 </resources>
