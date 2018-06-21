@@ -1,13 +1,23 @@
 apply plugin: 'com.android.application'
 
+def
+        versionMajor =
+                3
+def
+        versionMinor =
+                1
+def
+        versionBuild =
+                0
+
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "frozenyogurtbuilder.app"
         minSdkVersion 21
         targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        versionCode versionMajor * 100 + versionMinor * 10 + versionBuild
+        versionName "${versionMajor}.${versionMinor} beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
