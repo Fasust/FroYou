@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     //Buttons
     private Button btn_goTo_reGa;
     private Button btn_goTo_orChPr;
-    private Button btn_goTo_imp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
