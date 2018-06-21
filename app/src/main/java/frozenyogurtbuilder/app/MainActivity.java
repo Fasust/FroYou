@@ -43,16 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        btn_goTo_imp = findViewById(R.id.btn_goTo_imp);
-        btn_goTo_imp.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, Impressum.class));
-            }
-
-        });
-
     }
 
     public void showPopup(View v) {
