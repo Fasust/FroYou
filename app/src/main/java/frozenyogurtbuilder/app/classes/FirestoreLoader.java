@@ -44,12 +44,12 @@ public class FirestoreLoader{
 
                                 ingredients.add(ingredient);
 
-                                Log.d("Firebase: Loaded", ingredient.toString());
+                                //Log.d("Firebase: Loaded", ingredient.toString());
 
                             }
                             listner.onComplete(ingredients);
                         } else {
-                            Log.d("Firestore", "Error getting documents: ", task.getException());
+                            //Log.d("Firestore", "Error getting documents: ", task.getException());
                             listner.onFail();
                         }
 
