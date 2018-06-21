@@ -55,25 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-   /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.popup_more, menu);
-        return super.onCreateOptionsMenu(menu);
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if(id==R.id.id_impressum) {
-
-            startActivity(new Intent(MainActivity.this, Impressum.class));
-            return true;
-        }
-        return false;
-    }*/
-
     public void showPopup(View v) {
         PopupMenu popup = new PopupMenu(this, v);
         MenuInflater inflater = popup.getMenuInflater();
