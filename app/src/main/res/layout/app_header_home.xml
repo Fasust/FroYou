@@ -35,5 +35,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/logo_home"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/three_dots" />
+        app:srcCompat="@drawable/three_dots"
+        android:onClick="showPopup"/>
 </android.support.constraint.ConstraintLayout>
