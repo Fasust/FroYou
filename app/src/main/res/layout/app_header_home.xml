@@ -22,4 +22,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_froyou" />
+
+    <ImageButton
+        android:id="@+id/imageButton_threeDots"
+        android:layout_width="53dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/logo_home"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/three_dots" />
 </android.support.constraint.ConstraintLayout>
