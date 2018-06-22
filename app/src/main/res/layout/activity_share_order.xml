@@ -34,7 +34,7 @@
             app:layout_constraintTop_toBottomOf="@+id/app_header" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView_recepieName"
             android:layout_width="292dp"
             android:layout_height="31dp"
             android:layout_marginEnd="8dp"
@@ -66,7 +66,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_creationText" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_descritopn" />
 
         <ImageButton
             android:id="@+id/btn_useCamera"
@@ -89,7 +89,7 @@
             app:srcCompat="@drawable/ic_camera" />
 
         <TextView
-            android:id="@+id/textView_creationText"
+            android:id="@+id/textView_descritopn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -117,7 +117,7 @@
             android:textColor="@color/colorBase"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_recepieName" />
 
 
     </android.support.constraint.ConstraintLayout>

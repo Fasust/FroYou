@@ -22,27 +22,11 @@ public class FSRecepieLoader extends FSLoader<ArrayList<Recipe>> {
 
     @Override
     void dowithEachDocument(QueryDocumentSnapshot document) {
-        ArrayList<Ingredient> ingredients = new ArrayList<>();
-
-        ArrayList<HashMap> ingredientsHashList = (ArrayList<HashMap>) document.get("ingridients");
-        for(HashMap ingridientHash : ingredientsHashList){
-            try {
-                Ingredient ingredient = new Ingredient(
-                        (String) ingridientHash.get("name"),
-                        ((String) ingridientHash.get("typ")).charAt(0));
-
-                ingredients.add(ingredient);
-
-            } catch (Exception e) {
-                ingredients.add(new Ingredient("ERROR",'s'));
-            }
-        }
-
 
         Recipe recipe = new Recipe(
                 (String)document.get("name"),
-                (String)document.get( "desription"),
-                ingredients
+                (String)document.get( "description"),
+                (String)document.get("ingredients")
         );
 
         result.add(recipe);

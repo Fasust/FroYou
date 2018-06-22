@@ -9,8 +9,7 @@
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="match_parent">
 
         <include
             android:id="@+id/app_header"
@@ -35,14 +34,13 @@
             app:layout_constraintTop_toBottomOf="@+id/app_header" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView_recepieName"
             android:layout_width="292dp"
             android:layout_height="49dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/pacifico"
-            android:text="Schoko-Power-Cream"
             android:textColor="@color/colorBase"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,20 +49,34 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView_recipePicture" />
 
         <TextView
-            android:id="@+id/textView_creationText"
+            android:id="@+id/textView_descritopn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:lineSpacingExtra="5dp"
             android:textColor="@color/colorBase"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_recepieName" />
+
+        <TextView
+            android:id="@+id/textview_ingrididentsList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/colorBase"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_descritopn"
+            app:layout_constraintVertical_bias="0.0" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

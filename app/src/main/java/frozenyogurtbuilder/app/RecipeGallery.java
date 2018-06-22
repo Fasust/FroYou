@@ -28,6 +28,7 @@ import frozenyogurtbuilder.app.classes.Recipe;
 
 public class RecipeGallery extends AppCompatActivity {
 
+    public static String RECIPE_KEY = "recipe";
     private ArrayList<Recipe> recipeList = new ArrayList<>();
 
     //Firestore
@@ -64,7 +65,7 @@ public class RecipeGallery extends AppCompatActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 // Get the data item for this position
-                Recipe recipe = getItem(position);
+                final Recipe recipe = getItem(position);
                 // Check if an existing view is being reused, otherwise inflate the view
                 if (convertView == null) {
                     convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_recipegallery, parent, false);
@@ -81,6 +82,7 @@ public class RecipeGallery extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(RecipeGallery.this, RecipeDetail.class);
+                        intent.putExtra(RECIPE_KEY,recipe);
                         startActivity(intent);
                     }
                 });
