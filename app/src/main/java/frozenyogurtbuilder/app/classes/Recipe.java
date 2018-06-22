@@ -10,6 +10,8 @@ import android.os.Parcelable;
 
 import java.net.ConnectException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Recipe implements Parcelable {
     private String name;
@@ -72,4 +74,11 @@ public class Recipe implements Parcelable {
         this.image = image;
     }
 
+    public Map<String, Object> toHash(){
+        Map<String, Object> hash = new HashMap<>();
+        hash.put("name", getName());
+        hash.put("description", getDesription());
+        hash.put("ingredients", getIngredients());
+        return hash;
+    }
 }

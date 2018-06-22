@@ -7,11 +7,24 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.StorageReference;
+
+import frozenyogurtbuilder.app.classes.Recipe;
+
 public class Share_order extends AppCompatActivity {
+
+    //Firestore
+    private StorageReference mStorageRef;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference recipeCollection = db.collection("recipes");
 
     private ImageButton btn_useCamera;
     private ImageView imageView_picture;
@@ -29,6 +42,19 @@ public class Share_order extends AppCompatActivity {
         textView_creationText = findViewById(R.id.textView_descritopn);
         textView_creationText.setText(shareList);
 
+        final EditText nameEdit = findViewById(R.id.editText_name);
+        Button share = findViewById(R.id.btn_share);
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = nameEdit.getText().toString();
+                String description = "Test Decription";
+                String ingridients = shareList;
+                Recipe recipe = new Recipe(name,description,ingridients);
+
+                recipeCollection.add( recipe.toHash());
+            }
+        });
 
 
         btn_useCamera = (ImageButton) findViewById(R.id.btn_useCamera);

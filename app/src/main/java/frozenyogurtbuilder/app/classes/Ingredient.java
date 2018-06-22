@@ -1,5 +1,8 @@
 package frozenyogurtbuilder.app.classes;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Ingredient {
     private String name;
     private char type;
@@ -37,4 +40,5 @@ public class Ingredient {
     public void setType(char type) {
         this.type = type;
     }
+
 }
