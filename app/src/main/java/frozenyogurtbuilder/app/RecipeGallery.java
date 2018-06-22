@@ -32,6 +32,8 @@ public class RecipeGallery extends AppCompatActivity {
         setContentView(R.layout.activity_recipegallery);
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
+        builListView();
+
         recipeList.add(new Recipe("Black Perly", "Dark but great",new ArrayList<Ingredient>()));
         recipeList.add(new Recipe("Pink Perly", "Pink but great",new ArrayList<Ingredient>()));
         recipeList.add(new Recipe("White Perly", "White but great",new ArrayList<Ingredient>()));
