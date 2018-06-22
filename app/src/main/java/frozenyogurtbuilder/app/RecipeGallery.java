@@ -74,6 +74,9 @@ public class RecipeGallery extends AppCompatActivity {
                 name.setText(recipe.getName());
 
                 ImageButton imageButton = convertView.findViewById(R.id.imageView_recipePicture);
+                if(recipe.getImage() != null) {
+                    imageButton.setImageBitmap(recipe.getImage());
+                }
                 imageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

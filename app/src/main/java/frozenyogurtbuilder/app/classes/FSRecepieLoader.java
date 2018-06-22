@@ -1,5 +1,6 @@
 package frozenyogurtbuilder.app.classes;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.google.firebase.firestore.CollectionReference;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FSRecepieLoader extends FSLoader<ArrayList<Recipe>> {
+
     public FSRecepieLoader(CollectionReference collectionReference, TaskListner listner) {
         super(collectionReference, listner);
         result = new ArrayList<>();
@@ -36,8 +38,6 @@ public class FSRecepieLoader extends FSLoader<ArrayList<Recipe>> {
             }
         }
 
-
-        Log.d("Ingridients",ingredients.toString());
 
         Recipe recipe = new Recipe(
                 (String)document.get("name"),
