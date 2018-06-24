@@ -60,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_header_home"
-        app:srcCompat="@drawable/builder_image" />
+        app:srcCompat="@drawable/builder_icon" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -73,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_goTo_orChPr"
-        app:srcCompat="@drawable/receipt_image" />
+        app:srcCompat="@drawable/reciept_icon" />
 
 
 </android.support.constraint.ConstraintLayout>
