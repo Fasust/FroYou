@@ -1,5 +1,6 @@
 package frozenyogurtbuilder.app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     //Buttons
     private Button btn_goTo_reGa;
     private Button btn_goTo_orChPr;
-    private Button btn_goTo_imp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -14,17 +14,27 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
+import frozenyogurtbuilder.app.classes.FSLoader;
+import frozenyogurtbuilder.app.classes.FSRecepieLoader;
 import frozenyogurtbuilder.app.classes.Ingredient;
 import frozenyogurtbuilder.app.classes.Recipe;
 
 public class RecipeGallery extends AppCompatActivity {
-    private StorageReference mStorageRef;
+
+    public static String RECIPE_KEY = "recipe";
     private ArrayList<Recipe> recipeList = new ArrayList<>();
+
+    //Firestore
+    private StorageReference mStorageRef;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference recipeCollection = db.collection("recipes");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +42,20 @@ public class RecipeGallery extends AppCompatActivity {
         setContentView(R.layout.activity_recipegallery);
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
-        recipeList.add(new Recipe("Black Perly", "Dark but great",new ArrayList<Ingredient>()));
-        recipeList.add(new Recipe("Pink Perly", "Pink but great",new ArrayList<Ingredient>()));
-        recipeList.add(new Recipe("White Perly", "White but great",new ArrayList<Ingredient>()));
+        FSRecepieLoader loader = new FSRecepieLoader(recipeCollection, new FSLoader.TaskListner<ArrayList<Recipe>>() {
+            @Override
+            public void onComplete(ArrayList<Recipe> result) {
+                recipeList = result;
+                builListView();
+            }
+
+            @Override
+            public void onFail() {
+
+            }
+        });
+        loader.execute();
+
     }
 
     private void builListView(){
@@ -44,7 +65,7 @@ public class RecipeGallery extends AppCompatActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 // Get the data item for this position
-                Recipe recipe = getItem(position);
+                final Recipe recipe = getItem(position);
                 // Check if an existing view is being reused, otherwise inflate the view
                 if (convertView == null) {
                     convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_recipegallery, parent, false);
@@ -54,10 +75,14 @@ public class RecipeGallery extends AppCompatActivity {
                 name.setText(recipe.getName());
 
                 ImageButton imageButton = convertView.findViewById(R.id.imageView_recipePicture);
+                if(recipe.getImage() != null) {
+                    imageButton.setImageBitmap(recipe.getImage());
+                }
                 imageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(RecipeGallery.this, RecipeDetail.class);
+                        intent.putExtra(RECIPE_KEY,recipe);
                         startActivity(intent);
                     }
                 });

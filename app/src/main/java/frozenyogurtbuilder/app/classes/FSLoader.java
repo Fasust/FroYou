@@ -1,9 +1,6 @@
 package frozenyogurtbuilder.app.classes;
 
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
-import android.util.Log;
-import android.widget.RelativeLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -11,26 +8,21 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
-
-public class FirestoreLoader{
-    public interface TaskListner {
-        void onComplete(ArrayList<Ingredient> arrayList);
+public abstract class FSLoader<T> {
+    public interface TaskListner<T> {
+        void onComplete(T result);
         void onFail();
     }
-    private FirestoreLoader.TaskListner listner;
-
-    private ArrayList<Ingredient> ingredients = new ArrayList<>();
+    protected T result;
+    private FSIngridientsListLoader.TaskListner listner;
     private CollectionReference collectionReference;
 
-
-    public FirestoreLoader(CollectionReference collectionReference, FirestoreLoader.TaskListner listner){
+    public FSLoader(CollectionReference collectionReference, FSIngridientsListLoader.TaskListner listner){
         this.listner = listner;
         this.collectionReference = collectionReference;
     }
 
     public void execute() {
-
         collectionReference.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -38,22 +30,15 @@ public class FirestoreLoader{
                         if (task.isSuccessful()) {
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Ingredient ingredient =  new Ingredient(
-                                        (String) document.get("name"),
-                                        ((String) document.get("type")).charAt(0));
-
-                                ingredients.add(ingredient);
-
-                                //Log.d("Firebase: Loaded", ingredient.toString());
-
+                                dowithEachDocument(document);
                             }
-                            listner.onComplete(ingredients);
+                            listner.onComplete(result);
                         } else {
-                            //Log.d("Firestore", "Error getting documents: ", task.getException());
                             listner.onFail();
                         }
 
                     }
                 });
     }
+    abstract void dowithEachDocument(QueryDocumentSnapshot document);
 }

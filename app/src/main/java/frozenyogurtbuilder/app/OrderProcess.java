@@ -2,39 +2,24 @@ package frozenyogurtbuilder.app;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.gson.Gson;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.concurrent.ExecutionException;
 
-import frozenyogurtbuilder.app.Exceptions.OrderIsFullException;
-import frozenyogurtbuilder.app.classes.AlertSelectBox;
-import frozenyogurtbuilder.app.classes.FirestoreLoader;
+import frozenyogurtbuilder.app.classes.FSIngridientsListLoader;
+import frozenyogurtbuilder.app.classes.FSLoader;
 import frozenyogurtbuilder.app.classes.Ingredient;
-import frozenyogurtbuilder.app.classes.IngredientSelectBox;
 import frozenyogurtbuilder.app.classes.Order;
-import frozenyogurtbuilder.app.classes.RecourceLoader;
 import frozenyogurtbuilder.app.classes.external.CustomListView;
 
 public class OrderProcess extends AppCompatActivity {
@@ -71,7 +56,7 @@ public class OrderProcess extends AppCompatActivity {
         //initFirebase();
         buildProgressbar();
 
-        FirestoreLoader loader = new FirestoreLoader(ingredientsCollection,new FirestoreLoader.TaskListner() {
+        FSIngridientsListLoader loader = new FSIngridientsListLoader(ingredientsCollection,new FSLoader.TaskListner<ArrayList<Ingredient>>() {
             @Override
             public void onComplete(ArrayList<Ingredient> arrayList) {
 

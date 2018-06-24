@@ -64,7 +64,7 @@ public class OrderFinal extends AppCompatActivity {
             }
         });
 
-        textView_creationText = findViewById(R.id.textView_creationText);
+        textView_creationText = findViewById(R.id.textView_descritopn);
         textView_creationText.setText(orderList);
     }
 }
