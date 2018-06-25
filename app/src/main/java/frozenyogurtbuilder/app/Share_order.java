@@ -26,11 +26,16 @@ public class Share_order extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference recipeCollection = db.collection("recipes");
 
+    //Views
+    private TextView textView_creationText;
     private ImageButton btn_useCamera;
     private ImageView imageView_picture;
-    static final int REQUEST_IMAGE_CAPTURE = 1111;
+    private EditText nameEdit;
+    private EditText descEdit;
 
-    private TextView textView_creationText;
+    static final int REQUEST_IMAGE_CAPTURE = 1111;
+    private Bitmap photo;
+    private String ingridientsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,29 +43,30 @@ public class Share_order extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_share_order);
 
-        final String shareList = getIntent().getExtras().getString(OrderFinal.ORDER_SHARE);
-        textView_creationText = findViewById(R.id.textView_descritopn);
-        textView_creationText.setText(shareList);
-
-        final EditText nameEdit = findViewById(R.id.editText_name);
-        final EditText descEdit = findViewById(R.id.editText_desc);
-        Button share = findViewById(R.id.btn_share);
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = nameEdit.getText().toString();
-                String description = descEdit.getText().toString();
-                String ingridients = shareList;
-                Recipe recipe = new Recipe(name,description,ingridients);
-
-                recipeCollection.add( recipe.toHash());
-            }
-        });
-
-
-        btn_useCamera = (ImageButton) findViewById(R.id.btn_useCamera);
         imageView_picture = (ImageView) findViewById(R.id.imageView_picture);
+        nameEdit = findViewById(R.id.editText_name);
+        descEdit = findViewById(R.id.editText_desc);
 
+        buildIngridentsList();
+        buildButtons();
+        
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            if (data != null) {
+                Bundle extras = data.getExtras();
+                photo = (Bitmap) extras.get("data");
+                data.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION,ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+                imageView_picture.setImageBitmap(photo);
+            }
+        }
+    }
+
+    private void buildButtons(){
+        btn_useCamera = (ImageButton) findViewById(R.id.btn_useCamera);
         btn_useCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,18 +77,23 @@ public class Share_order extends AppCompatActivity {
 
             }
         });
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            if (data != null) {
-                Bundle extras = data.getExtras();
-                Bitmap photo = (Bitmap) extras.get("data");
-                data.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION,ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        Button share = findViewById(R.id.btn_share);
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = nameEdit.getText().toString();
+                String description = descEdit.getText().toString();
+                String ingridients = ingridientsList;
+                Recipe recipe = new Recipe(name,description,ingridients);
 
-                imageView_picture.setImageBitmap(photo);
+                recipeCollection.add( recipe.toHash());
             }
-        }
+        });
+    }
+    private void buildIngridentsList(){
+        ingridientsList = getIntent().getExtras().getString(OrderFinal.ORDER_SHARE);
+        textView_creationText = findViewById(R.id.textView_descritopn);
+        textView_creationText.setText(ingridientsList);
     }
 }
