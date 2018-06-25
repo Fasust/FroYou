@@ -43,12 +43,13 @@ public class Share_order extends AppCompatActivity {
         textView_creationText.setText(shareList);
 
         final EditText nameEdit = findViewById(R.id.editText_name);
+        final EditText descEdit = findViewById(R.id.editText_desc);
         Button share = findViewById(R.id.btn_share);
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = nameEdit.getText().toString();
-                String description = "Test Decription";
+                String description = descEdit.getText().toString();
                 String ingridients = shareList;
                 Recipe recipe = new Recipe(name,description,ingridients);
 
@@ -76,7 +77,8 @@ public class Share_order extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (data != null) {
-                Bitmap photo = (Bitmap) data.getExtras().get("data");
+                Bundle extras = data.getExtras();
+                Bitmap photo = (Bitmap) extras.get("data");
                 data.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION,ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
                 imageView_picture.setImageBitmap(photo);

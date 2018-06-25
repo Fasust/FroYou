@@ -37,6 +37,10 @@
     <!-- Order Share -->
     <string name="ready_to_share" translatable="false">Deine Kreation ist bereit zum Teilen!</string>
     <string name="share_now" translatable="false">Jetzt veröffentlichen</string>
+    <string name="share_name">Name</string>
+    <string name="share_description">Beschreibung</string>
+
+    <!-- Impressum/Version -->
     <string name="version_name">FroYouBETA</string>
     <string name="impressum_text">Dies ist ein studentisches Projekt von Julian Schoemaker, Sebastian Faust und Dario Giuseppe Lazzara. Das Projekt wurde im Rahmen des Modules Mobile Computing der Technischen Hochschule in Köln bearbeitet.</string>
     <string name="impressum_text2">Datenschutzerklärung: https://docs.google.com/document/d/1GGUF8aZaRnqmyE2o-ZFcGlyVy2f0fw2nlYLq7iQ-TQc/edit?usp=sharing</string>
