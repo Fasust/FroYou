@@ -59,7 +59,7 @@
         <activity
             android:name=".Share_order"
             android:screenOrientation="portrait"
-            android:configChanges="orientation" />
+            android:configChanges="orientation|keyboardHidden|screenSize" />
         <activity
             android:name=".Impressum"
             android:screenOrientation="portrait" />
