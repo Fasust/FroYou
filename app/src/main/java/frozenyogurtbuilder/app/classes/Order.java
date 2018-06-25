@@ -25,7 +25,7 @@ public class Order {
     public final int ORDER_SIZE;
     private int mainIngridientCount = 0;
     private Adapter ingredientsAdapter;
-    private AlertDialog.Builder exceptionAlert;
+    private BaseErrorMessage exceptionAlert;
     private Context context;
     private ArrayList<Ingredient> ingredientList;
 
@@ -99,15 +99,7 @@ public class Order {
     }
 
     private void buildExceptionAlertBox(){
-        exceptionAlert = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.Theme_AppCompat));
-        exceptionAlert.setTitle("Tut uns Leid")
-                .setMessage("Leider hast du das Limet an Hauptzutaten erreicht ( "+ OrderProcess.ORDER_SIZE +" )\n\nFalls du mehr Hauptzutaten haben möchteste wähle bitte eine andere Größe aus.")
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert);
+        exceptionAlert = new BaseErrorMessage("Sie können leider nur " + ORDER_SIZE+ " Hauptzutaten Auswählen, Wenn sie mehr haben möchten wählen sie bitte eine andere größe aus","Sorry",context);
     }
     private void buildSelectBoxes(){
 

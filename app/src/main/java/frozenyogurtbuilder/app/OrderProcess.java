@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 import java.util.ArrayList;
 
+import frozenyogurtbuilder.app.classes.BaseErrorMessage;
 import frozenyogurtbuilder.app.classes.FSIngridientsListLoader;
 import frozenyogurtbuilder.app.classes.FSLoader;
 import frozenyogurtbuilder.app.classes.Ingredient;
@@ -173,18 +174,8 @@ public class OrderProcess extends AppCompatActivity {
         return  getIntent().getExtras().getInt(OrderChoosePricing.SIZE_KEY);
     }
     private void showLoadingError(){
-        final AlertDialog.Builder builder;
-        builder = new AlertDialog.Builder(OrderProcess.this);
-
-        builder.setTitle("Sorry")
-                .setMessage("Es ist ein Fehler beim Laden der Datenbank aufgetreten.\nBitte Überprüfen sie ihre Internett Verbindung")
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show();
+        BaseErrorMessage loadingError = new BaseErrorMessage("Es ist ein Fehler beim Laden der Datenbank aufgetreten","Sorry",OrderProcess.this);
+        loadingError.show();
     }
 
 }
