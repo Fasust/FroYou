@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +25,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
+import frozenyogurtbuilder.app.classes.BaseErrorMessage;
 import frozenyogurtbuilder.app.classes.FSImageLoader;
 import frozenyogurtbuilder.app.classes.FSLoader;
 import frozenyogurtbuilder.app.classes.FSRecepieLoader;
@@ -34,6 +36,9 @@ public class RecipeGallery extends AppCompatActivity {
 
     public static String RECIPE_KEY = "recipe";
     private ArrayList<Recipe> recipeList = new ArrayList<>();
+
+    //View
+    private ProgressBar progressBar;
 
     //Firestore
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -49,17 +54,20 @@ public class RecipeGallery extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipegallery);
         initStorage();
+        buildProgressbar();
 
         FSRecepieLoader loader = new FSRecepieLoader(recipeCollection, new FSLoader.TaskListner<ArrayList<Recipe>>() {
             @Override
             public void onComplete(ArrayList<Recipe> result) {
+                progressBar.setVisibility(View.INVISIBLE);
                 recipeList = result;
                 builListView();
             }
 
             @Override
             public void onFail() {
-
+                BaseErrorMessage loadingError = new BaseErrorMessage("Es ist ein Fehler beim Laden der Datenbank aufgetreten","Sorry",RecipeGallery.this);
+                loadingError.show();
             }
         });
         loader.execute();
@@ -127,5 +135,8 @@ public class RecipeGallery extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
 
+    }
+    private void buildProgressbar(){
+        progressBar = findViewById(R.id.gallery_progressBar);
     }
 }
