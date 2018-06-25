@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 public class FSRecepieLoader extends FSLoader<ArrayList<Recipe>> {
 
@@ -28,6 +29,13 @@ public class FSRecepieLoader extends FSLoader<ArrayList<Recipe>> {
                 (String)document.get( "description"),
                 (String)document.get("ingredients")
         );
+        try {
+            String image = (String)document.get("image");
+            recipe.setImagePath(image);
+
+        }catch (Exception e){
+
+        }
 
         result.add(recipe);
     }

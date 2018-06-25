@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,18 +14,31 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
+import java.util.UUID;
 
 import frozenyogurtbuilder.app.classes.Recipe;
 
 public class Share_order extends AppCompatActivity {
 
     //Firestore
-    private StorageReference mStorageRef;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference recipeCollection = db.collection("recipes");
+
+    //Firestroage
+    private FirebaseStorage storage;
+    private StorageReference storageRef;
+    FirebaseAuth mAuth;
 
     //Views
     private TextView textView_creationText;
@@ -34,7 +48,7 @@ public class Share_order extends AppCompatActivity {
     private EditText descEdit;
 
     static final int REQUEST_IMAGE_CAPTURE = 1111;
-    private Bitmap photo;
+    private Bitmap photo = null;
     private String ingridientsList;
 
     @Override
@@ -43,13 +57,14 @@ public class Share_order extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_share_order);
 
-        imageView_picture = (ImageView) findViewById(R.id.imageView_picture);
+        imageView_picture = findViewById(R.id.imageView_picture);
         nameEdit = findViewById(R.id.editText_name);
         descEdit = findViewById(R.id.editText_desc);
 
+        initStorage();
         buildIngridentsList();
         buildButtons();
-        
+
     }
 
     @Override
@@ -65,6 +80,14 @@ public class Share_order extends AppCompatActivity {
         }
     }
 
+    private void initStorage(){
+        //mAuth = FirebaseAuth.getInstance();
+       // mAuth.signInAnonymously();
+
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
+
+    }
     private void buildButtons(){
         btn_useCamera = (ImageButton) findViewById(R.id.btn_useCamera);
         btn_useCamera.setOnClickListener(new View.OnClickListener() {
@@ -85,9 +108,16 @@ public class Share_order extends AppCompatActivity {
                 String name = nameEdit.getText().toString();
                 String description = descEdit.getText().toString();
                 String ingridients = ingridientsList;
+
                 Recipe recipe = new Recipe(name,description,ingridients);
 
-                recipeCollection.add( recipe.toHash());
+                if(photo != null){
+                    String imagePath = "recipe_images/" + UUID.randomUUID().toString();
+                    uploadImage(photo, imagePath);
+                    recipe.setImagePath(imagePath);
+                }
+
+                recipeCollection.add(recipe.toHash());
             }
         });
     }
@@ -95,5 +125,25 @@ public class Share_order extends AppCompatActivity {
         ingridientsList = getIntent().getExtras().getString(OrderFinal.ORDER_SHARE);
         textView_creationText = findViewById(R.id.textView_descritopn);
         textView_creationText.setText(ingridientsList);
+    }
+    private void uploadImage(Bitmap image,String path){
+        StorageReference imageRef = storageRef.child(path);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = imageRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+            }
+        });
     }
 }

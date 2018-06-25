@@ -17,12 +17,18 @@ public class Recipe implements Parcelable {
     private String name;
     private String desription;
     private String ingredients;
-    private Bitmap image = null;
+    private String imagePath = null;
 
     public Recipe(String name, String desription, String ingredients) {
         this.name = name;
         this.desription = desription;
         this.ingredients = ingredients;
+    }
+    public Recipe(String name, String desription, String ingredients, String imagePath) {
+        this.name = name;
+        this.desription = desription;
+        this.ingredients = ingredients;
+        this.imagePath = imagePath;
     }
 
 
@@ -30,7 +36,7 @@ public class Recipe implements Parcelable {
         name = in.readString();
         desription = in.readString();
         ingredients = in.readString();
-        image = in.readParcelable(Bitmap.class.getClassLoader());
+        imagePath = in.readString();
     }
     @Override
     public int describeContents() {
@@ -42,7 +48,7 @@ public class Recipe implements Parcelable {
         parcel.writeString(name);
         parcel.writeString(desription);
         parcel.writeString(ingredients);
-        parcel.writeParcelable(image, i);
+        parcel.writeString(imagePath);
     }
 
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
@@ -67,11 +73,11 @@ public class Recipe implements Parcelable {
     public String getIngredients() {
         return ingredients;
     }
-    public Bitmap getImage() {
-        return image;
+    public String getImagePath(){
+        return imagePath;
     }
-    public void setImage(Bitmap image) {
-        this.image = image;
+    public void setImagePath(String imagePath){
+        this.imagePath = imagePath;
     }
 
     public Map<String, Object> toHash(){
@@ -79,6 +85,7 @@ public class Recipe implements Parcelable {
         hash.put("name", getName());
         hash.put("description", getDesription());
         hash.put("ingredients", getIngredients());
+        hash.put("image", getImagePath());
         return hash;
     }
 }

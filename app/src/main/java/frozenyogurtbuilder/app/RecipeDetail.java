@@ -1,11 +1,14 @@
 package frozenyogurtbuilder.app;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import frozenyogurtbuilder.app.classes.FSImageLoader;
 import frozenyogurtbuilder.app.classes.Recipe;
 
 public class RecipeDetail extends AppCompatActivity {
@@ -23,16 +26,28 @@ public class RecipeDetail extends AppCompatActivity {
         TextView txtName = findViewById(R.id.textView_recepieName);
         TextView txtDescription = findViewById(R.id.textView_descritopn);
         TextView txtIngridents = findViewById(R.id.textview_ingrididentsList);
-        ImageView image = findViewById(R.id.imageView_recipePicture);
+        final ImageView image = findViewById(R.id.imageView_recipePicture);
 
 
         //set Views
         txtName.setText(recipe.getName());
         txtDescription.setText(recipe.getDesription());
         txtIngridents.setText(recipe.getIngredients());
-        if(image != null){
-            image.setImageBitmap(recipe.getImage());
-        }
+        if (recipe.getImagePath() != null) {
+            FSImageLoader loader = new FSImageLoader(recipe.getImagePath(), new FSImageLoader.onFishLoading() {
+                @Override
+                public void onComplete(byte[] bytes) {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    image.setImageBitmap(bitmap);
+                }
 
+                @Override
+                public void onFail() {
+
+                }
+            });
+            loader.load();
+
+        }
     }
 }

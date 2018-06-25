@@ -1,6 +1,8 @@
 package frozenyogurtbuilder.app;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -21,6 +24,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
+import frozenyogurtbuilder.app.classes.FSImageLoader;
 import frozenyogurtbuilder.app.classes.FSLoader;
 import frozenyogurtbuilder.app.classes.FSRecepieLoader;
 import frozenyogurtbuilder.app.classes.Ingredient;
@@ -32,15 +36,19 @@ public class RecipeGallery extends AppCompatActivity {
     private ArrayList<Recipe> recipeList = new ArrayList<>();
 
     //Firestore
-    private StorageReference mStorageRef;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference recipeCollection = db.collection("recipes");
+
+    //Firestroage
+    private FirebaseStorage storage;
+    private StorageReference storageRef;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipegallery);
-        mStorageRef = FirebaseStorage.getInstance().getReference();
+        initStorage();
 
         FSRecepieLoader loader = new FSRecepieLoader(recipeCollection, new FSLoader.TaskListner<ArrayList<Recipe>>() {
             @Override
@@ -71,13 +79,30 @@ public class RecipeGallery extends AppCompatActivity {
                     convertView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_recipegallery, parent, false);
                 }
 
+                //SET Text-----------------------------------------------------------------
                 TextView name = convertView.findViewById(R.id.txt_recipeName);
                 name.setText(recipe.getName());
 
-                ImageButton imageButton = convertView.findViewById(R.id.imageView_recipePicture);
-                if(recipe.getImage() != null) {
-                    imageButton.setImageBitmap(recipe.getImage());
+                //SET Imagebutton----------------------------------------------------------
+                final ImageButton imageButton = convertView.findViewById(R.id.imageView_recipePicture);
+                if(recipe.getImagePath() != null) {
+                    FSImageLoader loader = new FSImageLoader(recipe.getImagePath(), new FSImageLoader.onFishLoading() {
+                        @Override
+                        public void onComplete(byte[] bytes) {
+                            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                            imageButton.setImageBitmap(bitmap);
+                        }
+
+                        @Override
+                        public void onFail() {
+
+                        }
+                    });
+                    loader.load();
+
                 }
+
+                //ON Click------------------------------------------------------
                 imageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -93,6 +118,14 @@ public class RecipeGallery extends AppCompatActivity {
             }
         };
         listView.setAdapter(adapter);
+
+    }
+    private void initStorage(){
+        //mAuth = FirebaseAuth.getInstance();
+        // mAuth.signInAnonymously();
+
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
 
     }
 }
