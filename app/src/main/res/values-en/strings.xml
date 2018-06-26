@@ -36,8 +36,11 @@
     <!-- Order Share -->
     <string name="ready_to_share">Your creation is ready to share!</string>
     <string name="share_now">Share now</string>
-    <string name="share_name">Name</string>
+    <string name="share_name">Name of the Yogurt</string>
     <string name="share_description">Description...</string>
+
+    <!-- Recipe Gallery / Detail -->
+    <string name="back_to_gallery">Back to gallery</string>
 
     <!-- Impressum/Version -->
     <string name="version_name">FroYouBETA</string>

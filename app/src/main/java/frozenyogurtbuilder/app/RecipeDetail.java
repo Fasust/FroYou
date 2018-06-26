@@ -1,10 +1,13 @@
 package frozenyogurtbuilder.app;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +31,8 @@ public class RecipeDetail extends AppCompatActivity {
         TextView txtIngridents = findViewById(R.id.textview_ingrididentsList);
         final ImageView image = findViewById(R.id.imageView_recipePicture);
 
+        Button btn_toGallery = findViewById(R.id.btn_toGallery);
+
 
         //set Views
         txtName.setText(recipe.getName());
@@ -49,5 +54,14 @@ public class RecipeDetail extends AppCompatActivity {
             loader.load();
 
         }
+
+        btn_toGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RecipeDetail.this, RecipeGallery.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

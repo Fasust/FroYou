@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:lineSpacingExtra="5dp"
             android:textColor="@color/colorBase"
             android:textSize="14sp"
@@ -77,6 +77,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_descritopn"
             app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/btn_toGallery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/buttonshape"
+            android:fontFamily="@font/pacifico"
+            android:text="@string/back_to_gallery"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_descritopn" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

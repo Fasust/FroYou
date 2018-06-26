@@ -51,6 +51,9 @@ public class Share_order extends AppCompatActivity {
     private Bitmap photo = null;
     private String ingridientsList;
 
+    public static String RECIPE_KEY = "recipe";
+    public static String photoTmp = "photoTmp";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +121,13 @@ public class Share_order extends AppCompatActivity {
                 }
 
                 recipeCollection.add(recipe.toHash());
+
+
+                Intent intent = new Intent(Share_order.this, RecipeDetail.class);
+                intent.putExtra(RECIPE_KEY,recipe);
+                startActivity(intent);
+
+
             }
         });
     }
