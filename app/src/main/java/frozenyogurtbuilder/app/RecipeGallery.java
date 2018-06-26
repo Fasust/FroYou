@@ -142,4 +142,14 @@ public class RecipeGallery extends AppCompatActivity {
     private void buildProgressbar(){
         progressBar = findViewById(R.id.gallery_progressBar);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(RecipeGallery.this, MainActivity.class));
+        finish();
+
+    }
+
 }

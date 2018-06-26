@@ -31,7 +31,7 @@ public class RecipeDetail extends AppCompatActivity {
         TextView txtIngridents = findViewById(R.id.textview_ingrididentsList);
         final ImageView image = findViewById(R.id.imageView_recipePicture);
 
-        Button btn_toGallery = findViewById(R.id.btn_toGallery);
+        //Button btn_toGallery = findViewById(R.id.btn_toGallery);
 
 
         //set Views
@@ -55,6 +55,7 @@ public class RecipeDetail extends AppCompatActivity {
 
         }
 
+        /*
         btn_toGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +63,16 @@ public class RecipeDetail extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        */
+
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        startActivity(new Intent(RecipeDetail.this, RecipeGallery.class));
+        finish();
 
     }
 }
