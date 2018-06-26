@@ -38,6 +38,7 @@
     <string name="share_now">Share now</string>
     <string name="share_name">Name of the Yogurt</string>
     <string name="share_description">Description...</string>
+    <string name="share_pleasePhoto">Please take a photo!</string>
 
     <!-- Recipe Gallery / Detail -->
     <string name="back_to_gallery">Back to gallery</string>

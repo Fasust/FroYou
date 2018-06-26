@@ -39,6 +39,7 @@
     <string name="share_now" translatable="false">Jetzt veröffentlichen</string>
     <string name="share_name">Name des Yogurts</string>
     <string name="share_description">Beschreibung</string>
+    <string name="share_pleasePhoto">Bitte fotografiere den Yogurt!</string>
 
     <!-- Recipe Gallery / Detail -->
     <string name="back_to_gallery">Zurück zur Gallerie</string>

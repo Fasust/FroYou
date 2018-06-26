@@ -7,12 +7,15 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -122,11 +125,19 @@ public class Share_order extends AppCompatActivity {
 
                 recipeCollection.add(recipe.toHash());
 
+                if( TextUtils.isEmpty(nameEdit.getText())){
+                    nameEdit.setError( "First name is required!" );
 
-                Intent intent = new Intent(Share_order.this, RecipeDetail.class);
-                intent.putExtra(RECIPE_KEY,recipe);
-                intent.putExtra(PHOTO_TMP,photo);
-                startActivity(intent);
+                } else if(photo == null) {
+                    Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.share_pleasePhoto), Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.TOP, 0 , 220);
+                    toast.show();
+                } else {
+                    Intent intent = new Intent(Share_order.this, RecipeDetail.class);
+                    intent.putExtra(RECIPE_KEY, recipe);
+                    intent.putExtra(PHOTO_TMP, photo);
+                    startActivity(intent);
+                }
 
 
             }

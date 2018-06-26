@@ -68,7 +68,7 @@ public class RecipeDetail extends AppCompatActivity {
         */
 
     }
-
+/*
     @Override
     public void onBackPressed()
     {
@@ -77,4 +77,5 @@ public class RecipeDetail extends AppCompatActivity {
         finish();
 
     }
+    */
 }
