@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -93,6 +94,8 @@ public class RecipeGallery extends AppCompatActivity {
 
                 //SET Imagebutton----------------------------------------------------------
                 final ImageButton imageButton = convertView.findViewById(R.id.imageView_recipePicture);
+
+                final ConstraintLayout recipeBlock = convertView.findViewById(R.id.recipeBlock);
                 if(recipe.getImagePath() != null) {
                     FSImageLoader loader = new FSImageLoader(recipe.getImagePath(), new FSImageLoader.onFishLoading() {
                         @Override
@@ -111,7 +114,7 @@ public class RecipeGallery extends AppCompatActivity {
                 }
 
                 //ON Click------------------------------------------------------
-                imageButton.setOnClickListener(new View.OnClickListener() {
+                recipeBlock.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(RecipeGallery.this, RecipeDetail.class);
