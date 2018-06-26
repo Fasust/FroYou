@@ -52,7 +52,7 @@ public class Share_order extends AppCompatActivity {
     private String ingridientsList;
 
     public static String RECIPE_KEY = "recipe";
-    public static String photoTmp = "photoTmp";
+    public static String PHOTO_TMP = "photoTmp";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +125,7 @@ public class Share_order extends AppCompatActivity {
 
                 Intent intent = new Intent(Share_order.this, RecipeDetail.class);
                 intent.putExtra(RECIPE_KEY,recipe);
+                intent.putExtra(PHOTO_TMP,photo);
                 startActivity(intent);
 
 

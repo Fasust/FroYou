@@ -24,6 +24,7 @@ public class RecipeDetail extends AppCompatActivity {
         //Get Recepie
         Bundle data = getIntent().getExtras();
         Recipe recipe = data.getParcelable(RecipeGallery.RECIPE_KEY);
+        Bitmap tmp_bitmap = data.getParcelable(Share_order.PHOTO_TMP);
 
         //Find Views
         TextView txtName = findViewById(R.id.textView_recepieName);
@@ -35,6 +36,7 @@ public class RecipeDetail extends AppCompatActivity {
 
 
         //set Views
+        image.setImageBitmap(tmp_bitmap);
         txtName.setText(recipe.getName());
         txtDescription.setText(recipe.getDesription());
         txtIngridents.setText(recipe.getIngredients());
