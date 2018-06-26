@@ -41,7 +41,7 @@
     <string name="share_pleasePhoto">Please take a photo!</string>
 
     <!-- Recipe Gallery / Detail -->
-    <string name="back_to_gallery">Back to gallery</string>
+    <string name="detail_successfullShared">Yogurt successfully shared</string>
 
     <!-- Impressum/Version -->
     <string name="version_name">FroYouBETA</string>

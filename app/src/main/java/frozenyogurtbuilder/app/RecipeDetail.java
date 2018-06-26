@@ -6,10 +6,12 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import frozenyogurtbuilder.app.classes.FSImageLoader;
 import frozenyogurtbuilder.app.classes.Recipe;
@@ -32,8 +34,10 @@ public class RecipeDetail extends AppCompatActivity {
         TextView txtIngridents = findViewById(R.id.textview_ingrididentsList);
         final ImageView image = findViewById(R.id.imageView_recipePicture);
 
-        //Button btn_toGallery = findViewById(R.id.btn_toGallery);
-
+        if( tmp_bitmap != null ) {
+            Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.detail_successfullShared), Toast.LENGTH_SHORT);
+            toast.show();
+        }
 
         //set Views
         image.setImageBitmap(tmp_bitmap);
@@ -56,16 +60,6 @@ public class RecipeDetail extends AppCompatActivity {
             loader.load();
 
         }
-
-        /*
-        btn_toGallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RecipeDetail.this, RecipeGallery.class);
-                startActivity(intent);
-            }
-        });
-        */
 
     }
 
