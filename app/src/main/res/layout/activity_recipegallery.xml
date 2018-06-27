@@ -36,6 +36,7 @@
         android:id="@+id/recipeDetail_listview"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:divider="@color/colorPrimaryDark"
         android:dividerHeight="8dp"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
