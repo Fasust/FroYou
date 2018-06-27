@@ -8,6 +8,7 @@
     android:background="@color/colorPrimaryDark">
 
     <include
+        android:id="@+id/include"
         layout="@layout/app_header"
         android:layout_width="413dp"
         android:layout_height="wrap_content"
@@ -24,4 +25,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="130dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/pacifico"
+        android:text="@string/settings"
+        android:textColor="@color/colorBase"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
 </android.support.constraint.ConstraintLayout>
