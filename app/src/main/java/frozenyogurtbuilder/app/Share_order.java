@@ -28,6 +28,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import frozenyogurtbuilder.app.classes.Recipe;
@@ -55,7 +57,7 @@ public class Share_order extends AppCompatActivity {
     private String ingridientsList;
 
     public static String RECIPE_KEY = "recipe";
-    public static String PHOTO_TMP = "photoTmp";
+    public static String JUSTSHARED_KEY = "shared";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,35 +113,36 @@ public class Share_order extends AppCompatActivity {
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = nameEdit.getText().toString();
-                String description = descEdit.getText().toString();
-                String ingridients = ingridientsList;
-
-                Recipe recipe = new Recipe(name,description,ingridients);
-
-                if(photo != null){
-                    String imagePath = "recipe_images/" + UUID.randomUUID().toString();
-                    uploadImage(photo, imagePath);
-                    recipe.setImagePath(imagePath);
-                }
-
-                recipeCollection.add(recipe.toHash());
-
+                //Check
                 if( TextUtils.isEmpty(nameEdit.getText())){
                     nameEdit.setError( "First name is required!" );
+                    return;
 
                 } else if(photo == null) {
                     Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.share_pleasePhoto), Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.TOP, 0 , 220);
                     toast.show();
-                } else {
-                    Intent intent = new Intent(Share_order.this, RecipeDetail.class);
-                    intent.putExtra(RECIPE_KEY, recipe);
-                    intent.putExtra(PHOTO_TMP, photo);
-                    startActivity(intent);
+                    return;
                 }
 
+                //Logic
+                String name = nameEdit.getText().toString();
+                String description = descEdit.getText().toString();
+                String ingridients = ingridientsList;
 
+                String imagePath = "recipe_images/" + UUID.randomUUID().toString();
+                uploadImage(photo, imagePath); //Upload Image
+
+                Recipe recipe = new Recipe(name,description,ingridients,imagePath);
+                Map hash = recipe.toHash();
+                hash.put("timestamp",System.currentTimeMillis());
+                recipeCollection.add(hash); //Upload Recepie
+
+                //Start Activity
+                Intent intent = new Intent(Share_order.this, RecipeDetail.class);
+                intent.putExtra(RECIPE_KEY, recipe);
+                intent.putExtra(JUSTSHARED_KEY,true);
+                startActivity(intent);
             }
         });
     }

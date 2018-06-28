@@ -38,8 +38,6 @@ import frozenyogurtbuilder.app.classes.Recipe;
 
 public class RecipeGallery extends AppCompatActivity {
 
-    private ArrayList<Recipe> recipeList = new ArrayList<>();
-
     //View
     private ProgressBar progressBar;
     private FirestoreRecyclerAdapter adapter;
@@ -48,9 +46,7 @@ public class RecipeGallery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipegallery);
-        buildProgressbar();
 
-        progressBar.setVisibility(View.INVISIBLE);
         buildFirestoreListView();
 
     }
@@ -58,6 +54,7 @@ public class RecipeGallery extends AppCompatActivity {
     private void buildFirestoreListView(){
         Query query = FirebaseFirestore.getInstance()
                 .collection("recipes")
+                .orderBy("timestamp")
                 .limit(50);
 
         FirestoreRecyclerOptions<Recipe> options = new FirestoreRecyclerOptions.Builder<Recipe>()
@@ -93,9 +90,6 @@ public class RecipeGallery extends AppCompatActivity {
         listview.setHasFixedSize(true);
     }
 
-    private void buildProgressbar(){
-        progressBar = findViewById(R.id.gallery_progressBar);
-    }
 
     @Override
     public void onBackPressed() {

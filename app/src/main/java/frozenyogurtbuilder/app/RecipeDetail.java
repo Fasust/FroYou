@@ -32,7 +32,7 @@ public class RecipeDetail extends AppCompatActivity {
         //Get Recepie
         Bundle data = getIntent().getExtras();
         Recipe recipe = data.getParcelable(RecepieViewHolder.RECIPE_KEY);
-        Bitmap tmp_bitmap = data.getParcelable(Share_order.PHOTO_TMP);
+        Boolean justShared = data.getBoolean(Share_order.JUSTSHARED_KEY);
 
         //Find Views
         TextView txtName = findViewById(R.id.textView_recepieName);
@@ -40,13 +40,12 @@ public class RecipeDetail extends AppCompatActivity {
         TextView txtIngridents = findViewById(R.id.textview_ingrididentsList);
         final ImageView image = findViewById(R.id.imageView_recipePicture);
 
-        if( tmp_bitmap != null ) {
+        if( justShared ) {
             Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.detail_successfullShared), Toast.LENGTH_SHORT);
             toast.show();
         }
 
         //set Views
-        image.setImageBitmap(tmp_bitmap);
         txtName.setText(recipe.getName());
         txtDescription.setText(recipe.getDesription());
         txtIngridents.setText(recipe.getIngredients());
