@@ -1,14 +1,11 @@
-package frozenyogurtbuilder.app.classes;
+package frozenyogurtbuilder.app.classes.Firebase;
 
-import android.support.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+
+import frozenyogurtbuilder.app.classes.Ingredient;
 
 public class FSIngridientsListLoader extends FSLoader<ArrayList<Ingredient>> {
 

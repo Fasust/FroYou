@@ -13,19 +13,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import frozenyogurtbuilder.app.classes.FSImageLoader;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import frozenyogurtbuilder.app.classes.RecepieViewHolder;
 import frozenyogurtbuilder.app.classes.Recipe;
 
 public class RecipeDetail extends AppCompatActivity {
+    //Firestroage
+    private FirebaseStorage storage;
+    private StorageReference storageRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipedetail);
+        initStorage();
 
         //Get Recepie
         Bundle data = getIntent().getExtras();
-        Recipe recipe = data.getParcelable(RecipeGallery.RECIPE_KEY);
+        Recipe recipe = data.getParcelable(RecepieViewHolder.RECIPE_KEY);
         Bitmap tmp_bitmap = data.getParcelable(Share_order.PHOTO_TMP);
 
         //Find Views
@@ -44,22 +50,10 @@ public class RecipeDetail extends AppCompatActivity {
         txtName.setText(recipe.getName());
         txtDescription.setText(recipe.getDesription());
         txtIngridents.setText(recipe.getIngredients());
-        if (recipe.getImagePath() != null) {
-            FSImageLoader loader = new FSImageLoader(recipe.getImagePath(), new FSImageLoader.onFishLoading() {
-                @Override
-                public void onComplete(byte[] bytes) {
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                    image.setImageBitmap(bitmap);
-                }
-
-                @Override
-                public void onFail() {
-
-                }
-            });
-            loader.load();
-
-        }
+        StorageReference recImageRef = storageRef.child(recipe.getImagePath());
+        GlideApp.with(this)
+                .load(recImageRef)
+                .into(image);
 
     }
 
@@ -69,6 +63,11 @@ public class RecipeDetail extends AppCompatActivity {
         super.onBackPressed();
         startActivity(new Intent(RecipeDetail.this, RecipeGallery.class));
         finish();
+
+    }
+    private void initStorage(){
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
 
     }
 

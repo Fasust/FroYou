@@ -22,24 +22,19 @@
         android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:progressBackgroundTint="@color/colorAccent"
+        app:layout_constraintTop_toBottomOf="@+id/app_header"
+        tools:layout_editor_absoluteX="92dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/gallery_listView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:progressBackgroundTint="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="@+id/recipeDetail_listview"
-        app:layout_constraintEnd_toEndOf="@+id/recipeDetail_listview"
-        app:layout_constraintStart_toStartOf="@+id/recipeDetail_listview"
-        app:layout_constraintTop_toBottomOf="@+id/app_header" />
-
-    <ListView
-        android:id="@+id/recipeDetail_listview"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:dividerHeight="8dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

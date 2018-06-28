@@ -30,6 +30,9 @@ public class Recipe implements Parcelable {
         this.ingredients = ingredients;
         this.imagePath = imagePath;
     }
+    public Recipe(){
+        this("Name","Description","Ingridients");
+    }
 
 
     protected Recipe(Parcel in) {
@@ -85,7 +88,7 @@ public class Recipe implements Parcelable {
         hash.put("name", getName());
         hash.put("description", getDesription());
         hash.put("ingredients", getIngredients());
-        hash.put("image", getImagePath());
+        hash.put("imagePath", getImagePath());
         return hash;
     }
 }

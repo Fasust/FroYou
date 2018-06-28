@@ -1,18 +1,12 @@
-package frozenyogurtbuilder.app.classes;
-
-import android.content.Context;
-import android.util.Log;
+package frozenyogurtbuilder.app.classes.Firebase;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.ExecutionException;
+
+import frozenyogurtbuilder.app.classes.Firebase.FSLoader;
+import frozenyogurtbuilder.app.classes.Recipe;
 
 public class FSRecepieLoader extends FSLoader<ArrayList<Recipe>> {
 
