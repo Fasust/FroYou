@@ -6,4 +6,10 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:id="@+id/id_impressum"
         android:onClick="onPopupItemClick"
         android:title="@string/impressum" />
+
+    <item
+        android:id="@+id/id_settings"
+        android:onClick="onPopupItemClick"
+        android:title="@string/settings" />
+
 </menu>
