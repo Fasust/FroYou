@@ -108,9 +108,9 @@ public class CustomListView extends ListView {
         updateNeighborViewsForID(mMobileItemId);
     }
 
-    final static int topPadding = 5;
-    final static int bottomPadding = 10;
-    final static int rightPadding = 10;
+    final static int topPadding = 0;
+    final static int bottomPadding = -10;
+    final static int rightPadding = -10;
     final static int shadowPadding = topPadding + bottomPadding;
 
     /**
