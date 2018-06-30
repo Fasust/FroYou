@@ -51,7 +51,7 @@
 
         <ImageButton
             android:id="@+id/imageBtn_ingredient_edit"
-            android:layout_width="47dp"
+            android:layout_width="44dp"
             android:layout_height="54dp"
             android:layout_gravity="center"
             android:layout_marginBottom="8dp"
