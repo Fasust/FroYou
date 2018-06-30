@@ -54,6 +54,17 @@ public class RecipeDetail extends AppCompatActivity {
                 .load(recImageRef)
                 .into(image);
 
+
+        Button btn_toGallery = findViewById(R.id.btn_toGallery);
+        btn_toGallery.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(RecipeDetail.this, RecipeGallery.class));
+                    }
+                }
+        );
+
     }
 
     @Override
