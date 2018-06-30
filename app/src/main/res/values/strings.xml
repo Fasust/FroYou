@@ -24,7 +24,7 @@
     <string name="big_price">4,90€</string>
 
     <!-- Order Process -->
-
+    <string name="howToInfoOrderProcess">Nutze die Buttons im unteren Bereich, um einen Frozen Yogurt zu kreieren. Du hast die Auswahl zwischen Hauptzutat, Toppings und Saucen.</string>
 
     <!-- Order Final -->
     <string name="your_own_creation" translatable="false">Deine eigene Kreation</string>

@@ -21,6 +21,19 @@
 
     </include>
 
+    <TextView
+        android:id="@+id/textView_howToInfo"
+        android:layout_width="394dp"
+        android:layout_height="83dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/btn_addMain"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="-13dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/opensans_regular"
+        android:text="@string/howToInfoOrderProcess"
+        android:textColor="@color/colorBase" />
+
     <frozenyogurtbuilder.app.classes.external.CustomListView
         android:id="@+id/orderprocess_listview"
         android:layout_width="match_parent"
@@ -122,7 +135,6 @@
             android:textColor="@color/colorBase" />
 
     </LinearLayout>
-
 
 
 </RelativeLayout>
