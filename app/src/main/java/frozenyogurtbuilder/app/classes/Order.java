@@ -29,9 +29,9 @@ public class Order {
     private Context context;
     private ArrayList<Ingredient> ingredientList;
 
-    private String mainBanner = "Wählen sie eine Ihrer " + OrderProcess.ORDER_SIZE + " Hauptzutaten.";
-    private String toppingBanner = "Bitte Wählen sie ein Topping";
-    private String souceBanner = "Bitte Wählen sie eine Soße";
+    private String mainBanner = "Wähle eine deiner " + OrderProcess.ORDER_SIZE + " Hauptzutaten.";
+    private String toppingBanner = "Bitte wähle ein Topping";
+    private String souceBanner = "Bitte wähle eine Soße";
 
     private IngredientSelectBox mainBoxAdd;
     private IngredientSelectBox souceBoxAdd;
@@ -99,7 +99,7 @@ public class Order {
     }
 
     private void buildExceptionAlertBox(){
-        exceptionAlert = new BaseErrorMessage("Sie können leider nur " + ORDER_SIZE+ " Hauptzutaten Auswählen, Wenn sie mehr haben möchten wählen sie bitte eine andere größe aus","Sorry",context);
+        exceptionAlert = new BaseErrorMessage("Du kannst leider nur " + ORDER_SIZE+ " Hauptzutaten auswählen! Wenn du mehr haben möchten wähle bitte eine andere Größe aus","Sorry",context);
     }
     private void buildSelectBoxes(){
 
@@ -218,7 +218,7 @@ public class Order {
         String string = "";
 
         if(ingredientsAdapter.getCount() == 0){
-            return "Bestellung Leer";
+            return "Bestellung leer";
         }
 
         for (int i = 0; i < ingredientsAdapter.getCount(); i++) {
@@ -240,7 +240,7 @@ public class Order {
         String price = "";
         switch (mainIngridientCount){
             case 0:
-                return "Kein Hauptzutat";
+                return "Keine Hauptzutat";
             case 1:
                 price += OrderChoosePricing.PRICE_SMALL;
                 break;
