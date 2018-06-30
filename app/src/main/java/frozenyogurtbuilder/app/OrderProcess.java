@@ -1,9 +1,7 @@
 package frozenyogurtbuilder.app;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,8 +15,8 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import java.util.ArrayList;
 
 import frozenyogurtbuilder.app.classes.BaseErrorMessage;
-import frozenyogurtbuilder.app.classes.FSIngridientsListLoader;
-import frozenyogurtbuilder.app.classes.FSLoader;
+import frozenyogurtbuilder.app.classes.Firebase.FSIngridientsListLoader;
+import frozenyogurtbuilder.app.classes.Firebase.FSLoader;
 import frozenyogurtbuilder.app.classes.Ingredient;
 import frozenyogurtbuilder.app.classes.Order;
 import frozenyogurtbuilder.app.classes.external.CustomListView;

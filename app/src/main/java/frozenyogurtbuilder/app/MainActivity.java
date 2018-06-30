@@ -84,6 +84,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, Impressum.class));
             return true;
         }
+        if (id == R.id.id_settings) {
+
+            startActivity(new Intent(MainActivity.this, Settings.class));
+            return true;
+        }
         return false;
     }
 }
