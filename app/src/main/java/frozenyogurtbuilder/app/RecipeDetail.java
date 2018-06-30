@@ -34,6 +34,16 @@ public class RecipeDetail extends AppCompatActivity {
         TextView txtIngridents = findViewById(R.id.textview_ingrididentsList);
         final ImageView image = findViewById(R.id.imageView_recipePicture);
 
+        Button btn_toGallery = findViewById(R.id.btn_toGallery);
+        btn_toGallery.setOnClickListener(
+                new View.OnClickListener() {
+                     @Override
+                     public void onClick(View view) {
+                         startActivity(new Intent(RecipeDetail.this, RecipeGallery.class));
+                     }
+                 }
+        );
+
         if( tmp_bitmap != null ) {
             Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.detail_successfullShared), Toast.LENGTH_SHORT);
             toast.show();

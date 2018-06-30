@@ -43,6 +43,7 @@
 
     <!-- Recipe Gallery / Detail -->
     <string name="detail_successfullShared">Yogurt erfolgreich geteilt</string>
+    <string name="back_to_gallery">Zurück zur Gallerie</string>
 
     <!-- Impressum/Version -->
     <string name="version_name">FroYouBETA</string>

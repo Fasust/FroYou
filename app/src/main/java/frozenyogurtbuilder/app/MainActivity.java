@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +23,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // go to order process
+        btn_goTo_orChPr = findViewById(R.id.btn_goTo_orChPr);
+        btn_goTo_orChPr.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, OrderChoosePricing.class));
+            }
+
+        });
+
+        ImageButton imgBtn_orderProcess = findViewById(R.id.imgBtn_orderProcess);
+        imgBtn_orderProcess.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(MainActivity.this, OrderChoosePricing.class));
+                    }
+                }
+        );
+
+
+        // go to recipe gallery
         btn_goTo_reGa = findViewById(R.id.btn_goTo_reGa);
         btn_goTo_reGa.setOnClickListener(new View.OnClickListener() {
 
@@ -33,15 +56,15 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        btn_goTo_orChPr = findViewById(R.id.btn_goTo_orChPr);
-        btn_goTo_orChPr.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, OrderChoosePricing.class));
-            }
-
-        });
+        ImageButton imgBtn_gallery = findViewById(R.id.imgBtn_gallery);
+        imgBtn_gallery.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(MainActivity.this, RecipeGallery.class));
+                    }
+                }
+        );
 
     }
 
