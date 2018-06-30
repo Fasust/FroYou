@@ -152,12 +152,24 @@ public class OrderProcess extends AppCompatActivity {
         TextView textView_mainCounterSize = findViewById(R.id.textView_mainCounterSize);
         textView_mainCounterSize.setText(String.valueOf(ORDER_SIZE));
 
+        // order price in top left
+        final TextView showOrderPrice = findViewById(R.id.showOrderPrice);
+
         final TextView textView_mainCounter = findViewById(R.id.textView_mainCounter);
 
         shoppingList.setOnListChangeEventListner(new Order.OnListChangeEventListner() {
             @Override
             public void listChange() {
-                textView_mainCounter.setText(String.valueOf(shoppingList.getMainIngridientCount()));
+                String ingredientCounter = String.valueOf(shoppingList.getMainIngridientCount());
+
+                textView_mainCounter.setText(ingredientCounter);
+
+                switch (ingredientCounter) {
+                    case "1": showOrderPrice.setText(getString(R.string.small_price));break;
+                    case "2": showOrderPrice.setText(getString(R.string.middle_price));break;
+                    case "3": showOrderPrice.setText(getString(R.string.big_price));break;
+                }
+
             }
         });
     }
