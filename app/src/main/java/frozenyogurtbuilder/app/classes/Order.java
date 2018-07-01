@@ -255,4 +255,7 @@ public class Order {
 
         return string;
     }
+    public boolean isEmpty(){
+        return ingredientsAdapter.isEmpty();
+    }
 }

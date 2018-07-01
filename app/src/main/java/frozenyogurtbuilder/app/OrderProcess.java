@@ -155,19 +155,28 @@ public class OrderProcess extends AppCompatActivity {
         // order price in top left
         final TextView showOrderPrice = findViewById(R.id.showOrderPrice);
 
+        //Explain Text
+        final TextView explainText = findViewById(R.id.textView_howToInfo);
+
         final TextView textView_mainCounter = findViewById(R.id.textView_mainCounter);
 
         shoppingList.setOnListChangeEventListner(new Order.OnListChangeEventListner() {
             @Override
             public void listChange() {
-                String ingredientCounter = String.valueOf(shoppingList.getMainIngridientCount());
+                int ingredientCounter = shoppingList.getMainIngridientCount();
 
-                textView_mainCounter.setText(ingredientCounter);
+                textView_mainCounter.setText(""+ingredientCounter);
 
                 switch (ingredientCounter) {
-                    case "1": showOrderPrice.setText(getString(R.string.small_price));break;
-                    case "2": showOrderPrice.setText(getString(R.string.middle_price));break;
-                    case "3": showOrderPrice.setText(getString(R.string.big_price));break;
+                    case 1: showOrderPrice.setText(getString(R.string.small_price));break;
+                    case 2: showOrderPrice.setText(getString(R.string.middle_price));break;
+                    case 3: showOrderPrice.setText(getString(R.string.big_price));break;
+                }
+
+                if(!shoppingList.isEmpty()){
+                    explainText.setVisibility(View.INVISIBLE);
+                }else {
+                    explainText.setVisibility(View.VISIBLE);
                 }
 
             }
