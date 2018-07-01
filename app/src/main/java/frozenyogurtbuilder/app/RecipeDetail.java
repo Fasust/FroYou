@@ -56,7 +56,7 @@ public class RecipeDetail extends AppCompatActivity {
 
         //set Views
         txtName.setText(recipe.getName());
-        txtDescription.setText(recipe.getDesription());
+        txtDescription.setText(recipe.getDescription());
         txtIngridents.setText(recipe.getIngredients());
         StorageReference recImageRef = storageRef.child(recipe.getImagePath());
         GlideApp.with(this)

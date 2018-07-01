@@ -39,7 +39,6 @@ import frozenyogurtbuilder.app.classes.Recipe;
 public class RecipeGallery extends AppCompatActivity {
 
     //View
-    private ProgressBar progressBar;
     private FirestoreRecyclerAdapter adapter;
 
     @Override

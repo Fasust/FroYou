@@ -15,18 +15,18 @@ import java.util.Map;
 
 public class Recipe implements Parcelable {
     private String name;
-    private String desription;
+    private String description; 
     private String ingredients;
     private String imagePath = null;
 
-    public Recipe(String name, String desription, String ingredients) {
+    public Recipe(String name, String description, String ingredients) {
         this.name = name;
-        this.desription = desription;
+        this.description = description;
         this.ingredients = ingredients;
     }
-    public Recipe(String name, String desription, String ingredients, String imagePath) {
+    public Recipe(String name, String description, String ingredients, String imagePath) {
         this.name = name;
-        this.desription = desription;
+        this.description = description;
         this.ingredients = ingredients;
         this.imagePath = imagePath;
     }
@@ -37,7 +37,7 @@ public class Recipe implements Parcelable {
 
     protected Recipe(Parcel in) {
         name = in.readString();
-        desription = in.readString();
+        description = in.readString();
         ingredients = in.readString();
         imagePath = in.readString();
     }
@@ -49,7 +49,7 @@ public class Recipe implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(name);
-        parcel.writeString(desription);
+        parcel.writeString(description);
         parcel.writeString(ingredients);
         parcel.writeString(imagePath);
     }
@@ -70,8 +70,8 @@ public class Recipe implements Parcelable {
     public String getName() {
         return name;
     }
-    public String getDesription() {
-        return desription;
+    public String getDescription() {
+        return description;
     }
     public String getIngredients() {
         return ingredients;
@@ -86,7 +86,7 @@ public class Recipe implements Parcelable {
     public Map<String, Object> toHash(){
         Map<String, Object> hash = new HashMap<>();
         hash.put("name", getName());
-        hash.put("description", getDesription());
+        hash.put("description", getDescription());
         hash.put("ingredients", getIngredients());
         hash.put("imagePath", getImagePath());
         return hash;
