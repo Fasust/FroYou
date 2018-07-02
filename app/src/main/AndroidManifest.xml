@@ -66,6 +66,11 @@
         <activity
             android:name=".Settings"
             android:screenOrientation="portrait" />
+        <service
+            android:name=".classes.Firebase.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
     </application>
-
 </manifest>
