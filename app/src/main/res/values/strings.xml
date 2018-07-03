@@ -52,5 +52,6 @@
     <string name="privacy_policy">Datenschutzerklärung</string>
     <string name="settings">Einstellungen</string>
     <string name="change_lang">Sprache ändern</string>
+    <string name="information">Informationen</string>
 
 </resources>

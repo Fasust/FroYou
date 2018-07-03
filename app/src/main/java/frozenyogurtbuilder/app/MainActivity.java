@@ -91,6 +91,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onPopupItemClick (MenuItem item) {
         int id = item.getItemId();
 
+
+        if (id == R.id.id_information) {
+
+            startActivity(new Intent(MainActivity.this, information.class));
+            return true;
+        }
         if (id == R.id.id_impressum) {
 
             startActivity(new Intent(MainActivity.this, Impressum.class));
