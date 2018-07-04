@@ -63,7 +63,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Settings"
-            android:screenOrientation="portrait" />
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="frozenyogurtbuilder.app.MainActivity" />
+        </activity>
 
         <service android:name=".classes.Firebase.MyFirebaseMessagingService">
             <intent-filter>
@@ -71,7 +78,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".information"></activity>
+        <activity android:name=".information" />
     </application>
 
 </manifest>
