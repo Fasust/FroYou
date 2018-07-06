@@ -2,7 +2,7 @@
 
 Im Rahmen des Modules [Mobile Computing](https://wiki.moxd.io/display/WPFMoCoSS18/WPF+Mobile+Computing+SS2018+Home) der TH Köln von Sebastian Faust, Julian Schoemaker und Dario Giuseppe Lazzara
 
-Für den Themenbereich “Enterprise” haben wir uns mit dem Unternehmen “Die Süße Ecke” im Gummersbacher Forum zusammengetan und eine App entwickelt die den Bestellprozess von Frozen Yoghurts und Softeis erleichtern soll.
+Für den Themenbereich “Enterprise” haben wir uns mit dem Unternehmen [Süße Ecke](https://www.forum-gummersbach.info/shop/sascha-stange/) im Gummersbacher Forum zusammengetan und eine App entwickelt die den Bestellprozess von Frozen Yoghurts und Softeis erleichtern soll.
 
 ### Features
 
