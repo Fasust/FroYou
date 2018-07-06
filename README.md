@@ -1,14 +1,20 @@
-# Mobile Computing
+# FroYou
 
-Wir sind Sebastian Faust, Julian Schoemaker und Dario Giuseppe Lazzara und wir studieren im vierten Semster an der Th Köln.
+Im Rahmen des Modules [Mobile Computing](https://wiki.moxd.io/display/WPFMoCoSS18/WPF+Mobile+Computing+SS2018+Home) der TH Köln von Sebastian Faust, Julian Schoemaker und Dario Giuseppe Lazzara
 
-Wir werden im Rahmen unseres Moduls "Mobile Computing" eine App schreiben, die sich mit dem Thema "Frozen Yogurt" beschäftigt.
-Diese App wird es den Nutzern ermöglichen einen Frozen Yogurt nach Baukasten Prinzip zusammen zu stellen, um den Bestellungs Prozess zu erleichtern. 
-Der Benutzer wird durch die Reihenfolge des Prozesses geführt (Soße - Joghurt - Topping - Joghurt - Soße) und wird aus den jeweiligen Optionen wählen können und sie grafisch angezeigt bekommen. Technisch auszutesten wäre es die fertige Bestellung dann direkt über die App an den Mitarbeiter schicken zu können, sodass er es zubereitet.
-Nachdem der Yogurt dann zubereitet wurde, erhält der Benutzer die Möglichkeit ein Foto davon zu machen, welches dann mit dem Rezept in der App veröffentlicht werden kann.
+Für den Themenbereich “Enterprise” haben wir uns mit dem Unternehmen “Die Süße Ecke” im Gummersbacher Forum zusammengetan und eine App entwickelt die den Bestellprozess von Frozen Yoghurts und Softeis erleichtern soll.
 
-# Android App FroYou
+### Features
 
-### Unsere Umsetzung (Stand 28.06.2018)
+- Diese App ermöglicht es den Nutzern einen Frozen Yogurt nach Baukasten Prinzip zusammen zu stellen.
+- Eigene Kreationen mit anderen Nutzern zu teilen.
+- Selbst Rezepte von Freunden auszuprobieren. 
+- Bestellung schon auf dem weg zu der Süßen Ecke mit derzeitig im Laden verfügbaren Zutaten zusammenzustellen. 
+- Das Bestellen selbst geht eben so einfach. Man zeigt einfach den Generierten QR Code dem Mitarbeiter an der Kasse und wartet bis die Kreation fertig ist.
+
+Dies ist Unser erstes größeres Verteiltes System. Viele sachen sind bei weitem nicht Optimal gelöst und wie das bei jedem Projekt ist würden wir im nachhinein vieles anders Lösen.
+Der Lehrerfolg wahr allerding enorm und wir konnten aus diesem Projekt eine Menge für zukünftige Projekte mitnehmen.
+
+## Poster
 
 ![FroYou Poster 28.06.2018](Material/Poster/froYou_poster.jpg)
