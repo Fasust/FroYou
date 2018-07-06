@@ -1,19 +1,19 @@
 # FroYou
 
-Im Rahmen des Modules [Mobile Computing](https://wiki.moxd.io/display/WPFMoCoSS18/WPF+Mobile+Computing+SS2018+Home) der TH Köln von Sebastian Faust, Julian Schoemaker und Dario Giuseppe Lazzara
+Im Rahmen des Moduls [Mobile Computing](https://wiki.moxd.io/display/WPFMoCoSS18/WPF+Mobile+Computing+SS2018+Home) der TH Köln von Sebastian Faust, Julian Schoemaker und Dario Giuseppe Lazzara
 
 Für den Themenbereich “Enterprise” haben wir uns mit dem Unternehmen [Süße Ecke](https://www.forum-gummersbach.info/shop/sascha-stange/) im Gummersbacher Forum zusammengetan und eine App entwickelt die den Bestellprozess von Frozen Yoghurts und Softeis erleichtern soll.
 
 ### Features
 
-- Diese App ermöglicht es den Nutzern einen Frozen Yogurt nach Baukasten Prinzip zusammen zu stellen.
+- Diese App ermöglicht es den Nutzern einen Frozen Yogurt nach Baukasten Prinzip zusammenzustellen.
 - Eigene Kreationen mit anderen Nutzern zu teilen.
 - Selbst Rezepte von Freunden auszuprobieren. 
-- Bestellung schon auf dem weg zu der Süßen Ecke mit derzeitig im Laden verfügbaren Zutaten zusammenzustellen. 
+- Bestellung schon auf dem Weg zu der "Süßen Ecke" mit derzeitig im Laden verfügbaren Zutaten zusammenzustellen. 
 - Das Bestellen selbst geht eben so einfach. Man zeigt einfach den Generierten QR Code dem Mitarbeiter an der Kasse und wartet bis die Kreation fertig ist.
 
-Dies ist Unser erstes größeres Verteiltes System. Viele sachen sind bei weitem nicht Optimal gelöst und wie das bei jedem Projekt ist würden wir im nachhinein vieles anders Lösen.
-Der Lehrerfolg wahr allerding enorm und wir konnten aus diesem Projekt eine Menge für zukünftige Projekte mitnehmen.
+Dies ist unser erstes größeres verteiltes System. Viele Sachen sind bei weitem nicht optimal gelöst und wie das bei jedem Projekt ist, würden wir im nachhinein vieles anders lösen.
+Der Lehrerfolg war allerding enorm und wir konnten aus diesem Projekt eine Menge für zukünftige Projekte mitnehmen.
 
 ## Poster
 
