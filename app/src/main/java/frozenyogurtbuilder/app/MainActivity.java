@@ -1,11 +1,6 @@
 package frozenyogurtbuilder.app;
 
-import android.animation.TimeAnimator;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.annotation.LongDef;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -94,17 +88,17 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.id_information) {
 
-            startActivity(new Intent(MainActivity.this, Information.class));
+            startActivity(new Intent(MainActivity.this, MenuInformation.class));
             return true;
         }
         if (id == R.id.id_impressum) {
 
-            startActivity(new Intent(MainActivity.this, Impressum.class));
+            startActivity(new Intent(MainActivity.this, MenuImprint.class));
             return true;
         }
         if (id == R.id.id_settings) {
 
-            startActivity(new Intent(MainActivity.this, Settings.class));
+            startActivity(new Intent(MainActivity.this, MenuSettings.class));
             return true;
         }
         return false;

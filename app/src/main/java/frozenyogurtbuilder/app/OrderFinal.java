@@ -43,7 +43,7 @@ public class OrderFinal extends AppCompatActivity {
                     BitMatrix bitMatrix = multiFormatWriter.encode(orderList, BarcodeFormat.QR_CODE, 300, 300);
                     BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                     Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-                    Intent intent = new Intent(context, Qrcode_generator.class);
+                    Intent intent = new Intent(context, QrcodeGenerator.class);
                     intent.putExtra("qrcode",bitmap);
                     context.startActivity(intent);
                 } catch(WriterException e) {
@@ -58,7 +58,7 @@ public class OrderFinal extends AppCompatActivity {
         btn_goTo_makePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentPicture = new Intent(OrderFinal.this, Share_order.class);
+                Intent intentPicture = new Intent(OrderFinal.this, OrderShare.class);
                 intentPicture.putExtra(ORDER_SHARE,orderList);
                 startActivity(intentPicture);
             }

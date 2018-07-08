@@ -52,20 +52,20 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Fragment_ingredient" />
         <activity
-            android:name=".Qrcode_generator"
+            android:name=".QrcodeGenerator"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Share_order"
+            android:name=".OrderShare"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Impressum"
+            android:name=".MenuImprint"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".Information" />
+        <activity android:name=".MenuInformation" />
 
         <activity
-            android:name=".Settings"
+            android:name=".MenuSettings"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

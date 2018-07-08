@@ -3,11 +3,8 @@ package frozenyogurtbuilder.app;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -42,7 +39,7 @@ public class RecipeDetail extends AppCompatActivity {
         //Get Recepie
         Bundle data = getIntent().getExtras();
         final Recipe recipe = data.getParcelable(RecepieViewHolder.RECIPE_KEY);
-        Boolean justShared = data.getBoolean(Share_order.JUSTSHARED_KEY);
+        Boolean justShared = data.getBoolean(OrderShare.JUSTSHARED_KEY);
 
         //Find Views
         TextView txtName = findViewById(R.id.textView_recepieName);
@@ -76,7 +73,7 @@ public class RecipeDetail extends AppCompatActivity {
                             BitMatrix bitMatrix = multiFormatWriter.encode(recipe.getIngredients(), BarcodeFormat.QR_CODE, 300, 300);
                             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
-                            Intent intent = new Intent(context, Qrcode_generator.class);
+                            Intent intent = new Intent(context, QrcodeGenerator.class);
                             intent.putExtra("qrcode",bitmap);
                             context.startActivity(intent);
                         } catch(WriterException e) {

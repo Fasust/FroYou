@@ -44,7 +44,7 @@
     <string name="detail_successfullShared">Yogurt erfolgreich geteilt</string>
     <string name="back_to_gallery">Zurück zur Gallerie</string>
 
-    <!-- Impressum/Version -->
+    <!-- MenuImprint/Version -->
     <string name="version_name">FroYouBETA</string>
     <string name="impressum">Impressum</string>
     <string name="impressum_text">Dies ist ein studentisches Projekt von Julian Schoemaker, Sebastian Faust und Dario Giuseppe Lazzara. Das Projekt wurde im Rahmen des Modules Mobile Computing der Technischen Hochschule in Köln bearbeitet.</string>
@@ -57,7 +57,7 @@
     <string name="information_text">Die FroYou App wurde entwickelt, um das Erstellen eines Frozen Yogurts leichter zu gestalten. Der Kunde wird zunächst drum gebeten die Größe des Yogurts zu bestimmen, um danach seine eigene Kreation Baukastenartig mit allen Zutaten die es gibt zusammen zu stellen. Nachdem der Nutzer sein Frozen Yogurt ausgewählt und erstellt hat, bietet die App die Möglichkeit, die Kreation in ein QR Code umzuwandeln und dem Kassierer zum einscannen bereit zu stellen damit dieser darauf hin die Bestellung bearbeiten kann. Außerdem kann er seine eigene Kreation in der Appinternen Rezeptegallerie abspeichern, ein Foto vom Yogurt machen, seinem Yogurt einen Namen geben, und eine kleine Beschreibung zufügen. Die Speicherung der einzelnen verschiedenen Rezepte erfolgt dabei komplett anonym und innerhalb der einzelnen Kreationen sind neben dem Namen und der Beschreibung auch die einzelnen Inhalte (Toppings, Soßen, etc.) einsehbar. Die Nutzer haben durch die Rezeptegallerie die Möglichkeit andere Kreationen sich anzuschauen, auszuwählen und zu bestellen, falls sie nicht selber einen Yogurt erstellen möchten. Da unsere App in Zusammenarbeit mit der Süßen Ecke im Forum in Gummersbach erstellt wurde, sind alle Preise, Größen und Zutaten an der Süßen Ecke angepasst, und sollte der Nutzer eine Verbindung zum Internet haben, wird dieser über neue Rezepte benachrichtigt, und kann außerdem immer mit den neusten Toppings und Soßen sein Yogurt erstellen, falls es zu Änderungen der Zutaten kommt.</string>
     <string name="what_is_froyou">Was ist FroYou?</string>
 
-    <!-- Settings -->
+    <!-- MenuSettings -->
     <string name="notification_pref_title">Benachrichtigung</string>
     <string name="notification_pref_on">Sind Aktiviert</string>
     <string name="notification_pref_off">Sind Dektiviert</string>

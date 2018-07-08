@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Impressum extends AppCompatActivity {
+public class MenuImprint extends AppCompatActivity {
 
     private Button btn_goTo_privacy;
 

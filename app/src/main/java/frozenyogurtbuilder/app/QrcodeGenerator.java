@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-public class Qrcode_generator extends AppCompatActivity {
+public class QrcodeGenerator extends AppCompatActivity {
 
     private ImageView imageView_qrcode;
 

@@ -35,7 +35,7 @@ import java.util.UUID;
 
 import frozenyogurtbuilder.app.classes.Recipe;
 
-public class Share_order extends AppCompatActivity {
+public class OrderShare extends AppCompatActivity {
 
     //Firestore
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -99,7 +99,7 @@ public class Share_order extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()) {
                             // If sign in fails, display a message to the user
-                            Toast.makeText(Share_order.this, "Authentication failed.",
+                            Toast.makeText(OrderShare.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -154,7 +154,7 @@ public class Share_order extends AppCompatActivity {
                 recipeCollection.add(hash); //Upload Recepie
 
                 //Start Activity
-                Intent intent = new Intent(Share_order.this, RecipeDetail.class);
+                Intent intent = new Intent(OrderShare.this, RecipeDetail.class);
                 intent.putExtra(RECIPE_KEY, recipe);
                 intent.putExtra(JUSTSHARED_KEY,true);
 
