@@ -58,7 +58,7 @@ public class OrderShare extends AppCompatActivity {
     private String ingridientsList;
 
     public static String RECIPE_KEY = "recipe";
-    public static String JUSTSHARED_KEY = "shared";
+    public static String SHAREDIMAGE_KEY = "shared";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +149,7 @@ public class OrderShare extends AppCompatActivity {
                 //Start Activity
                 Intent intent = new Intent(OrderShare.this, RecipeDetail.class);
                 intent.putExtra(RECIPE_KEY, recipe);
-                intent.putExtra(JUSTSHARED_KEY,true);
+                intent.putExtra(SHAREDIMAGE_KEY,photo);
 
                 startActivity(intent);
             }

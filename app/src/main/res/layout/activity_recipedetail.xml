@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark">
@@ -93,25 +94,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textview_ingrididentsList" />
 
-        <ImageButton
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btn_toQrCode"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded_shape"
-            android:cropToPadding="true"
-            android:elevation="5dp"
-            android:scaleType="centerInside"
+            android:layout_width="75dp"
+            android:layout_height="68dp"
+            android:background="@color/colorAccent"
+            android:elevation="2dp"
+            android:src="@drawable/icon_qr_code_invert"
+            app:backgroundTint="@color/colorAccent"
+            app:elevation="7dp"
+            app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="@+id/imageView_recipePicture"
             app:layout_constraintEnd_toEndOf="@+id/imageView_recipePicture"
             app:layout_constraintHorizontal_bias="0.97"
             app:layout_constraintStart_toStartOf="@+id/imageView_recipePicture"
             app:layout_constraintTop_toTopOf="@+id/imageView_recipePicture"
-            app:layout_constraintVertical_bias="0.934"
-            app:srcCompat="@drawable/icon_qr_code_invert" />
+            app:layout_constraintVertical_bias="0.934" />
 
 
 
