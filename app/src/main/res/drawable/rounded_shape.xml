@@ -6,10 +6,6 @@
         android:bottomRightRadius="100dp"
         android:bottomLeftRadius="100dp">
     </corners>
-    <stroke
-        android:width="2dp"
-        android:color="@color/colorPrimary">
-    </stroke>
     <solid
         android:color="@color/colorAccent">
     </solid>
