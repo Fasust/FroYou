@@ -20,9 +20,9 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import frozenyogurtbuilder.app.classes.Firebase.GlideApp;
 import frozenyogurtbuilder.app.classes.RecepieViewHolder;
 import frozenyogurtbuilder.app.classes.Recipe;
-import frozenyogurtbuilder.app.classes.Firebase.GlideApp;
 
 public class RecipeDetail extends AppCompatActivity {
     //Firestroage

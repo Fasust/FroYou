@@ -2,7 +2,6 @@ package frozenyogurtbuilder.app;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
-import android.preference.SwitchPreference;
 
 public class Fragment_settings extends PreferenceFragment
 {

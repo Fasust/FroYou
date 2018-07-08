@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 
-import frozenyogurtbuilder.app.OrderProcess;
-
 public class BaseErrorMessage extends AlertDialog.Builder {
     public BaseErrorMessage(String message, String titel, Context context){
         super(context);

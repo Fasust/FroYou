@@ -3,10 +3,10 @@ package frozenyogurtbuilder.app;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -112,7 +112,7 @@ public class OrderShare extends AppCompatActivity {
 
     }
     private void buildButtons(){
-        btn_useCamera = (ImageButton) findViewById(R.id.btn_useCamera);
+        btn_useCamera = findViewById(R.id.btn_useCamera);
         btn_useCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

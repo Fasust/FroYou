@@ -8,8 +8,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import frozenyogurtbuilder.app.classes.Firebase.FSIngridientsListLoader;
-
 public abstract class FSLoader<T> {
     public interface TaskListner<T> {
         void onComplete(T result);

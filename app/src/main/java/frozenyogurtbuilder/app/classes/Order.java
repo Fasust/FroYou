@@ -1,17 +1,13 @@
 package frozenyogurtbuilder.app.classes;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
-import android.view.ContextThemeWrapper;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+
 import java.util.ArrayList;
 
-import frozenyogurtbuilder.app.Exceptions.OrderIsFullException;
 import frozenyogurtbuilder.app.OrderChoosePricing;
 import frozenyogurtbuilder.app.OrderProcess;
-import frozenyogurtbuilder.app.R;
 import frozenyogurtbuilder.app.classes.external.Adapter;
 import frozenyogurtbuilder.app.classes.external.CustomListView;
 import frozenyogurtbuilder.app.classes.external.SwipeDismissListViewTouchListener;

@@ -1,15 +1,9 @@
 package frozenyogurtbuilder.app.classes;
 
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.net.ConnectException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 

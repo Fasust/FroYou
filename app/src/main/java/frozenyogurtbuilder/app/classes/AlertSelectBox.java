@@ -2,15 +2,10 @@ package frozenyogurtbuilder.app.classes;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.widget.ArrayAdapter;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
-
-import frozenyogurtbuilder.app.OrderProcess;
-import frozenyogurtbuilder.app.R;
 
 public class AlertSelectBox<T> {
 
