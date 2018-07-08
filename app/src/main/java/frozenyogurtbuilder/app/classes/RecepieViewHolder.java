@@ -14,10 +14,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import frozenyogurtbuilder.app.GlideApp;
 import frozenyogurtbuilder.app.R;
 import frozenyogurtbuilder.app.RecipeDetail;
 import frozenyogurtbuilder.app.RecipeGallery;
+import frozenyogurtbuilder.app.classes.Firebase.GlideApp;
 
 import static android.support.v4.content.ContextCompat.startActivity;
 
