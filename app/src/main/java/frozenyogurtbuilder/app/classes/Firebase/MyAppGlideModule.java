@@ -1,4 +1,4 @@
-package frozenyogurtbuilder.app;
+package frozenyogurtbuilder.app.classes.Firebase;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
