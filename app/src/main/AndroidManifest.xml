@@ -68,7 +68,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".information" />
+        <activity android:name=".Information" />
 
         <activity
             android:name=".Settings"

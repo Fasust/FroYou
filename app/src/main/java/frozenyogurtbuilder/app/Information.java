@@ -3,7 +3,7 @@ package frozenyogurtbuilder.app;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class information extends AppCompatActivity {
+public class Information extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
