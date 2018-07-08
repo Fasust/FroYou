@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
-    private void subscribeToPushNotifications(){
+    public void subscribeToPushNotifications(){
         FirebaseMessaging.getInstance().subscribeToTopic("PUSH_CHANNEL")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
