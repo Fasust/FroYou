@@ -123,7 +123,7 @@ public class OrderShare extends AppCompatActivity {
             public void onClick(View view) {
                 //Check
                 if( TextUtils.isEmpty(nameEdit.getText())){
-                    nameEdit.setError( "First name is required!" );
+                    nameEdit.setError( getString(R.string.noRecipeName) );
                     return;
 
                 } else if(photo == null) {
@@ -167,6 +167,6 @@ public class OrderShare extends AppCompatActivity {
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
 
-        UploadTask uploadTask = imageRef.putBytes(data);
+        imageRef.putBytes(data);
     }
 }

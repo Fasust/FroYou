@@ -73,5 +73,6 @@
     <!-- Toast -->
     <string name="noMain">Bitte Wählen sie ein Haupt Zutat aus</string>
     <string name="emtyOrder">Bestellung ist Leer</string>
+    <string name="noRecipeName">Bitte Geben sie ihrer Kreation einen Namen</string>
 
 </resources>

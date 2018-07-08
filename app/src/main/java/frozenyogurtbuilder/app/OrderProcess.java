@@ -114,11 +114,13 @@ public class OrderProcess extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.emtyOrder), Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.BOTTOM, 0 , 220);
                     toast.show();
+                    return;
                 }
                 if(shoppingList.getMainIngridientCount() == 0){
                     Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.noMain), Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.BOTTOM, 0 , 220);
                     toast.show();
+                    return;
                 }
 
                 Intent intent = new Intent(OrderProcess.this, OrderFinal.class);
