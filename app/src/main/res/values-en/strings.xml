@@ -62,4 +62,17 @@
     <string name="notification_pref_on">Now active</string>
     <string name="notification_pref_off">Now inactive</string>
 
+    <!--Alert -->
+    <string name="abort">Abort</string>
+    <string name="bannerChooseTopping">Choose a Topping</string>
+    <string name="bannerChooseMain">Choose a Souce</string>
+    <string name="bannerChooseSouce">Choose a Main Ingredients</string>
+    <string name="toMannyMain">You have reached the maximum number of Main Ingredients</string>
+    <string name="loadingERR">An Error has accoured while loading the Database</string>
+
+    <!-- Toast -->
+    <string name="noMain">Please choose a Main Ingredients</string>
+    <string name="emtyOrder">Your Order is empty</string>
+    <string name="noRecipeName">Give your creation a name</string>
+
 </resources>
