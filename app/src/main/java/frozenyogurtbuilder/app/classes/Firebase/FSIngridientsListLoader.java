@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import frozenyogurtbuilder.app.classes.Ingredient;
 
+
 public class FSIngridientsListLoader extends FSLoader<ArrayList<Ingredient>> {
 
     public FSIngridientsListLoader(CollectionReference collectionReference, TaskListner listner) {

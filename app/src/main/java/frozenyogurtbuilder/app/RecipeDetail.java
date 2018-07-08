@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.zxing.BarcodeFormat;
@@ -20,7 +21,6 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-import frozenyogurtbuilder.app.classes.Firebase.GlideApp;
 import frozenyogurtbuilder.app.classes.RecepieViewHolder;
 import frozenyogurtbuilder.app.classes.Recipe;
 
@@ -57,7 +57,7 @@ public class RecipeDetail extends AppCompatActivity {
         txtDescription.setText(recipe.getDescription());
         txtIngridents.setText(recipe.getIngredients());
         StorageReference recImageRef = storageRef.child(recipe.getImagePath());
-        GlideApp.with(this)
+        Glide.with(this)
                 .load(recImageRef)
                 .into(image);
 
@@ -74,7 +74,7 @@ public class RecipeDetail extends AppCompatActivity {
                             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
                             Intent intent = new Intent(context, QrcodeGenerator.class);
-                            intent.putExtra("qrcode",bitmap);
+                            intent.putExtra(OrderFinal.QR_CODE,bitmap);
                             context.startActivity(intent);
                         } catch(WriterException e) {
                             e.printStackTrace();

@@ -31,10 +31,6 @@ public class OrderChoosePricing extends AppCompatActivity {
     private void buildLayout(){
         setContentView(R.layout.activity_order_choose_pricing);
 
-        //Action Bar
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setTitle("Groessen Auswahl");
-
         //Buttons and OnClickListener
         View.OnClickListener click = new  View.OnClickListener(){
             @Override

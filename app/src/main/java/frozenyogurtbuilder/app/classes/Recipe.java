@@ -25,7 +25,7 @@ public class Recipe implements Parcelable {
         this.imagePath = imagePath;
     }
     public Recipe(){
-        this("Name","Description","Ingridients");
+        this("Name","Description","Ingredients");
     }
 
 

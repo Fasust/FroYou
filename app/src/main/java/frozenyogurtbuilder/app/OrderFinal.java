@@ -17,11 +17,9 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class OrderFinal extends AppCompatActivity {
 
-    private Button btn_goTo_qrCode;
-    private Button btn_goTo_makePicture;
-    private TextView textView_creationText;
 
     public static final String  ORDER_SHARE = "order share";
+    public static final String  QR_CODE = "qrcode";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +28,10 @@ public class OrderFinal extends AppCompatActivity {
 
         final String orderList = getIntent().getExtras().getString(OrderProcess.ORDER_KEY);
         final Context context = this;
+
+        Button btn_goTo_qrCode;
+        Button btn_goTo_makePicture;
+        TextView textView_creationText;
 
         btn_goTo_qrCode = findViewById(R.id.btn_goTo_qrCode);
         btn_goTo_qrCode.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +46,7 @@ public class OrderFinal extends AppCompatActivity {
                     BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                     Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
                     Intent intent = new Intent(context, QrcodeGenerator.class);
-                    intent.putExtra("qrcode",bitmap);
+                    intent.putExtra(QR_CODE,bitmap);
                     context.startActivity(intent);
                 } catch(WriterException e) {
                     e.printStackTrace();

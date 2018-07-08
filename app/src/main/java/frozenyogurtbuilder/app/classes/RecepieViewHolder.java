@@ -7,12 +7,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import frozenyogurtbuilder.app.R;
 import frozenyogurtbuilder.app.RecipeDetail;
-import frozenyogurtbuilder.app.classes.Firebase.GlideApp;
 
 import static android.support.v4.content.ContextCompat.startActivity;
 
@@ -39,7 +39,7 @@ public class RecepieViewHolder extends RecyclerView.ViewHolder {
         if(recipe.getImagePath() != null){
             StorageReference recImageRef = storageRef.child(recipe.getImagePath());
 
-            GlideApp.with(context)
+            Glide.with(context)
                     .load(recImageRef)
                     .into(image);
         }

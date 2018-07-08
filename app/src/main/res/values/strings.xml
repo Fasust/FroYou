@@ -62,5 +62,16 @@
     <string name="notification_pref_on">Sind Aktiviert</string>
     <string name="notification_pref_off">Sind Dektiviert</string>
 
+    <!--Alert -->
+    <string name="abort">Abbrechen</string>
+    <string name="bannerChooseTopping">Bitte Wählen sie ein Topping</string>
+    <string name="bannerChooseMain">Bitte Wählen sie eine Soze</string>
+    <string name="bannerChooseSouce">Bitte Wählen sie eine Haupt Zutat</string>
+    <string name="toMannyMain">Das Maximum an Hauptzutaten für diese Größe wurde erreicht</string>
+    <string name="loadingERR">Es ist ein Fehler beim Laden der Datenbank Aufgetreten</string>
+
+    <!-- Toast -->
+    <string name="noMain">Bitte Wählen sie ein Haupt Zutat aus</string>
+    <string name="emtyOrder">Bestellung ist Leer</string>
 
 </resources>

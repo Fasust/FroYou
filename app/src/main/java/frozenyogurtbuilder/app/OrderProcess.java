@@ -3,16 +3,19 @@ package frozenyogurtbuilder.app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import frozenyogurtbuilder.app.classes.BaseErrorMessage;
 import frozenyogurtbuilder.app.classes.Firebase.FSIngridientsListLoader;
@@ -23,16 +26,10 @@ import frozenyogurtbuilder.app.classes.external.CustomListView;
 
 public class OrderProcess extends AppCompatActivity {
 
-    //Buttons
-    private ImageButton btn_goTo_orFi;
-    private ImageButton btn_addMain;
-    private ImageButton btn_addTopping;
-    private ImageButton btn_addSouce;
-
+    //View
     private ProgressBar progressBar;
 
     //Ingredient
-    private ArrayList<Ingredient> allIngridients = new ArrayList<>();
     public static ArrayList<Ingredient> mainingredients;
     public static ArrayList<Ingredient> topings;
     public static ArrayList<Ingredient> sauce;
@@ -52,7 +49,6 @@ public class OrderProcess extends AppCompatActivity {
         setContentView(R.layout.activity_orderprocess);
 
         ORDER_SIZE = getSize();
-        //initFirebase();
         buildProgressbar();
 
         FSIngridientsListLoader loader = new FSIngridientsListLoader(ingredientsCollection,new FSLoader.TaskListner<ArrayList<Ingredient>>() {
@@ -104,12 +100,27 @@ public class OrderProcess extends AppCompatActivity {
         shoppingList = new Order(ORDER_SIZE,(CustomListView) findViewById(R.id.orderprocess_listview),OrderProcess.this);
     }
     private void buildButtons(){
+        ImageButton btn_goTo_orFi;
+        ImageButton btn_addMain;
+        ImageButton btn_addTopping;
+        ImageButton btn_addSouce;
 
         btn_goTo_orFi = findViewById(R.id.btn_goTo_orderFinal) ;
         btn_goTo_orFi.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
+                if(shoppingList.isEmpty()){
+                    Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.emtyOrder), Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.BOTTOM, 0 , 220);
+                    toast.show();
+                }
+                if(shoppingList.getMainIngridientCount() == 0){
+                    Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.noMain), Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.BOTTOM, 0 , 220);
+                    toast.show();
+                }
+
                 Intent intent = new Intent(OrderProcess.this, OrderFinal.class);
                 intent.putExtra(ORDER_KEY,shoppingList.toString());
                 startActivity(intent);
@@ -123,7 +134,7 @@ public class OrderProcess extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                shoppingList.addThroghSelectBox('m');
+                shoppingList.addThroghSelectBox(Ingredient.INGREDIENT_MAIN);
             }
 
         });
@@ -132,7 +143,7 @@ public class OrderProcess extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                shoppingList.addThroghSelectBox('s');
+                shoppingList.addThroghSelectBox(Ingredient.INGREDIENT_SAUCE);
             }
 
         });
@@ -141,7 +152,7 @@ public class OrderProcess extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                shoppingList.addThroghSelectBox('t');
+                shoppingList.addThroghSelectBox(Ingredient.INGREDIENT_TOPPING);
             }
 
         });
@@ -163,37 +174,27 @@ public class OrderProcess extends AppCompatActivity {
         shoppingList.setOnListChangeEventListner(new Order.OnListChangeEventListner() {
             @Override
             public void listChange() {
-                int ingredientCounter = shoppingList.getMainIngridientCount();
 
-                textView_mainCounter.setText(""+ingredientCounter);
-
-                switch (ingredientCounter) {
-                    case 1: showOrderPrice.setText(getString(R.string.small_price));break;
-                    case 2: showOrderPrice.setText(getString(R.string.middle_price));break;
-                    case 3: showOrderPrice.setText(getString(R.string.big_price));break;
-                }
+                textView_mainCounter.setText(shoppingList.getMainIngridientCount() + "");
 
                 if(!shoppingList.isEmpty()){
                     explainText.setVisibility(View.INVISIBLE);
+                    showOrderPrice.setVisibility(View.VISIBLE);
                 }else {
                     explainText.setVisibility(View.VISIBLE);
+                    showOrderPrice.setVisibility(View.INVISIBLE);
                 }
+
+                showOrderPrice.setText(String.format(Locale.GERMAN,"%.2f", shoppingList.getPrice()) + " Euro");
 
             }
         });
     }
-    private void initFirebase(){
-        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-                .setPersistenceEnabled(true)
-                .build();
-        db.setFirestoreSettings(settings);
-    }
-
     private int getSize(){
         return  getIntent().getExtras().getInt(OrderChoosePricing.SIZE_KEY);
     }
     private void showLoadingError(){
-        BaseErrorMessage loadingError = new BaseErrorMessage("Es ist ein Fehler beim Laden der Datenbank aufgetreten","Sorry",OrderProcess.this);
+        BaseErrorMessage loadingError = new BaseErrorMessage(this.getString(R.string.loadingERR),"Sorry",OrderProcess.this);
         loadingError.show();
     }
 

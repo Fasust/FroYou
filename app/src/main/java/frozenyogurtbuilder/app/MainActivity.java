@@ -18,10 +18,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Buttons
-    private Button btn_goTo_reGa;
-    private Button btn_goTo_orChPr;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
         subscribeToPushNotifications();
 
-        // go to order process
+        //Buttons-------------------------------------
+        Button btn_goTo_reGa;
+        Button btn_goTo_orChPr;
+
         btn_goTo_orChPr = findViewById(R.id.btn_goTo_orChPr);
         btn_goTo_orChPr.setOnClickListener(new View.OnClickListener() {
 
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-
 
         // go to recipe gallery
         btn_goTo_reGa = findViewById(R.id.btn_goTo_reGa);
@@ -104,16 +102,6 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
     public void subscribeToPushNotifications(){
-        FirebaseMessaging.getInstance().subscribeToTopic("PUSH_CHANNEL")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "Sucess";
-                        if (!task.isSuccessful()) {
-                            msg = "Failed";
-                        }
-                        Log.d("Subcribe",msg);
-                    }
-                });
+        FirebaseMessaging.getInstance().subscribeToTopic("PUSH_CHANNEL");
     }
 }

@@ -33,11 +33,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
            return;
         }
 
-        Log.d("Message Received", "From: " + remoteMessage.getFrom());
-
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
-            Log.d("Message", "Message Notification Body: " + remoteMessage.getNotification().getBody());
 
             //Create Intent
             Intent myIntent = new Intent(this, RecipeGallery.class);
@@ -48,9 +45,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     .setContentTitle(remoteMessage.getNotification().getTitle())
                     .setContentIntent(pendingIntent)
                     .setSmallIcon(R.drawable.logo_icon)
-                    .setColor(4628415)
+                    .setColor(getResources().getColor(R.color.colorPrimary))
                     .setContentText(remoteMessage.getNotification().getBody())
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                    .setPriority(NotificationCompat.PRIORITY_LOW);
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 

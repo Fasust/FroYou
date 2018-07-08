@@ -7,15 +7,14 @@ import android.widget.ImageView;
 
 public class QrcodeGenerator extends AppCompatActivity {
 
-    private ImageView imageView_qrcode;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode_generator);
 
+        ImageView imageView_qrcode;
         imageView_qrcode = findViewById(R.id.imageView_qrcode);
-        Bitmap bitmap = getIntent().getParcelableExtra("qrcode");
+        Bitmap bitmap = getIntent().getParcelableExtra(OrderFinal.QR_CODE);
         imageView_qrcode.setImageBitmap(bitmap);
 
     }

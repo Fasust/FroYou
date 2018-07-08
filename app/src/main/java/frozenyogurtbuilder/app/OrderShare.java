@@ -77,6 +77,12 @@ public class OrderShare extends AppCompatActivity {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        initFirebase();
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (data != null) {
@@ -93,18 +99,7 @@ public class OrderShare extends AppCompatActivity {
         //Authentication
         mAuth = FirebaseAuth.getInstance();
 
-        mAuth.signInAnonymously()
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (!task.isSuccessful()) {
-                            // If sign in fails, display a message to the user
-                            Toast.makeText(OrderShare.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
+        mAuth.signInAnonymously();
 
         //Storage
         storage = FirebaseStorage.getInstance();
@@ -117,8 +112,6 @@ public class OrderShare extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                //cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION,ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
                 startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
 
             }
@@ -175,22 +168,5 @@ public class OrderShare extends AppCompatActivity {
         byte[] data = baos.toByteArray();
 
         UploadTask uploadTask = imageRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-            }
-        });
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        initFirebase();
-    }
-
 }

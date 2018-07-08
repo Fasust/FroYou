@@ -5,9 +5,11 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import frozenyogurtbuilder.app.OrderChoosePricing;
 import frozenyogurtbuilder.app.OrderProcess;
+import frozenyogurtbuilder.app.R;
 import frozenyogurtbuilder.app.classes.external.Adapter;
 import frozenyogurtbuilder.app.classes.external.CustomListView;
 import frozenyogurtbuilder.app.classes.external.SwipeDismissListViewTouchListener;
@@ -18,16 +20,12 @@ public class Order {
     }
     private OnListChangeEventListner onListChangeEventListner;
 
-    public final int ORDER_SIZE;
+    private final int ORDER_SIZE;
     private int mainIngridientCount = 0;
     private Adapter ingredientsAdapter;
     private BaseErrorMessage exceptionAlert;
     private Context context;
     private ArrayList<Ingredient> ingredientList;
-
-    private String mainBanner = "Wähle eine deiner " + OrderProcess.ORDER_SIZE + " Hauptzutaten.";
-    private String toppingBanner = "Bitte wähle ein Topping";
-    private String souceBanner = "Bitte wähle eine Soße";
 
     private IngredientSelectBox mainBoxAdd;
     private IngredientSelectBox souceBoxAdd;
@@ -95,10 +93,12 @@ public class Order {
     }
 
     private void buildExceptionAlertBox(){
-        exceptionAlert = new BaseErrorMessage("Du kannst leider nur " + ORDER_SIZE+ " Hauptzutaten auswählen! Wenn du mehr haben möchten wähle bitte eine andere Größe aus","Sorry",context);
+        exceptionAlert = new BaseErrorMessage(
+                context.getString(R.string.toMannyMain),
+                "Sorry",
+                context);
     }
     private void buildSelectBoxes(){
-
         //Add-----------------------
         IngredientSelectBox.AfterSelctListener<Ingredient> addAfterSelctListener = new IngredientSelectBox.AfterSelctListener<Ingredient>(){
             @Override
@@ -107,9 +107,9 @@ public class Order {
             }
         };
 
-        mainBoxAdd = new IngredientSelectBox(context,mainBanner,addAfterSelctListener);
-        souceBoxAdd = new IngredientSelectBox(context,souceBanner,addAfterSelctListener);
-        toppingBoxAdd = new IngredientSelectBox(context,toppingBanner,addAfterSelctListener);
+        mainBoxAdd = new IngredientSelectBox(context,context.getString(R.string.bannerChooseMain),addAfterSelctListener);
+        souceBoxAdd = new IngredientSelectBox(context,context.getString(R.string.bannerChooseSouce),addAfterSelctListener);
+        toppingBoxAdd = new IngredientSelectBox(context,context.getString(R.string.bannerChooseTopping),addAfterSelctListener);
 
         mainBoxAdd.add(OrderProcess.mainingredients);
         souceBoxAdd.add(OrderProcess.sauce);
@@ -123,16 +123,16 @@ public class Order {
             }
         };
 
-        mainBoxSet = new IngredientSelectBox(context,mainBanner,setAfterSelctListener);
-        souceBoxSet = new IngredientSelectBox(context,souceBanner,setAfterSelctListener);
-        toppingBoxSet = new IngredientSelectBox(context,toppingBanner,setAfterSelctListener);
+        mainBoxSet = new IngredientSelectBox(context,context.getString(R.string.bannerChooseMain),setAfterSelctListener);
+        souceBoxSet = new IngredientSelectBox(context,context.getString(R.string.bannerChooseMain),setAfterSelctListener);
+        toppingBoxSet = new IngredientSelectBox(context,context.getString(R.string.bannerChooseMain),setAfterSelctListener);
 
         mainBoxSet.add(OrderProcess.mainingredients);
         souceBoxSet.add(OrderProcess.sauce);
         toppingBoxSet.add(OrderProcess.topings);
 
     }
-    public void showAlert(){
+    private void showAlert(){
         exceptionAlert.show();
     }
 
@@ -214,7 +214,7 @@ public class Order {
         String string = "";
 
         if(ingredientsAdapter.getCount() == 0){
-            return "Bestellung leer";
+            return "ERROR";
         }
 
         for (int i = 0; i < ingredientsAdapter.getCount(); i++) {
@@ -233,25 +233,26 @@ public class Order {
             }
         }
 
-        String price = "";
-        switch (mainIngridientCount){
-            case 0:
-                return "Keine Hauptzutat";
-            case 1:
-                price += OrderChoosePricing.PRICE_SMALL;
-                break;
-            case 2:
-                price += OrderChoosePricing.PRICE_MEDIUM;
-                break;
-            case 3:
-                price += OrderChoosePricing.PRICE_LARG;
-                break;
-        }
-        string += "\n---\n" + price +" Euro";
-
+        string += "\n---\n" + String.format(Locale.GERMAN,"%.2f", getPrice()) +" Euro";
         return string;
     }
     public boolean isEmpty(){
         return ingredientsAdapter.isEmpty();
+    }
+    public double getPrice(){
+        double  price = 0;
+
+        switch (mainIngridientCount) {
+            case 1:
+                price = OrderChoosePricing.PRICE_SMALL;
+                break;
+            case 2:
+                price = OrderChoosePricing.PRICE_MEDIUM;
+                break;
+            case 3:
+                price = OrderChoosePricing.PRICE_LARG;
+                break;
+        }
+        return price;
     }
 }

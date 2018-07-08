@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
+import frozenyogurtbuilder.app.R;
+
 public class AlertSelectBox<T> {
 
     private final Context context;
@@ -17,10 +19,10 @@ public class AlertSelectBox<T> {
     }
     private AfterSelctListener afterSelctListener;
 
-    public AlertSelectBox(final Context context, String bannerTxt, int icon, AfterSelctListener listener){
+    public AlertSelectBox(final Context context, String bannerTxt, int icon, AfterSelctListener<T> listener){
         this.context = context;
         this.afterSelctListener = listener;
-        arrayAdapter = new ArrayAdapter(context, android.R.layout.select_dialog_singlechoice);
+        arrayAdapter = new ArrayAdapter<>(context, android.R.layout.select_dialog_singlechoice);
 
         dialoge = new AlertDialog.Builder(context);
         if( icon != 0){
@@ -28,7 +30,7 @@ public class AlertSelectBox<T> {
         }
         dialoge.setTitle(bannerTxt);
 
-        dialoge.setNegativeButton("abbrechen", new DialogInterface.OnClickListener() {
+        dialoge.setNegativeButton(context.getString(R.string.abort), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
