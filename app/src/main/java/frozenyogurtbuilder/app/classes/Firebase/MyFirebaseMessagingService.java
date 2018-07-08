@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -24,14 +26,22 @@ import frozenyogurtbuilder.app.RecipeGallery;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
+    private SharedPreferences sharedPref;
+
     @Override
     public void onCreate(){
         super.onCreate();
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+
+        boolean notificationsPref = sharedPref.getBoolean("pref_notitfications", false);
+        if(!notificationsPref){
+           return;
+        }
 
         Log.d("Message Received", "From: " + remoteMessage.getFrom());
 

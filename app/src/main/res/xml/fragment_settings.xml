@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="pref_preferencescreen"
+    android:background="@color/colorBase">
+
+    <SwitchPreference
+        android:background="@color/colorBase"
+        android:key="pref_notitfications"
+        android:title="Notifications"
+        android:summaryOff="Werden nicht gesendet"
+        android:summaryOn="Werden gesendet"
+        android:defaultValue="true" />
+</PreferenceScreen>

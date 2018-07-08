@@ -1,5 +1,8 @@
 package frozenyogurtbuilder.app;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.Preference;
@@ -16,41 +19,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 
-public class Settings extends PreferenceActivity {
-
+public class Settings extends Activity {
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getFragmentManager().beginTransaction().replace(android.R.id.content,
-                new MainSettingsFragment()).commit();
+        setTheme(R.style.SettingsFragmentStyle);
 
-    }
-
-
-    public static class MainSettingsFragment extends PreferenceFragment {
-        @Override
-        public void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_notification);
-            setHasOptionsMenu(true);
-
-            Preference switchPref = (Preference) findPreference("notificstions_on_off_key");
-
-            switchPref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference, Object o) {
-                    boolean isOn = (boolean) o;
-
-                    if (isOn) {
-                         //notification turned on
-                    } else {
-                        return false; //notification turned off
-                    }
-                    return true;
-                }
-            });
-
-        }
+        // Display the fragment as the main content.
+        getFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new SettingsFragment())
+                .commit();
     }
 }
+
+
+
