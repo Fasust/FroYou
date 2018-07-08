@@ -43,10 +43,9 @@ public class Settings extends PreferenceActivity {
                     boolean isOn = (boolean) o;
 
                     if (isOn) {
-                        MainActivity Notific = new MainActivity();
-                        Notific.subscribeToPushNotifications();
+                         //notification turned on
                     } else {
-                        return false;
+                        return false; //notification turned off
                     }
                     return true;
                 }
