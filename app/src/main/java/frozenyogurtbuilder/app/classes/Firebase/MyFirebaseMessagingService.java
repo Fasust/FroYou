@@ -38,7 +38,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-        boolean notificationsPref = sharedPref.getBoolean("pref_notitfications", false);
+        boolean notificationsPref = sharedPref.getBoolean("PREF_NOTIFICATIONS", false);
         if(!notificationsPref){
            return;
         }

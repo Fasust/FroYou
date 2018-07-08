@@ -6,9 +6,9 @@
 
     <SwitchPreference
         android:background="@color/colorBase"
-        android:key="pref_notitfications"
-        android:title="Notifications"
-        android:summaryOff="Werden nicht gesendet"
-        android:summaryOn="Werden gesendet"
+        android:key="PREF_NOTIFICATIONS"
+        android:title="@string/notification_pref_title"
+        android:summaryOff="@string/notification_pref_off"
+        android:summaryOn="@string/notification_pref_on"
         android:defaultValue="true" />
 </PreferenceScreen>

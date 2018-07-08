@@ -22,7 +22,7 @@
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/colorBase</item>
-        <item name="android:textColorSecondary">#bdc7cc</item>
+        <item name="android:textColorSecondary">@color/colorGreyText</item>
         <item name="android:background">@color/colorPrimaryDark</item>
     </style>
 
