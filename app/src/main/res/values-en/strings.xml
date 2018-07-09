@@ -52,7 +52,7 @@
     <string name="privacy_policy">Privacy policy</string>
     <string name="settings">Settings</string>
     <string name="change_lang">Change language</string>
-    <string name="information">information</string>
+    <string name="information">Information</string>
 
     <string name="information_text"> The FroYou App is for everyone who wants to create his own Frozen Yogurt in an easy way. The customer have to choose between 3 different sizes of Yogurt before he starts to create his own Frozen Yogurt with all the ingredients. After the customer finished creating his own Yogurt, he got the possibility to transform his recipe into a QR Code for an easier way of ordering. Next to the QR Code, the customer can save his own creation into the intern recipegallery. Saving own recipes is completly unknown and just needs a photo of the yogurt, a name for the creation and a little description of the yogurt itself. If the customer doesn’t want to spend time in creating an own yogurt, he can choose one of the saved Yogurts created by other customers in the recipegallery, where he can see the photo, the name and the description of the yogurt, but also the different ingredients the creator used for it. The app got developed together with the Süße Ecke shop in Gummersbach, so all ingredients, prices and sizes are defined for the Süße Ecke. If the customer got internet connection he also get notifications if there are new recipes and if he creates a new yogurt he got updated ingredients. </string>
     <string name="what_is_froyou">What\'s FroYou?</string>
@@ -64,15 +64,15 @@
 
     <!--Alert -->
     <string name="abort">Abort</string>
-    <string name="bannerChooseTopping">Choose a Topping</string>
-    <string name="bannerChooseMain">Choose a Souce</string>
-    <string name="bannerChooseSouce">Choose a Main Ingredients</string>
-    <string name="toMannyMain">You have reached the maximum number of Main Ingredients</string>
-    <string name="loadingERR">An Error has accoured while loading the Database</string>
+    <string name="bannerChooseTopping">Choose a Topping.</string>
+    <string name="bannerChooseMain">Choose a Sauce.</string>
+    <string name="bannerChooseSouce">Choose a Main Ingredient.</string>
+    <string name="toMannyMain">You have reached the maximum number of Main Ingredients.</string>
+    <string name="loadingERR">An error has accoured while loading the database.</string>
 
     <!-- Toast -->
-    <string name="noMain">Please choose a Main Ingredients</string>
-    <string name="emtyOrder">Your Order is empty</string>
-    <string name="noRecipeName">Give your creation a name</string>
+    <string name="noMain">Please choose a Main Ingredients.</string>
+    <string name="emtyOrder">Your order is empty.</string>
+    <string name="noRecipeName">Give your creation a name.</string>
 
 </resources>

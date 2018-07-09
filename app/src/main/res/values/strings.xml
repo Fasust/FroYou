@@ -59,20 +59,20 @@
 
     <!-- MenuSettings -->
     <string name="notification_pref_title">Benachrichtigung</string>
-    <string name="notification_pref_on">Sind Aktiviert</string>
-    <string name="notification_pref_off">Sind Dektiviert</string>
+    <string name="notification_pref_on">Sind aktiviert</string>
+    <string name="notification_pref_off">Sind deaktiviert</string>
 
     <!--Alert -->
     <string name="abort">Abbrechen</string>
-    <string name="bannerChooseTopping">Bitte Wählen sie ein Topping</string>
-    <string name="bannerChooseMain">Bitte Wählen sie eine Soze</string>
-    <string name="bannerChooseSouce">Bitte Wählen sie eine Haupt Zutat</string>
-    <string name="toMannyMain">Das Maximum an Hauptzutaten für diese Größe wurde erreicht</string>
-    <string name="loadingERR">Es ist ein Fehler beim Laden der Datenbank Aufgetreten</string>
+    <string name="bannerChooseTopping">Bitte wähle ein Topping.</string>
+    <string name="bannerChooseMain">Bitte wähle eine Sauce.</string>
+    <string name="bannerChooseSouce">Bitte wähle eine Hauptzutat.</string>
+    <string name="toMannyMain">Das Maximum an Hauptzutaten für diese Größe wurde erreicht.</string>
+    <string name="loadingERR">Es ist ein Fehler beim Laden der Datenbank aufgetreten.</string>
 
     <!-- Toast -->
-    <string name="noMain">Bitte Wählen sie ein Haupt Zutat aus</string>
-    <string name="emtyOrder">Bestellung ist Leer</string>
-    <string name="noRecipeName">Bitte Geben sie ihrer Kreation einen Namen</string>
+    <string name="noMain">Bitte wähle eine Hauptzutat aus.</string>
+    <string name="emtyOrder">Bestellung ist leer.</string>
+    <string name="noRecipeName">Bitte gebe deiner Kreation einen Namen.</string>
 
 </resources>
