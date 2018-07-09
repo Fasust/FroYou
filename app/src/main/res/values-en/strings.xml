@@ -53,6 +53,9 @@
     <string name="settings">Settings</string>
     <string name="change_lang">Change language</string>
     <string name="information">Information</string>
+    <string name="contributions_body">Many Tanks to:\n\"Prettycons\" on Flaticon.com for \"Yoghurt free icon\".\n\n\"Freepik\" on Flaticon.com for \"Cupcake free icon\".\n\"Pause08\" on Flaticon.com for \"Ketchup free icon\".\n\n\"monkik\" on Flaticon.com for \"Nuts free icon\".\n\n\"Freepik\" on Flaticon.com for \"Blackberry QR code variant free icon\".</string>
+    <string name="contributions">Where do the Icons come from?</string>
+
 
     <string name="information_text">The FroYou App is for everyone who wants to create his own Frozen Yogurt in an easy way. \n\nThe customer have to choose between three different sizes of Yogurt before he starts to create his own Frozen Yogurt with all the ingredients. After the customer finished creating his own Yogurt, he got the possibility to transform his recipe into a QR Code for an easier way of ordering. \n\nNext to the QR Code, the customer can save his own creation into the intern recipe gallery. Saving own recipes is completely anonymous and just needs a photo of the Yogurt, a name for the creation and a little description of the Yogurt itself. \n\nIf the customer doesn’t want to spend time in creating an own yogurt, he can choose one of the saved Yogurts created by other customers in the recipe gallery, where he can see the photo, the name and the description of the Yogurt, but also the different ingredients the creator used for it. \n\nThe app got developed together with the "Süße Ecke" shop in Gummersbach, so all ingredients, prices and sizes are defined for this shop. \n\nIf the customer got internet connection he also get notifications if there are new recipes and if he creates a new yogurt he got updated ingredients. </string>
     <string name="what_is_froyou">What\'s FroYou?</string>
