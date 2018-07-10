@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "frozenyogurtbuilder.app"
         minSdkVersion 21
-        targetSdkVersion 21
+        targetSdkVersion 26
         versionCode versionMajor * 100 + versionMinor * 10 + versionBuild
         versionName "${versionMajor}.${versionMinor} beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -31,6 +31,13 @@ android {
             applicationIdSuffix ".debug"
             debuggable true
         }*/
+    }
+    buildscript {
+        configurations.all {
+            resolutionStrategy {
+                force 'net.sf.proguard:proguard-gradle:5.3.3'
+            }
+        }
     }
     productFlavors {
     }
