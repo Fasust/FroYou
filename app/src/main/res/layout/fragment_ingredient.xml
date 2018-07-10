@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_ingridient"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -7,38 +8,34 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/colorBase"
-        android:layout_height="70dp"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:elevation = "3dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="7dp">
+        android:elevation="3dp">
 
 
         <TextView
             android:id="@+id/txt_ingredient"
-            android:layout_width="210dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/opensans_bold"
             android:maxWidth="210dp"
-            android:text="Zutat"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ingridient_imageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageView
             android:id="@+id/ingridient_imageView"
-            android:layout_width="42dp"
-            android:layout_height="54dp"
+            android:layout_width="41dp"
+            android:layout_height="52dp"
             android:layout_gravity="center"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
@@ -50,23 +47,25 @@
 
         <ImageButton
             android:id="@+id/imageBtn_ingredient_edit"
-            android:layout_width="44dp"
-            android:layout_height="54dp"
+            android:layout_width="37dp"
+            android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             android:background="@null"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_edit_black_24dp"
+            android:src="@drawable/edit_lineart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ingridient_move_imageView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/ingridient_move_imageView"
-            android:layout_width="71dp"
-            android:layout_height="67dp"
+            android:layout_width="44dp"
+            android:layout_height="48dp"
             android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
             android:src="@drawable/ic_drag_handle_black_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

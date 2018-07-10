@@ -108,9 +108,9 @@ public class CustomListView extends ListView {
         updateNeighborViewsForID(mMobileItemId);
     }
 
-    final static int topPadding = 0;
-    final static int bottomPadding = -10;
-    final static int rightPadding = -10;
+    final static int topPadding = 5;
+    final static int bottomPadding = 10;
+    final static int rightPadding = 10;
     final static int shadowPadding = topPadding + bottomPadding;
 
     /**
@@ -148,7 +148,7 @@ public class CustomListView extends ListView {
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.parseColor("#FFFFFF"));
-        paint.setShadowLayer(8, 2, 4, Color.parseColor("#999999"));
+        paint.setShadowLayer(8, 2, 4, Color.parseColor("#000000"));
 
         Rect rect = new Rect(5, 0, v.getWidth() - rightPadding, v.getHeight());
         canvas.drawRect(rect, paint);

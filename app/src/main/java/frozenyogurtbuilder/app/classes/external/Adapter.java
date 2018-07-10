@@ -67,6 +67,7 @@ public class Adapter extends ArrayAdapter<Ingredient> {
                 }
             });
 
+
         //Set Icon--------------------------------------------------------------------------
         ImageView typeIcon = view.findViewById(R.id.ingridient_imageView);
         switch (ingredient.getType()){
