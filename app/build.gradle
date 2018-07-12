@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 def versionMajor = 3
 def versionMinor = 1
-def versionBuild = 0
+def versionBuild = 3
 
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "frozenyogurtbuilder.app"
         minSdkVersion 21
-        targetSdkVersion 21
+        targetSdkVersion 26
         versionCode versionMajor * 100 + versionMinor * 10 + versionBuild
         versionName "${versionMajor}.${versionMinor} beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -24,13 +24,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
-        /*debug {
-            applicationIdSuffix ".debug"
-            debuggable true
-        }*/
+
     }
     productFlavors {
     }
@@ -72,3 +70,11 @@ allprojects {
 }
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.android.application'
+
+buildscript {
+    configurations.all {
+        resolutionStrategy {
+            force 'net.sf.proguard:proguard-gradle:3.1.3'
+        }
+    }
+}
