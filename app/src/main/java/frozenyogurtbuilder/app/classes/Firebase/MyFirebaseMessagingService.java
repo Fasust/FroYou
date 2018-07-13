@@ -8,6 +8,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -16,22 +17,16 @@ import frozenyogurtbuilder.app.RecipeGallery;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-    private SharedPreferences sharedPref;
+    private int notificationCount = 0;
 
     @Override
     public void onCreate(){
         super.onCreate();
-        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-
-        boolean notificationsPref = sharedPref.getBoolean("PREF_NOTIFICATIONS", false);
-        if(!notificationsPref){
-           return;
-        }
 
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
@@ -51,8 +46,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
+
             //Show it
-            notificationManager.notify(1111, mBuilder.build());
+            notificationManager.notify(notificationCount++, mBuilder.build());
         }
 
     }

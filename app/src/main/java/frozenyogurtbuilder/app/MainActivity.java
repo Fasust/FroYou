@@ -1,7 +1,9 @@
 package frozenyogurtbuilder.app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuInflater;
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        subscribeToPushNotifications();
+        onFirstLaunch();
 
         //Buttons-------------------------------------
         Button btn_goTo_reGa;
@@ -100,7 +102,17 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
-    public void subscribeToPushNotifications(){
-        FirebaseMessaging.getInstance().subscribeToTopic("PUSH_CHANNEL");
+
+    public void onFirstLaunch(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        boolean previouslyStarted = prefs.getBoolean("FIRST_START", false);
+        if(!previouslyStarted) {
+            SharedPreferences.Editor edit = prefs.edit();
+            edit.putBoolean("FIRST_START", Boolean.TRUE);
+            edit.commit();
+
+
+            FirebaseMessaging.getInstance().subscribeToTopic("PUSH_CHANNEL");
+        }
     }
 }
