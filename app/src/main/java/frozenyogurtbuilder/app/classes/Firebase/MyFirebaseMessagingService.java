@@ -17,16 +17,9 @@ import frozenyogurtbuilder.app.RecipeGallery;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-    private int notificationCount = 0;
-
-    @Override
-    public void onCreate(){
-        super.onCreate();
-    }
-
-
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        Log.d("FS MSG RECV: ",  "");
 
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
@@ -46,9 +39,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
 
-
             //Show it
-            notificationManager.notify(notificationCount++, mBuilder.build());
+            notificationManager.notify(0, mBuilder.build());
         }
 
     }

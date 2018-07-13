@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 def versionMajor = 3
 def versionMinor = 2
-def versionBuild = 0
+def versionBuild = 2
 
 android {
     compileSdkVersion 26
@@ -11,7 +11,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 26
         versionCode versionMajor * 100 + versionMinor * 10 + versionBuild
-        versionName "${versionMajor}.${versionMinor} beta"
+        versionName "${versionMajor}.${versionMinor}.${versionBuild} beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

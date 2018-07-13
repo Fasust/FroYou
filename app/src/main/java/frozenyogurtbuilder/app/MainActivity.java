@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,8 +12,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
@@ -110,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor edit = prefs.edit();
             edit.putBoolean("FIRST_START", Boolean.TRUE);
             edit.commit();
-
 
             FirebaseMessaging.getInstance().subscribeToTopic("PUSH_CHANNEL");
         }

@@ -3,8 +3,12 @@ package frozenyogurtbuilder.app;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.io.Console;
+import java.util.logging.ConsoleHandler;
 
 
 public class MenuSettings extends Activity {
@@ -18,25 +22,6 @@ public class MenuSettings extends Activity {
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new Fragment_settings())
                 .commit();
-
-        SharedPreferences.OnSharedPreferenceChangeListener spChanged = new
-                SharedPreferences.OnSharedPreferenceChangeListener() {
-                    @Override
-                    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
-                                                          String key) {
-
-                        boolean notificationsPref = sharedPreferences.getBoolean("PREF_NOTIFICATIONS", false);
-
-                        if(notificationsPref){
-                            FirebaseMessaging.getInstance().subscribeToTopic("PUSH_CHANNEL");
-
-                        }else {
-                            FirebaseMessaging.getInstance().unsubscribeFromTopic("PUSH_CHANNEL");
-
-                        }
-
-                    }
-                };
     }
 }
 
