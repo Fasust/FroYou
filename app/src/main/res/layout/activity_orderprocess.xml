@@ -30,7 +30,9 @@
 
     <include
         android:id="@+id/app_header"
-        layout="@layout/app_header">
+        layout="@layout/app_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     </include>
 
