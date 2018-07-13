@@ -112,10 +112,11 @@ public class OrderShare extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION,ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-                startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
-
+                if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+                    cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION,ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                    startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
+                }
             }
         });
 
