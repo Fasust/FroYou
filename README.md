@@ -18,3 +18,6 @@ Der Lehrerfolg war allerding enorm und wir konnten aus diesem Projekt eine Menge
 ## Poster
 
 ![FroYou Poster 28.06.2018](Material/Poster/froYou_poster.jpg)
+
+## Präsentation
+[Abschluss-Präsentation](https://docs.google.com/presentation/d/1sWaOMK1kf6j3-Kr_HB4lsXuYvhgcxyrqX5WbNZVMhK4/edit?usp=sharing) stand 19.07.18 
