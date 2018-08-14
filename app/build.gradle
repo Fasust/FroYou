@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "frozenyogurtbuilder.app"
         minSdkVersion 21
-        targetSdkVersion 21
+        targetSdkVersion 26
         versionCode versionMajor * 100 + versionMinor * 10 + versionBuild
         versionName "${versionMajor}.${versionMinor}.${versionBuild} beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

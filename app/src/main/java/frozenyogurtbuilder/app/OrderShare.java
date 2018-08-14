@@ -60,6 +60,7 @@ public class OrderShare extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1111;
     private Bitmap photo = null;
+    private boolean canUseCamera;
     private String ingridientsList;
 
     public static String RECIPE_KEY = "recipe";
@@ -71,14 +72,10 @@ public class OrderShare extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_share_order);
 
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             Log.d("PERMISSION", "Camera granted");
         } else {
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
-
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 500);
-            }
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 500);
         }
 
         imageView_picture = findViewById(R.id.imageView_picture);
@@ -92,6 +89,18 @@ public class OrderShare extends AppCompatActivity {
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 500 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            canUseCamera = true;
+        } else {
+            // Message dass Kamera nicht verwendet werden darf
+        }
+
+    }
+
+    @Override
     public void onStart() {
         super.onStart();
         initFirebase();
@@ -99,18 +108,18 @@ public class OrderShare extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (data != null) {
                 Bundle extras = data.getExtras();
                 photo = (Bitmap) extras.get("data");
-                data.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION,ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                data.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
                 imageView_picture.setImageBitmap(photo);
             }
         }
     }
 
-    private void initFirebase(){
+    private void initFirebase() {
         //Authentication
         mAuth = FirebaseAuth.getInstance();
 
@@ -121,16 +130,18 @@ public class OrderShare extends AppCompatActivity {
         storageRef = storage.getReference();
 
     }
-    private void buildButtons(){
+
+    private void buildButtons() {
         btn_useCamera = findViewById(R.id.btn_useCamera);
         btn_useCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-                    cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION,ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                    startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
+                if(canUseCamera) {
+                    if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+                        cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                        startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
+                    }
                 }
             }
         });
@@ -140,13 +151,13 @@ public class OrderShare extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Check
-                if( TextUtils.isEmpty(nameEdit.getText())){
-                    nameEdit.setError( getString(R.string.noRecipeName) );
+                if (TextUtils.isEmpty(nameEdit.getText())) {
+                    nameEdit.setError(getString(R.string.noRecipeName));
                     return;
 
-                } else if(photo == null) {
+                } else if (photo == null) {
                     Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.share_pleasePhoto), Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.TOP, 0 , 220);
+                    toast.setGravity(Gravity.TOP, 0, 220);
                     toast.show();
                     return;
                 }
@@ -159,26 +170,28 @@ public class OrderShare extends AppCompatActivity {
                 String imagePath = "recipe_images/" + UUID.randomUUID().toString();
                 uploadImage(photo, imagePath); //Upload Image
 
-                Recipe recipe = new Recipe(name,description,ingridients,imagePath);
+                Recipe recipe = new Recipe(name, description, ingridients, imagePath);
                 Map hash = recipe.toHash();
-                hash.put("timestamp",System.currentTimeMillis());
+                hash.put("timestamp", System.currentTimeMillis());
                 recipeCollection.add(hash); //Upload Recepie
 
                 //Start Activity
                 Intent intent = new Intent(OrderShare.this, RecipeDetail.class);
                 intent.putExtra(RECIPE_KEY, recipe);
-                intent.putExtra(SHAREDIMAGE_KEY,photo);
+                intent.putExtra(SHAREDIMAGE_KEY, photo);
 
                 startActivity(intent);
             }
         });
     }
-    private void buildIngridentsList(){
+
+    private void buildIngridentsList() {
         ingridientsList = getIntent().getExtras().getString(OrderFinal.ORDER_SHARE);
         textView_creationText = findViewById(R.id.textView_descritopn);
         textView_creationText.setText(ingridientsList);
     }
-    private void uploadImage(Bitmap image,String path){
+
+    private void uploadImage(Bitmap image, String path) {
         StorageReference imageRef = storageRef.child(path);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
