@@ -72,10 +72,15 @@ public class OrderShare extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_share_order);
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_GRANTED) {
             Log.d("PERMISSION", "Camera granted");
+            canUseCamera = true;
         } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 500);
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 500);
+            }
         }
 
         imageView_picture = findViewById(R.id.imageView_picture);
@@ -92,7 +97,7 @@ public class OrderShare extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == 500 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == 500) {
             canUseCamera = true;
         } else {
             // Message dass Kamera nicht verwendet werden darf
@@ -116,6 +121,9 @@ public class OrderShare extends AppCompatActivity {
 
                 imageView_picture.setImageBitmap(photo);
             }
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), "Camera failed", Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 
