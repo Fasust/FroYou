@@ -5,11 +5,15 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -35,6 +39,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 
@@ -65,6 +73,7 @@ public class OrderShare extends AppCompatActivity {
 
     public static String RECIPE_KEY = "recipe";
     public static String SHAREDIMAGE_KEY = "shared";
+    private String mImageFileLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,11 +119,12 @@ public class OrderShare extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             if (data != null) {
-                Bundle extras = data.getExtras();
-                photo = (Bitmap) extras.get("data");
-                data.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-                imageView_picture.setImageBitmap(photo);
+                //Bundle extras = data.getExtras();
+                //photo = (Bitmap) extras.get("data");
+                //data.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                //imageView_picture.setImageBitmap(photo);
+                Bitmap photoCapturedBitmap = BitmapFactory.decodeFile(mImageFileLocation);
+                imageView_picture.setImageBitmap(photoCapturedBitmap);
             }
         }
     }
@@ -132,19 +142,7 @@ public class OrderShare extends AppCompatActivity {
     }
 
     private void buildButtons() {
-        btn_useCamera = findViewById(R.id.btn_useCamera);
-        btn_useCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if(canUseCamera) {
-                    if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-                        cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                        startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
-                    }
-                }
-            }
-        });
+
 
         Button share = findViewById(R.id.btn_share);
         share.setOnClickListener(new View.OnClickListener() {
@@ -199,5 +197,45 @@ public class OrderShare extends AppCompatActivity {
         byte[] data = baos.toByteArray();
 
         imageRef.putBytes(data);
+    }
+
+    File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDirectory      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mImageFileLocation = image.getAbsolutePath();
+        return image;
+    }
+
+    public void takePhoto(View view) {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if(canUseCamera) {
+            if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+
+                File photofile = null;
+                try {
+                    photofile = createImageFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                String authorities = getApplicationContext().getPackageName() + ".fileprovider";
+                Uri imageUri = FileProvider.getUriForFile(this, authorities, photofile);
+
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                //cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
+                startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
+            }
+        }
     }
 }

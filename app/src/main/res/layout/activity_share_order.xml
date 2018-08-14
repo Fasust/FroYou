@@ -81,6 +81,7 @@
             android:background="@drawable/rounded_shape"
             android:cropToPadding="true"
             android:elevation="2dp"
+            android:onClick="takePhoto"
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="@+id/imageView_picture"
             app:layout_constraintEnd_toEndOf="@+id/imageView_picture"
