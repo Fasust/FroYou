@@ -21,24 +21,15 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-
+import frozenyogurtbuilder.app.classes.Recipe;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 import java.util.UUID;
-
-import frozenyogurtbuilder.app.classes.Recipe;
 
 public class OrderShare extends AppCompatActivity {
 
@@ -72,10 +63,15 @@ public class OrderShare extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_share_order);
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)== PackageManager.PERMISSION_GRANTED) {
             Log.d("PERMISSION", "Camera granted");
+            canUseCamera = true;
         } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 500);
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 500);
+            }
         }
 
         imageView_picture = findViewById(R.id.imageView_picture);
@@ -92,10 +88,11 @@ public class OrderShare extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == 500 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == 500) {
             canUseCamera = true;
         } else {
-            // Message dass Kamera nicht verwendet werden darf
+            canUseCamera = false;
+
         }
 
     }
@@ -116,6 +113,9 @@ public class OrderShare extends AppCompatActivity {
 
                 imageView_picture.setImageBitmap(photo);
             }
+        } else {
+            Toast toast = Toast.makeText(getApplicationContext(), "Camera failed", Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
 
@@ -139,7 +139,7 @@ public class OrderShare extends AppCompatActivity {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if(canUseCamera) {
                     if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-                        cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                        //cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                         startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
                     }
                 }
