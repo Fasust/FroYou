@@ -117,7 +117,7 @@ public class OrderShare extends AppCompatActivity {
             if (data != null) {
                 Bundle extras = data.getExtras();
                 photo = (Bitmap) extras.get("data");
-                data.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                //data.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
                 imageView_picture.setImageBitmap(photo);
             }
@@ -147,7 +147,8 @@ public class OrderShare extends AppCompatActivity {
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if(canUseCamera) {
                     if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-                        cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                        //cameraIntent.putExtra(MediaStore.EXTRA_SCREEN_ORIENTATION, ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
                         startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
                     }
                 }
