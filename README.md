@@ -4,9 +4,9 @@ Im Rahmen des Moduls [Mobile Computing](https://wiki.moxd.io/display/WPFMoCoSS18
 
 Für den Themenbereich “Enterprise” haben wir uns mit dem Unternehmen [Süße Ecke](https://www.forum-gummersbach.info/shop/sascha-stange/) im Gummersbacher Forum zusammengetan und eine App entwickelt die den Bestellprozess von Frozen Yoghurts und Softeis erleichtern soll.
 
-Die vollständige [Dokumentation](https://github.com/Fasust/FrozenJoghurtBuilder/blob/master/Dokumentation.pdf) des Arbeitsprozesses, der Designentscheidungen und der Architektur haben wir nach Abgabe des Projektes ebenfalls zum Repository hinzugefügt.
+📄 Die vollständige [Dokumentation](https://github.com/Fasust/FrozenJoghurtBuilder/blob/master/Dokumentation.pdf) des Arbeitsprozesses, der Designentscheidungen und der Architektur haben wir nach Abgabe des Projektes ebenfalls zum Repository hinzugefügt.
 
-ForYou hat in 2018 den [Preis](https://www.th-koeln.de/hochschule/innovativ-kreativ-multimedial_61452.php) “Bestes Projekt des Semesters” gewonnen. 
+🏆 ForYou hat in 2018 den [Preis](https://www.th-koeln.de/hochschule/innovativ-kreativ-multimedial_61452.php) “Bestes Projekt des Semesters” gewonnen. 
 
 ### Features
 
